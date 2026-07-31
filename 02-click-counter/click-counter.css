@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(251, 249, 255);
+    font-family: "Inter", sans-serif;
+}
+
+@keyframes fadeDown {
+    from {
+        transform: translateY(-5rem);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0rem);
+        opacity: 100;
+    }
+}
+
+.card {
+    height: 30rem;
+    width: 25rem;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 2rem;
+    box-shadow: 0px 0px 30px rgb(197, 197, 197);
+    padding: 2rem;
+    border: 0.1px solid gray;
+    background: linear-gradient(rgb(235, 235, 235), white, rgb(243, 249, 255), white, rgb(236, 246, 255));
+    transform: scale(1);
+    transition: box-shadow 5s ease-out;
+    animation: fadeDown 1s ease-out;
+}
+
+.card:hover {
+    box-shadow: 0px 0px 20px 2px rgba(57, 57, 57, 0.991);
+}
+
+h1 {
+    color: rgb(1, 0, 63);
+    text-transform: uppercase;
+    margin-top: 1rem;
+    font-size: 2.75rem;
+    text-decoration: wavy;
+}
+
+.eyebrow {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: rgb(106, 0, 205);
+    margin-top: 1rem;
+}
+
+.wrapper {
+    margin-top: 3rem;
+}
+
+.wrapper button {
+    font-size: 4rem;
+    padding: 0rem 4rem;
+    margin: 1rem;
+}
+
+.reset {
+    font-size: 2rem;
+    padding: 0.5rem 7.25rem;
+    margin-top: 1rem;
+    color: white;
+    background-color: rgb(130, 0, 251);
+    border-radius: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.reset:hover {
+    background-color: rgba(0, 0, 0, 0.897);
+}
+
+.count {
+    color: black;
+    height: 5rem;
+    width: rem;
+    margin-top: 2rem;
+    font-size: 2.25rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.control-btn {
+    border-radius: 2rem;
+    color: white;
+    transition: background-color 0.25s ease-in-out;
+}
+
+.add {
+    background-color: rgba(111, 0, 247, 0.978);
+}
+
+.add:hover {
+    background-color: rgb(41, 175, 41);
+}
+
+.subtract {
+    background-color: rgb(114, 0, 253);
+}
+
+.subtract:hover {
+    background-color: rgb(202, 17, 17);
+}
+
+.mode {
+    height: 3rem;
+    font-size: small;
+    width: 23rem;
+}

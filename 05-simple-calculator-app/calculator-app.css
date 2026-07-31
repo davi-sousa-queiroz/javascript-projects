@@ -1,0 +1,126 @@
+:root {
+  color-scheme: light;
+  --page-bg: #f2efe9;
+  --card-bg: #f8f5ef;
+  --card-border: #d8d0c2;
+  --text-strong: #1f2430;
+  --text-muted: #6f6b63;
+  --accent: #2c4a6b;
+  --accent-soft: #e8eff6;
+  --button-bg: #ffffff;
+  --button-border: #e0d9ce;
+  --button-hover: #f1ece4;
+  --result-bg: #f3efe7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--page-bg);
+  color: var(--text-strong);
+}
+
+.adder-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.adder-card {
+  width: min(100%, 390px);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 28px;
+  padding: 24px;
+  box-shadow: 0 18px 40px rgba(31, 36, 48, 0.12);
+}
+
+.adder-header {
+  margin-bottom: 20px;
+}
+
+.adder-kicker {
+  margin: 0 0 6px;
+  font-size: 0.75rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.adder-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.adder-form {
+  display: grid;
+  gap: 14px;
+}
+
+.field {
+  display: grid;
+  gap: 7px;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.field input {
+  border: 1px solid var(--button-border);
+  border-radius: 14px;
+  padding: 13px 14px;
+  font-size: 1rem;
+  color: var(--text-strong);
+  background: var(--button-bg);
+  outline: none;
+}
+
+.field input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.add-btn {
+  border: none;
+  border-radius: 14px;
+  padding: 13px 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  background: var(--accent);
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.add-btn:hover {
+  opacity: 0.95;
+}
+
+.result-box {
+  margin-top: 18px;
+  background: var(--result-bg);
+  border-radius: 16px;
+  padding: 14px 16px;
+  border: 1px solid var(--button-border);
+}
+
+.result-label {
+  display: block;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.result-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-strong);
+}

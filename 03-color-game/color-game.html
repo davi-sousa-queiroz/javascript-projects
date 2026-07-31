@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Quest</title>
+    <link rel="stylesheet" href="color-game.css" />
+  </head>
+  <body class="js-body">
+    <div class="game-card">
+      <p class="eyebrow">Mini Color Quest</p>
+      <h1>Pick a Color!</h1>
+      <div class="button-grid">
+        <button
+          onclick="
+            colorChange('red');
+            textChange('red');
+            addColorClick();
+          "
+          class="color-btn"
+          data-color="red"
+        >
+          Red
+        </button>
+        <button
+          onclick="
+            colorChange('blue');
+            textChange('blue');
+            addColorClick();
+          "
+          class="color-btn"
+          data-color="blue"
+        >
+          Blue
+        </button>
+        <button
+          onclick="
+            colorChange('green');
+            textChange('green');
+            addColorClick();
+          "
+          class="color-btn"
+          data-color="green"
+        >
+          Green
+        </button>
+        <button
+          onclick="
+            colorChange('purple');
+            textChange('purple');
+            addColorClick();
+          "
+          class="color-btn"
+          data-color="purple"
+        >
+          Purple
+        </button>
+        <div class="wrapper">
+          <p class="js-text"></p>
+          <button
+            onclick="
+              colorChange('rgb(237, 245, 255)');
+              textReset();
+            "
+            class="reset"
+          >
+            Reset
+          </button>
+          <h3 class="click-count">Color Change Count: 0</h3>
+        </div>
+      </div>
+    </div>
+
+    <script src="color-game.js"></script>
+  </body>
+</html>

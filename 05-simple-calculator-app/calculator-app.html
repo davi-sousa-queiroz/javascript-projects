@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Two Number Adder</title>
+    <link rel="stylesheet" href="calculator-app.css" />
+  </head>
+  <body>
+    <main class="adder-shell">
+      <section class="adder-card" aria-label="Two number adder">
+        <div class="adder-header">
+          <p class="adder-kicker">simple adder</p>
+          <h1>Add two numbers</h1>
+        </div>
+
+        <form class="adder-form" id="adder-form">
+          <label class="field">
+            <span>First number</span>
+            <input type="number" id="firstNumber" placeholder="0" step="any" />
+          </label>
+
+          <label class="field">
+            <span>Second number</span>
+            <input type="number" id="secondNumber" placeholder="0" step="any" />
+          </label>
+
+          <button type="submit" class="add-btn">Add</button>
+        </form>
+
+        <div class="result-box" aria-live="polite">
+          <span class="result-label">Result</span>
+          <div class="result-value" id="resultValue">0</div>
+        </div>
+      </section>
+    </main>
+
+    <script src="calculator-app.js"></script>
+  </body>
+</html>

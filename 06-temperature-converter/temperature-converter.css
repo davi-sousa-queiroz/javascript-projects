@@ -1,0 +1,272 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  background: #667eea;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 720px;
+  padding: 0 1rem;
+}
+
+.converter-card {
+  width: 100%;
+  min-width: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: slideInUp 0.6s ease;
+}
+
+.converter-card + .converter-card {
+  margin-top: 2rem;
+}
+
+.converter-card.secondary {
+  background: rgba(255, 247, 237, 0.98);
+  border-color: rgba(249, 115, 22, 0.25);
+}
+
+.converter-card.secondary h1 {
+  color: #c2410c;
+}
+
+.subtitle {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  color: #92400e;
+  font-size: 0.95rem;
+}
+
+.result-box-alt {
+  min-height: 3rem;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fff7ed;
+  color: #92400e;
+  font-size: 1rem;
+}
+
+.converter-card.secondary .conversion-symbol {
+  color: #fb923c;
+}
+
+.converter-card.secondary .convert-btn {
+  background: #f97316;
+  box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+}
+
+.converter-card.secondary .convert-btn:hover {
+  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.5);
+}
+
+.converter-card.secondary .reset-btn {
+  background: #941b0c;
+}
+
+.converter-card.secondary .reset-btn:hover {
+  box-shadow: 0 6px 20px rgba(148, 27, 12, 0.5);
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.input-field {
+  flex: 1;
+  min-width: 150px;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.8rem;
+  color: #555;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: inherit;
+}
+
+input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+.conversion-symbol {
+  font-size: 2rem;
+  color: #667eea;
+  font-weight: bold;
+  animation: bounce 2s infinite;
+}
+
+.result-box {
+  min-height: 3rem;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  background: #f9fafb;
+  color: #111827;
+  font-size: 1rem;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.convert-btn {
+  flex: 1;
+  padding: 1rem;
+  background: #22c55e;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+}
+
+.convert-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(34, 197, 94, 0.5);
+}
+
+.convert-btn:active {
+  transform: translateY(0);
+}
+
+.reset-btn {
+  flex: 1;
+  padding: 1rem;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.reset-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+}
+
+.reset-btn:active {
+  transform: translateY(0);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@media (max-width: 800px) {
+  .converter-card {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .input-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .conversion-symbol {
+    margin: 0 auto;
+    font-size: 1.8rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .convert-btn,
+  .reset-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 1rem;
+  }
+
+  .converter-card {
+    padding: 2rem 1rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .conversion-symbol {
+    font-size: 1.5rem;
+  }
+}
+
+.dark-mode {
+  margin-top: 5rem;
+}
+
+.light-mode {
+  margin-top: 1rem;
+  background-color: #941b0c;
+}

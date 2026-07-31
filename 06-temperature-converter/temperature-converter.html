@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TEMPERATURE CONVERTER</title>
+    <link rel="stylesheet" href="temperature-converter.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="converter-card">
+        <h1>🌡️ Temperature Converter</h1>
+
+        <div class="input-group">
+          <div class="input-field">
+            <label for="celsius">Celsius (°C)</label>
+            <input
+              type="number"
+              class="celsius"
+              placeholder="Enter temperature"
+            />
+          </div>
+
+          <div class="conversion-symbol">⇄</div>
+
+          <div class="input-field">
+            <label for="fahrenheit">Fahrenheit (°F)</label>
+            <p class="result result-box"></p>
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button
+            onclick="
+              const tempC = getCelsius();
+              const tempF = convert(tempC);
+              displayF(tempF);
+            "
+            class="convert-btn"
+          >
+            Convert
+          </button>
+          <button onclick="reset()" class="reset-btn">Reset</button>
+        </div>
+      </div>
+
+      <div class="converter-card secondary">
+        <h1>🌡️ Fahrenheit to Celsius</h1>
+
+        <div class="input-group">
+          <div class="input-field">
+            <label for="fahrenheit-ui">Fahrenheit (°F)</label>
+            <input
+              type="number"
+              class="fahrenheit-ui"
+              placeholder="Enter temperature"
+            />
+          </div>
+
+          <div class="conversion-symbol">⇄</div>
+
+          <div class="input-field">
+            <label for="celsius-ui">Celsius (°C)</label>
+            <p class="result-box-alt">--</p>
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button
+            onclick="
+              tempF = getFahrenheit();
+              tempC = convertFC(tempF);
+              displayC(tempC);
+            "
+            type="button"
+            class="convert-btn alt-btn"
+          >
+            Convert
+          </button>
+          <button onclick="reset2()" type="button" class="reset-btn alt-btn">
+            Reset
+          </button>
+        </div>
+      </div>
+      <button onclick="darkModeTransfer()" class="dark-mode convert-btn">
+        Dark Mode
+      </button>
+      <button onclick="lightModeTransfer()" class="light-mode convert-btn">
+        Light Mode
+      </button>
+      <button
+        style="margin-top: 1rem"
+        onclick="randomMode()"
+        class="random-color convert-btn"
+      >
+        Random Mode
+      </button>
+      <button
+        onclick="
+          resetAll();
+          lightModeTransfer();
+        "
+        class="mega-reset convert-btn"
+      >
+        Reset All
+      </button>
+    </div>
+
+    <script src="temp.js"></script>
+  </body>
+</html>

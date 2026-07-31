@@ -1,0 +1,139 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  background-color: rgb(237, 245, 255);
+  transition: background 0.4s ease;
+}
+
+.game-card {
+  width: min(520px, 92vw);
+  padding: 28px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 40px rgba(76, 29, 149, 0.18);
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: #7c3aed;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+h1 {
+  margin: 0 0 24px;
+  color: #312e81;
+  font-size: clamp(2rem, 5vw, 3rem);
+  text-shadow: 1px 1px 0 #fff;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.color-btn {
+  padding: 14px 18px;
+  border: none;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.color-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  filter: brightness(1.05);
+}
+
+.reset:hover {
+  transform: translateY(-2px) scale(1.02);
+  filter: brightness(1.05);
+}
+
+.color-btn:nth-child(1) {
+  background: #ef4444;
+}
+
+.color-btn:nth-child(2) {
+  background: #3b82f6;
+}
+
+.color-btn:nth-child(3) {
+  background: #22c55e;
+}
+
+.color-btn:nth-child(4) {
+  background: #a855f7;
+}
+
+.js-text {
+  width: 29rem;
+  margin-top: 28px;
+  padding: 18px 22px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #312e81;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(168, 85, 247, 0.08));
+  border-radius: 12px;
+  animation: slideIn 0.4s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reset {
+  color: #fff;
+  background-color: #312e81;
+  font-size: larger;
+  padding: 14px 13rem;
+  border: none;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 14.55rem;
+}
+
+h3 {
+  width: 30rem;
+  word-spacing: 0.2rem;
+}
+
+.click-count {
+  color: #312e81;
+}
