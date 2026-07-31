@@ -2,7 +2,7 @@
 
 A collection of projects I built while learning JavaScript.
 
-The goal of this repository is to document my progress as I learn JavaScript through hands-on projects. Every project focuses on practicing new concepts and improving my problem-solving skills.
+The goal of this repository is to document my progress as I learn JavaScript through hands on projects. Every project focuses on practicing new concepts and improving my problem solving skills.
 
 ---
 
