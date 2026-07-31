@@ -1,4 +1,4 @@
-# 🟨 JavaScript Projects 🧑‍💻 
+# 🟨  JavaScript Projects 🧑‍💻 
 
 A collection of projects I built while learning JavaScript.
 
