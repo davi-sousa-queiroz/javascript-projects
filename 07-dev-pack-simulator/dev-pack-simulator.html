@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dev Pack Sim</title>
+    <title>Dev Pack Simulator</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,16 +13,34 @@
     <link rel="stylesheet" href="dev-pack-simulator.css" />
   </head>
   <body>
-    <nav>
-      <h1>Developer Pack Simulator</h1>
-    </nav>
-    <div class="container">
-      <div class="btn-wrapper">
-        <button class="view-colection btn">VIEW DEV CARDS</button>
-        <button class="open btn">OPEN PACK</button>
-      </div>
-      <div class="card"></div>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <span class="tag">DEV PACK</span>
+          <h1>SIMULATOR</h1>
+        </div>
+      </header>
+
+      <main class="container">
+        <section class="panel-head">
+          <div>
+            <p class="eyebrow">PACK OPENING</p>
+            <h2>Developer Vault</h2>
+          </div>
+        </section>
+
+        <section class="btn-wrapper">
+          <button class="view-colection btn ghost">VIEW DEV CARDS</button>
+          <button class="open btn primary">OPEN PACK</button>
+        </section>
+
+        <section class="card-stage">
+          <div class="card-shadow"></div>
+          <div class="card"></div>
+        </section>
+      </main>
     </div>
+
     <script src="dev-pack-simulator.js"></script>
   </body>
 </html>
