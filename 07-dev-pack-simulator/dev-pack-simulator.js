@@ -6,6 +6,7 @@ const openPackButton = document.querySelector('.')
 const displayPanel = document.querySelector('.')
 // DEV OBJECTS //
 const kamal = {
+    id: 1,
     name: 'Kamal',
     rarity: 'Common',
     language: 'Python',
@@ -15,6 +16,7 @@ const kamal = {
     power: 30
 }
 const john = {
+    id: 2,
     name: 'John',
     rarity: 'Common',
     language: 'Javascript',
@@ -24,6 +26,7 @@ const john = {
     power: 32
 }
 const lorenzo = {
+    id: 3,
     name: 'Lorenzo',
     rarity: 'Common',
     language: 'Python',
@@ -33,6 +36,7 @@ const lorenzo = {
     power: 39
 }
 const emma = {
+    id: 4,
     name: 'Emma',
     rarity: 'Common',
     language: 'Python',
@@ -42,6 +46,7 @@ const emma = {
     power: 36
 }
 const nate = {
+    id: 5,
     name: 'Nate',
     rarity: 'Common',
     language: 'Javascript',
@@ -51,6 +56,7 @@ const nate = {
     power: 43
 }
 const sophia = {
+    id: 6,
     name: 'Sophia',
     rarity: 'Rare',
     language: 'TypeScript',
@@ -60,6 +66,7 @@ const sophia = {
     power: 60
 }
 const miguel = {
+    id: 7,
     name: 'Miguel',
     rarity: 'Rare',
     language: 'Go',
@@ -69,6 +76,7 @@ const miguel = {
     power: 67
 }
 const akira = {
+    id: 8,
     name: 'Akira',
     rarity: 'Rare',
     language: 'Rust',
@@ -78,6 +86,7 @@ const akira = {
     power: 72
 }
 const guido = {
+    id: 9,
     name: 'Guido van Rossum',
     rarity: 'Epic',
     language: 'Python',
@@ -87,6 +96,7 @@ const guido = {
     power: 94
 }
 const linus = {
+    id: 10,
     name: 'Linus Torvalds',
     rarity: 'Epic',
     language: 'C',
