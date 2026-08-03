@@ -95,4 +95,17 @@ const linus = {
     salary: 3000000,
     power: 97
 }
+// ARRAY OF DEV CARD OBJECTS //
+devCards = [
+    kamal,
+    john,
+    lorenzo,
+    emma,
+    nate,
+    sophia,
+    miguel,
+    akira,
+    guido,
+    linus
+]
 // OPEN PACK //
