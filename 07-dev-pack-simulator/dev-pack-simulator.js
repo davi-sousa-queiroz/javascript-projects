@@ -50,4 +50,49 @@ const nate = {
     salary: 72000,
     power: 43
 }
+const sophia = {
+    name: 'Sophia',
+    rarity: 'Rare',
+    language: 'TypeScript',
+    country: 'Canada',
+    job: 'Full Stack Developer',
+    salary: 98000,
+    power: 60
+}
+const miguel = {
+    name: 'Miguel',
+    rarity: 'Rare',
+    language: 'Go',
+    country: 'Spain',
+    job: 'Backend Engineer',
+    salary: 110000,
+    power: 67
+}
+const akira = {
+    name: 'Akira',
+    rarity: 'Rare',
+    language: 'Rust',
+    country: 'Japan',
+    job: 'Systems Engineer',
+    salary: 125000,
+    power: 72
+}
+const guido = {
+    name: 'Guido van Rossum',
+    rarity: 'Epic',
+    language: 'Python',
+    country: 'Netherlands',
+    job: 'Creator of Python',
+    salary: 500000,
+    power: 94
+}
+const linus = {
+    name: 'Linus Torvalds',
+    rarity: 'Epic',
+    language: 'C',
+    country: 'Finland',
+    job: 'Creator of Linux',
+    salary: 3000000,
+    power: 97
+}
 // OPEN PACK //
