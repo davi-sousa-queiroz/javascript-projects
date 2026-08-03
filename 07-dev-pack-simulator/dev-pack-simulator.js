@@ -96,7 +96,7 @@ const linus = {
     power: 97
 }
 // ARRAY OF DEV CARD OBJECTS //
-devCards = [
+const devCards = [
     kamal,
     john,
     lorenzo,
