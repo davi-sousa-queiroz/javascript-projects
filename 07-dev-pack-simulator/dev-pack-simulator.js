@@ -1,9 +1,8 @@
 // QUERY SELECTING //
-const action = document.querySelector('.')
-const location = document.querySelector('.')
-const collectionButtton = document.querySelector('.')
-const openPackButton = document.querySelector('.')
-const displayPanel = document.querySelector('.')
+const openPackButton = document.querySelector('.open')
+const displayPanel = document.querySelector('.display-panel')
+const collectionButton = document.querySelector('.view-colection')
+
 // DEV OBJECTS //
 const kamal = {
     id: 1,
@@ -106,6 +105,7 @@ const linus = {
     power: 97
 }
 // ARRAY OF DEV CARD OBJECTS //
+
 const devCards = [
     kamal,
     john,
@@ -118,4 +118,61 @@ const devCards = [
     guido,
     linus
 ]
-// OPEN PACK //
+
+// CARD PULL FUNCTIONS AND LOGIC //
+
+function getRarityClass (rarity) {
+    return rarity.toLowerCase()
+}
+
+function cardPull () {
+    const randomIndex = Math.floor(Math.random() * devCards.length)
+    const randomCard = devCards[randomIndex]
+    const rarityClass = getRarityClass(randomCard.rarity)
+
+    displayPanel.className = `card display-panel rarity-${rarityClass} show-card`
+    displayPanel.innerHTML = `
+        <div class="card-inner">
+            <div class="card-top">
+                <span class="rarity-badge">${randomCard.rarity}</span>
+                <span class="power-badge">${randomCard.power} POWER</span>
+            </div>
+
+            <div class="profile-row">
+                <div class="profile-pill">${randomCard.language}</div>
+                <div class="profile-pill">${randomCard.country}</div>
+            </div>
+
+            <div class="card-main">
+                <p class="card-role">${randomCard.job}</p>
+                <h3>${randomCard.name}</h3>
+                <p class="salary">SALARY: $${randomCard.salary.toLocaleString()}</p>
+            </div>
+
+            <div class="stat-grid">
+                <div class="stat-box">
+                    <span>Rarity</span>
+                    <strong>${randomCard.rarity}</strong>
+                </div>
+                <div class="stat-box">
+                    <span>Language</span>
+                    <strong>${randomCard.language}</strong>
+                </div>
+                <div class="stat-box">
+                    <span>Country</span>
+                    <strong>${randomCard.country}</strong>
+                </div>
+                <div class="stat-box">
+                    <span>Power</span>
+                    <strong>${randomCard.power}</strong>
+                </div>
+            </div>
+        </div>
+    `
+}
+
+collectionButton.addEventListener('click', () => {
+    displayPanel.classList.add('show-card')
+})
+
+openPackButton.addEventListener('click', cardPull)
