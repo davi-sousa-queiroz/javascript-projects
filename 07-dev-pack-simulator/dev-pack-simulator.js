@@ -119,6 +119,10 @@ const devCards = [
     linus
 ]
 
+// ARRAY OF COLLECTED CARDS //
+
+let collectedCards = []
+
 // CARD PULL FUNCTIONS AND LOGIC //
 
 function getRarityClass (rarity) {
@@ -129,6 +133,8 @@ function cardPull () {
     const randomIndex = Math.floor(Math.random() * devCards.length)
     const randomCard = devCards[randomIndex]
     const rarityClass = getRarityClass(randomCard.rarity)
+    collectedCards.push(randomCard)
+
 
     displayPanel.className = `card display-panel rarity-${rarityClass} show-card`
     displayPanel.innerHTML = `
@@ -169,6 +175,7 @@ function cardPull () {
             </div>
         </div>
     `
+
 }
 
 collectionButton.addEventListener('click', () => {
