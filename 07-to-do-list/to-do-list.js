@@ -26,18 +26,17 @@ const input = document.querySelector('.input')
 const addButton = document.querySelector('.addButton')
 const container = document.querySelector('.listContainer')
 
-function displayTasks () {
-    for (let i = 0; i < tasks.length; i++) {
-        const taskDisplay = document.createElement('li')
-        task.textContent = tasks[i]
-        container.appendChild(task)
-    }
+function displayTask (task) {
+    const taskDisplay = document.createElement('li')
+    taskDisplay.textContent = task
+    container.appendChild(taskDisplay)
+
 }
 
 function addTask () {
     const taskAdd = input.value
     tasks.push(taskAdd)
-    displayTasks()
+    displayTask(taskAdd)
 }
 
 addButton.addEventListener('click', addTask)
