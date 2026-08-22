@@ -28,8 +28,16 @@ const container = document.querySelector('.listContainer')
 
 function displayTasks () {
     for (let i = 0; i < tasks.length; i++) {
-        const task = document.createElement('li')
+        const taskDisplay = document.createElement('li')
         task.textContent = tasks[i]
         container.appendChild(task)
     }
 }
+
+function addTask () {
+    const taskAdd = input.value
+    tasks.push(taskAdd)
+    displayTasks()
+}
+
+addButton.addEventListener('click', addTask)
