@@ -32,7 +32,9 @@ body {
 }
 
 .input {
-    width: calc(100% - 84px);
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
     padding: 12px 14px;
     border: 1px solid #b8c5d3;
     border-radius: 4px;
@@ -45,9 +47,8 @@ body {
     outline-offset: 2px;
 }
 
-.addButton {
-    width: 72px;
-    margin-left: 8px;
+.addButton, .clearButton {
+    width: calc(50% - 6px);
     padding: 12px 8px;
     border: 0;
     border-radius: 4px;
@@ -60,6 +61,15 @@ body {
 
 .addButton:hover {
     background: #185a71;
+}
+
+.clearButton {
+    margin-left: 8px;
+    background: #b45309;
+}
+
+.clearButton:hover {
+    background: #92400e;
 }
 
 .listContainer {
@@ -82,4 +92,3 @@ body {
         padding: 24px 18px;
     }
 }
-
