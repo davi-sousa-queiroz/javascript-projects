@@ -34,7 +34,11 @@ function displayTask (task) {
 }
 
 function addTask () {
-    const taskAdd = input.value
+    let taskAdd = input.value
+    taskAdd = taskAdd.trim()
+    if (taskAdd === '') {
+        return
+    }
     tasks.push(taskAdd)
     displayTask(taskAdd)
 }
