@@ -25,6 +25,7 @@ const tasks = []
 const input = document.querySelector('.input')
 const addButton = document.querySelector('.addButton')
 const container = document.querySelector('.listContainer')
+const clearButton = document.querySelector('.clearButton')
 
 function displayTask (task) {
     const taskDisplay = document.createElement('li')
@@ -44,4 +45,10 @@ function addTask () {
     input.value = ''
 }
 
+function removeTasks () {
+    const tasks = document.querySelectorAll(li)
+    tasks.remove()
+}
+
 addButton.addEventListener('click', addTask)
+clearButton.addEventListener('click', removeTasks)
