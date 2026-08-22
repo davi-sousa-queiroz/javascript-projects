@@ -30,6 +30,6 @@ function displayTasks () {
     for (let i = 0; i < tasks.length; i++) {
         const task = document.createElement('li')
         task.textContent = tasks[i]
-
+        container.appendChild(task)
     }
 }
