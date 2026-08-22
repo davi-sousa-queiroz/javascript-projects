@@ -36,6 +36,7 @@ function displayTask (task) {
 function addTask () {
     let taskAdd = input.value
     taskAdd = taskAdd.trim()
+    taskAdd = taskAdd.toUpperCase()
     if (taskAdd === '') {
         return
     }
