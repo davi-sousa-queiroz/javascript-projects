@@ -36,12 +36,12 @@ function displayTask (task) {
 function addTask () {
     let taskAdd = input.value
     taskAdd = taskAdd.trim()
-    taskAdd = taskAdd.toUpperCase()
     if (taskAdd === '') {
         return
     }
     tasks.push(taskAdd)
     displayTask(taskAdd)
+    input.value = ''
 }
 
 addButton.addEventListener('click', addTask)
