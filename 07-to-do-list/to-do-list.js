@@ -30,6 +30,9 @@ const clearButton = document.querySelector('.clearButton')
 function displayTask (task) {
     const taskDisplay = document.createElement('li')
     taskDisplay.textContent = task
+    taskDisplay.addEventListener('click', function() {
+        taskDisplay.classList.toggle('completed')
+    })
     container.appendChild(taskDisplay)
 
 }
