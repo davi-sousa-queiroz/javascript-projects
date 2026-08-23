@@ -46,8 +46,8 @@ function addTask () {
 }
 
 function clearTasks () {
-    for (let i = 0; i < tasks.length; i++) {
-        tasks.splice(i, 1)
+    while (tasks.length > 0) {
+        tasks.splice(0, 1)
     }
 }
 
