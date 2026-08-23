@@ -49,6 +49,8 @@ function clearTasks () {
     while (tasks.length > 0) {
         tasks.splice(0, 1)
     }
+
+    container.replaceChildren();
 }
 
 addButton.addEventListener('click', addTask)
