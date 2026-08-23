@@ -45,10 +45,11 @@ function addTask () {
     input.value = ''
 }
 
-function removeTasks () {
-    const tasks = document.querySelectorAll(li)
-    tasks.remove()
+function clearTasks () {
+    for (let i = 0; i < tasks.length; i++) {
+        tasks.splice(i, 1)
+    }
 }
 
 addButton.addEventListener('click', addTask)
-clearButton.addEventListener('click', removeTasks)
+clearButton.addEventListener('click', clearTasks)
