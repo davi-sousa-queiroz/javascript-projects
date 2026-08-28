@@ -1,6 +1,7 @@
 const hero = document.querySelector('.hero')
 const heroHeading = document.querySelector('.hero-heading')
 const playButton = document.querySelector('.play-button')
+let points = 0
 
 const questions = [
     {
@@ -66,9 +67,18 @@ function displayQuestion (question) {
     questionElement.className = 'question-heading'
     questionElement.textContent = question[0].question
     hero.appendChild(questionElement)
+
+    return questionElement
 }
 
-function displayAnswers (question) {
+function displayAnswers (question, questionElement) {
+    function answerIncorrect () {
+        questionElement.textContent = 'That is Incorrect!'
+    }
+    function answerCorrect () {
+        questionElement.textContent = 'That is Correct!'
+        points++
+    }
     const answer1 = document.createElement('button')
     const answer2 = document.createElement('button')
     const answer3 = document.createElement('button')
@@ -79,18 +89,23 @@ function displayAnswers (question) {
     answer4.className = 'answer-button'
     answer1.textContent = question[0].answers[0]
     hero.appendChild(answer1)
+    answer1.addEventListener('click', answerCorrect)
     answer2.textContent = question[0].answers[1]
+    answer2.addEventListener('click', answerIncorrect)
     hero.appendChild(answer2)
     answer3.textContent = question[0].answers[2]
+    answer3.addEventListener('click', answerIncorrect)
     hero.appendChild(answer3)
     answer4.textContent = question[0].answers[3]
+    answer4.addEventListener('click', answerIncorrect)
     hero.appendChild(answer4)
 }
 
 function gameStart () {
+    points = 0
     sectionClear()
-    displayQuestion(questions)
-    displayAnswers(questions)
+    const questionElement = displayQuestion(questions)
+    displayAnswers(questions, questionElement)
 }
 
 playButton.addEventListener('click', gameStart)
