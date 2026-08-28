@@ -92,6 +92,9 @@ function displayAnswers (question, questionElement) {
         nextButton.textContent = 'NEXT'
         nextButton.className = 'next-button'
         hero.appendChild(nextButton)
+        nextButton.addEventListener('click', function () {
+            hero.innerHTML = ''
+        })
     }
     const answer1 = document.createElement('button')
     const answer2 = document.createElement('button')
