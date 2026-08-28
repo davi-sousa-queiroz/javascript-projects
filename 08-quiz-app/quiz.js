@@ -55,8 +55,13 @@ const questions = [
     }
 ]
 
-function gameStart () {
+function sectionClear () {
+    heroHeading.remove()
+    playButton.remove()
+}
 
+function gameStart () {
+    sectionClear()
 }
 
 playButton.addEventListener('click', gameStart)
