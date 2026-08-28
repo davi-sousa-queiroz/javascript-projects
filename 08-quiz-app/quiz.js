@@ -79,6 +79,16 @@ function displayAnswers (question, questionElement) {
         questionElement.textContent = 'That is Correct!'
         points++
     }
+    function reveal () {
+        answer1.style.backgroundColor = 'green'
+        answer2.style.backgroundColor = 'red'
+        answer3.style.backgroundColor = 'red'
+        answer4.style.backgroundColor = 'red'
+        answer1.style.color = 'white'
+        answer2.style.color = 'white'
+        answer3.style.color = 'white'
+        answer4.style.color = 'white'
+    }
     const answer1 = document.createElement('button')
     const answer2 = document.createElement('button')
     const answer3 = document.createElement('button')
@@ -90,14 +100,18 @@ function displayAnswers (question, questionElement) {
     answer1.textContent = question[0].answers[0]
     hero.appendChild(answer1)
     answer1.addEventListener('click', answerCorrect)
+    answer1.addEventListener('click', reveal)
     answer2.textContent = question[0].answers[1]
     answer2.addEventListener('click', answerIncorrect)
+    answer2.addEventListener('click', reveal)
     hero.appendChild(answer2)
     answer3.textContent = question[0].answers[2]
     answer3.addEventListener('click', answerIncorrect)
+    answer3.addEventListener('click', reveal)
     hero.appendChild(answer3)
     answer4.textContent = question[0].answers[3]
     answer4.addEventListener('click', answerIncorrect)
+    answer4.addEventListener('click', reveal)
     hero.appendChild(answer4)
 }
 
