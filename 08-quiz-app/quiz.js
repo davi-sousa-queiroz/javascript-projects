@@ -88,6 +88,10 @@ function displayAnswers (question, questionElement) {
         answer2.style.color = 'white'
         answer3.style.color = 'white'
         answer4.style.color = 'white'
+        const nextButton = document.createElement('button')
+        nextButton.textContent = 'NEXT'
+        nextButton.className = 'next-button'
+        hero.appendChild(nextButton)
     }
     const answer1 = document.createElement('button')
     const answer2 = document.createElement('button')

@@ -127,6 +127,36 @@ nav {
   outline-offset: 3px;
 }
 
+.next-button {
+  position: absolute;
+  top: 88%;
+  left: 50%;
+  min-width: 100px;
+  padding: 0.65rem 1.25rem;
+  color: #ffffff;
+  font: 700 0.9rem/1 sans-serif;
+  letter-spacing: 0.08em;
+  background: #151515;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(38, 23, 20, 0.3);
+  cursor: pointer;
+  transform: translateX(-50%);
+  transition: background-color 0.2s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.next-button:hover {
+  background: #767676;
+  box-shadow: 0 9px 20px rgba(38, 23, 20, 0.38);
+  transform: translateX(-50%) translateY(-3px);
+}
+
+.next-button:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+}
+
 @keyframes heading-float {
   0%, 100% {
     transform: translateX(-50%) translateY(0);
