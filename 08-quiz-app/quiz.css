@@ -1,4 +1,140 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-image: url(static/home.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.hero-heading {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  width: min(90%, 700px);
+  color: #ffffff;
+  font: 700 clamp(2rem, 5vw, 4.5rem)/1.05 Georgia, serif;
+  text-align: center;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+  transform: translateX(-50%);
+  animation: heading-float 4s ease-in-out infinite;
+}
+
+nav {
+  position: fixed;
+  padding: 1rem;
+  z-index: 1;
+}
+
+.play-button {
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: #ffffff;
+  font: 700 1.35rem/1 sans-serif;
+  letter-spacing: 0.04em;
+  background: #151515;
+  border: 8px solid rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  box-shadow: 0 12px 28px rgba(38, 23, 20, 0.35);
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: background-color 0.5s ease, box-shadow 0.4s ease;
+}
+
+.play-button:hover {
+  background: #767676;
+  box-shadow: 0 16px 32px rgba(38, 23, 20, 0.42);
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.play-button:focus-visible {
+  outline: 4px solid #ffffff;
+  outline-offset: 5px;
+}
+
+.play-icon {
+  width: 0;
+  height: 0;
+  margin-left: 0.35rem;
+  border-top: 17px solid transparent;
+  border-bottom: 17px solid transparent;
+  border-left: 25px solid #ffffff;
+}
+
+@keyframes heading-float {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-heading {
+    animation: none;
+  }
+}
+
+.Btn {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  position: relative;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.svgContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  backdrop-filter: blur(0px);
+  letter-spacing: 0.8px;
+  border-radius: 10px;
+  transition: all .3s;
+  border: 1px solid rgba(156, 156, 156, 0.466);
+}
+
+.BG {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: #18181800;
+  z-index: -1;
+  border-radius: 10px;
+  pointer-events: none;
+  transition: all .3s;
+}
+
+.Btn:hover .BG {
+  transform: rotate(35deg);
+  transform-origin: bottom;
+}
+
+.Btn:hover .svgContainer {
+  background-color: rgba(156, 156, 156, 0.466);
+  backdrop-filter: blur(4px);
 }
