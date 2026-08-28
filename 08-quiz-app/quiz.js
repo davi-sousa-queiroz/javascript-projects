@@ -63,13 +63,34 @@ function sectionClear () {
 
 function displayQuestion (question) {
     const questionElement = document.createElement('h1')
+    questionElement.className = 'question-heading'
     questionElement.textContent = question[0].question
     hero.appendChild(questionElement)
+}
+
+function displayAnswers (question) {
+    const answer1 = document.createElement('button')
+    const answer2 = document.createElement('button')
+    const answer3 = document.createElement('button')
+    const answer4 = document.createElement('button')
+    answer1.className = 'answer-button'
+    answer2.className = 'answer-button'
+    answer3.className = 'answer-button'
+    answer4.className = 'answer-button'
+    answer1.textContent = question[0].answers[0]
+    hero.appendChild(answer1)
+    answer2.textContent = question[0].answers[1]
+    hero.appendChild(answer2)
+    answer3.textContent = question[0].answers[2]
+    hero.appendChild(answer3)
+    answer4.textContent = question[0].answers[3]
+    hero.appendChild(answer4)
 }
 
 function gameStart () {
     sectionClear()
     displayQuestion(questions)
+    displayAnswers(questions)
 }
 
 playButton.addEventListener('click', gameStart)
