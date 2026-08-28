@@ -1,7 +1,4 @@
 const heroHeading = document.querySelector('.hero-heading')
-<<<<<<< HEAD
-const playButton = document.querySelector('.play-button')
-=======
 const playButton = document.querySelector('.play-button')
 
 const questions = [
