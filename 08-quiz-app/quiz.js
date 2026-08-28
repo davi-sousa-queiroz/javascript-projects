@@ -1,3 +1,4 @@
+const hero = document.querySelector('.hero')
 const heroHeading = document.querySelector('.hero-heading')
 const playButton = document.querySelector('.play-button')
 
@@ -60,8 +61,15 @@ function sectionClear () {
     playButton.remove()
 }
 
+function displayQuestion (question) {
+    const questionElement = document.createElement('h1')
+    questionElement.textContent = question[0].question
+    hero.appendChild(questionElement)
+}
+
 function gameStart () {
     sectionClear()
+    displayQuestion(questions)
 }
 
 playButton.addEventListener('click', gameStart)

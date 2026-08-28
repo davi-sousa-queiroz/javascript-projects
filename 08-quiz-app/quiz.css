@@ -12,7 +12,7 @@
   background-size: cover;
 }
 
-.hero-heading {
+h1 {
   position: absolute;
   top: 20%;
   left: 50%;
