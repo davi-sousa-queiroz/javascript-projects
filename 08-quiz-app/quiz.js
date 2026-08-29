@@ -94,13 +94,11 @@ function displayAnswers (question, questionElement) {
         hero.appendChild(nextButton)
         nextButton.addEventListener('click', function () {
             hero.innerHTML = ''
-            displayQuestion2(question);
-
-    
+            const question2Element = displayQuestion2(question)
+            displayAnswers2(question, question2Element)
         })
     }
     const answer1 = document.createElement('button')
-
     const answer2 = document.createElement('button')
     const answer3 = document.createElement('button')
     const answer4 = document.createElement('button')
@@ -131,6 +129,64 @@ function displayQuestion2 (question) {
     question2.className = 'question-heading'
     question2.textContent = question[1].question
     hero.appendChild(question2)
+
+    return question2
+}
+
+function displayAnswers2 (question, questionElement) {
+    function answerIncorrect () {
+        questionElement.textContent = 'That is Incorrect!'
+    }
+    function answerCorrect () {
+        questionElement.textContent = 'That is Correct!'
+        points++
+    }
+    function reveal () {
+        answer1B.style.backgroundColor = 'green'
+        answer2B.style.backgroundColor = 'red'
+        answer3B.style.backgroundColor = 'red'
+        answer4B.style.backgroundColor = 'red'
+        answer1B.style.color = 'white'
+        answer2B.style.color = 'white'
+        answer3B.style.color = 'white'
+        answer4B.style.color = 'white'
+        const nextButton = document.createElement('button')
+        nextButton.textContent = 'NEXT'
+        nextButton.className = 'next-button'
+        hero.appendChild(nextButton)
+        nextButton.addEventListener('click', function () {
+            hero.innerHTML = ''
+        })
+    }
+    const answer1B = document.createElement('button')
+    const answer2B = document.createElement('button')
+    const answer3B = document.createElement('button')
+    const answer4B = document.createElement('button')
+
+    answer1B.className = 'answer-button'
+    answer2B.className = 'answer-button'
+    answer3B.className = 'answer-button'
+    answer4B.className = 'answer-button'
+
+    answer1B.textContent = question[1].answers[0]
+    answer1B.addEventListener('click', answerCorrect)
+    answer1B.addEventListener('click', reveal)
+    hero.appendChild(answer1B)
+
+    answer2B.textContent = question[1].answers[1]
+    answer2B.addEventListener('click', answerIncorrect)
+    answer2B.addEventListener('click', reveal)
+    hero.appendChild(answer2B)
+
+    answer3B.textContent = question[1].answers[2]
+    answer3B.addEventListener('click', answerIncorrect)
+    answer3B.addEventListener('click', reveal)
+    hero.appendChild(answer3B)
+
+    answer4B.textContent = question[1].answers[3]
+    answer4B.addEventListener('click', answerIncorrect)
+    answer4B.addEventListener('click', reveal)
+    hero.appendChild(answer4B)
 }
 
 function gameStart () {
