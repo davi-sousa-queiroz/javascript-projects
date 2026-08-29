@@ -94,6 +94,7 @@ function displayAnswers (question, questionElement) {
         hero.appendChild(nextButton)
         nextButton.addEventListener('click', function () {
             hero.innerHTML = ''
+            displayQuestion2(question);
         })
     }
     const answer1 = document.createElement('button')
@@ -120,6 +121,13 @@ function displayAnswers (question, questionElement) {
     answer4.addEventListener('click', answerIncorrect)
     answer4.addEventListener('click', reveal)
     hero.appendChild(answer4)
+}
+
+function displayQuestion2 (question) {
+    const question2 = document.createElement('h1')
+    question2.className = 'question-heading'
+    question2.textContent = question[1].question
+    hero.appendChild(question2)
 }
 
 function gameStart () {
