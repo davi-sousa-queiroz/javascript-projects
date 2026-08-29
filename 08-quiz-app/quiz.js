@@ -95,9 +95,12 @@ function displayAnswers (question, questionElement) {
         nextButton.addEventListener('click', function () {
             hero.innerHTML = ''
             displayQuestion2(question);
+
+    
         })
     }
     const answer1 = document.createElement('button')
+
     const answer2 = document.createElement('button')
     const answer3 = document.createElement('button')
     const answer4 = document.createElement('button')
