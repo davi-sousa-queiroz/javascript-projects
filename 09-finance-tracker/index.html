@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Finance Tracker</title>
+    <title>Finance Tracker - Track Your Income & Expenses</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -27,6 +27,7 @@
             <div class="form-group">
               <label for="description">Description</label>
               <input
+                class="descr"
                 type="text"
                 id="description"
                 placeholder="e.g., Groceries, Salary"
@@ -38,6 +39,7 @@
               <div class="form-group">
                 <label for="amount">Amount</label>
                 <input
+                  class="amount"
                   type="number"
                   id="amount"
                   placeholder="0.00"
@@ -48,7 +50,7 @@
 
               <div class="form-group">
                 <label for="type">Type</label>
-                <select id="type" required>
+                <select id="type" class="type" required>
                   <option value="">Select type</option>
                   <option value="income">Income</option>
                   <option value="expense">Expense</option>
