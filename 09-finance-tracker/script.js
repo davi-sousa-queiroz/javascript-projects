@@ -4,3 +4,8 @@ const amount = document.querySelector('.amount')
 const type = document.querySelector('.type')
 const add = document.querySelector('.btn')
 const transactions = document.querySelector('.transactions-list')
+
+const transactionsArray = [
+
+]
+
