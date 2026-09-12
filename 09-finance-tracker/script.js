@@ -9,7 +9,7 @@ const transactionsArray = [
 
 ]
 
-function getTransaction () {
+function getTransactionObject () {
     const descriptionValue = description.value
     const amountValue = amount.value
     const typeValue = type.value
@@ -21,3 +21,11 @@ function getTransaction () {
     }
     return transactionObject
 }
+
+function transaction () {
+    const transactionObject = getTransactionObject()
+    transactionsArray.push(transactionObject)
+}
+
+add.addEventListener('click', transaction)
+console.log(transactionsArray)
