@@ -34,7 +34,6 @@ function transaction () {
 
     const transactionObject = getTransactionObject()
     transactionsArray.push(transactionObject)
-    console.log(transactionsArray)
 }
 
 add.addEventListener('click', transaction)
