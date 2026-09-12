@@ -4,6 +4,7 @@ const amount = document.querySelector('.amount')
 const type = document.querySelector('.type')
 const add = document.querySelector('.btn')
 const transactions = document.querySelector('.transactions-list')
+const emptyState = document.querySelector('.empty-state')
 
 const transactionsArray = [
 
@@ -22,7 +23,10 @@ function getTransactionObject () {
     return transactionObject
 }
 
+
+
 function transaction () {
+    emptyState.remove()
     const descriptionValue = description.value.trim()
     const amountValue = amount.value.trim()
     const typeValue = type.value.trim()
