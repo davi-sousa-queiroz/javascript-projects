@@ -10,6 +10,17 @@ const transactionsArray = [
 
 ]
 
+let bankBalance = 0.00
+
+function updateBalance (validation, amountt) {
+    if (validation === true) {
+        bankBalance += amountt
+    } else {
+        bankBalance -= amountt
+    }
+    balance.textContent = `$${bankBalance.toFixed(2)}`
+}
+
 function getTransactionObject () {
     const descriptionValue = description.value
     const amountValue = amount.value
@@ -44,20 +55,20 @@ function renderTransaction () {
         typeLabel.classList.add('transaction-type')
         typeLabel.textContent = typeText
 
-        const amount = document.createElement('div')
-        amount.classList.add('transaction-amount')
-        amount.textContent = `$${amountText}`
+        const amountDiv = document.createElement('div')
+        amountDiv.classList.add('transaction-amount')
+        amountDiv.textContent = `$${amountText}`
 
         if (typeText === 'income') {
-            amount.classList.add('income')
+            amountDiv.classList.add('income')
         } else if (typeText === 'expense') {
-            amount.classList.add('expense')
+            amountDiv.classList.add('expense')
         }
 
         info.appendChild(desc)
         info.appendChild(typeLabel)
         transactionElement.appendChild(info)
-        transactionElement.appendChild(amount)
+        transactionElement.appendChild(amountDiv)
         transactions.appendChild(transactionElement)
     }
 }
@@ -76,6 +87,10 @@ function transaction () {
     const transactionObject = getTransactionObject()
     transactionsArray.push(transactionObject)
     renderTransaction()
+
+    const isIncome = typeValue === 'income'
+    updateBalance(isIncome, Number(amountValue))
+
     description.value = ''
     amount.value = ''
     type.value = ''
