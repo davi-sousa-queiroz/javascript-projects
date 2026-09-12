@@ -23,9 +23,18 @@ function getTransactionObject () {
 }
 
 function transaction () {
+    const descriptionValue = description.value.trim()
+    const amountValue = amount.value.trim()
+    const typeValue = type.value.trim()
+
+    if (!descriptionValue || !amountValue || !typeValue) {
+        alert('Please fill in all transaction fields.')
+        return
+    }
+
     const transactionObject = getTransactionObject()
     transactionsArray.push(transactionObject)
+    console.log(transactionsArray)
 }
 
 add.addEventListener('click', transaction)
-console.log(transactionsArray)
