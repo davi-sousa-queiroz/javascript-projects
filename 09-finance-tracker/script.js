@@ -9,3 +9,15 @@ const transactionsArray = [
 
 ]
 
+function getTransaction () {
+    const descriptionValue = description.value
+    const amountValue = amount.value
+    const typeValue = type.value
+
+    const transactionObject = {
+        description: descriptionValue,
+        amount: amountValue,
+        type: typeValue
+    }
+    return transactionObject
+}
