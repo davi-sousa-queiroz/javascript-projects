@@ -69,7 +69,6 @@ main {
   letter-spacing: -2px;
 }
 
-/* Form Section */
 .form-section {
   background-color: #ffffff;
   padding: 36px;
@@ -156,7 +155,6 @@ main {
   transform: translateY(0);
 }
 
-/* Transactions Section */
 .transactions-section {
   background-color: #ffffff;
   padding: 36px;
