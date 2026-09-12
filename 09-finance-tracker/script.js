@@ -76,6 +76,9 @@ function transaction () {
     const transactionObject = getTransactionObject()
     transactionsArray.push(transactionObject)
     renderTransaction()
+    description.value = ''
+    amount.value = ''
+    type.value = ''
 }
 
 add.addEventListener('click', transaction)
