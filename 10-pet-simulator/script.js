@@ -1,12 +1,13 @@
 const gameBackground = document.querySelector('.game-background')
 const hungerStat = document.querySelector('#hunger-val')
 const happyStat = document.querySelector('#happy-val')
-const energyStat = document.querySelector('#energy-stat')
+const energyStat = document.querySelector('#energy-val')
 const dayCount = document.querySelector('#day-val')
 
 const feed = document.querySelector('.btn-feed')
 const play = document.querySelector('.btn-play')
 const sleep = document.querySelector('.btn-sleep')
+const nextday = document.querySelector('.btn-next')
 
 const pet = {
     maxStat: 10,
@@ -47,3 +48,7 @@ const pet = {
     }
 }
 
+feed.addEventListener('click', () => pet.feed())
+play.addEventListener('click', () => pet.play())
+sleep.addEventListener('click', () => pet.sleep())
+nextday.addEventListener('click', () => pet.newDay())
