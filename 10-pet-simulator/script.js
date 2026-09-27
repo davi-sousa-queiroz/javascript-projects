@@ -4,6 +4,7 @@ const happyStat = document.querySelector('#happy-val')
 const energyStat = document.querySelector('#energy-val')
 const dayCount = document.querySelector('#day-val')
 const gameOverScreen = document.querySelector('#gameOverScreen')
+const gameOverMessage = document.querySelector('#gameOverMessage')
 const restartButton = document.querySelector('#restartBtn')
 const petImage = document.querySelector('.pet-svg')
 
@@ -36,6 +37,14 @@ const pet = {
     checkGameOver() {
         if (this.hunger <= 0 || this.happy <= 0 || this.energy <= 0) {
             this.gameOver = true
+            const daysSurvived = this.day - 1
+
+            if (daysSurvived === 1) {
+                gameOverMessage.textContent = 'Your pet survived 1 day.'
+            } else {
+                gameOverMessage.textContent = `Your pet survived ${daysSurvived} days.`
+            }
+
             gameOverScreen.classList.remove('hidden')
             feed.disabled = true
             play.disabled = true
