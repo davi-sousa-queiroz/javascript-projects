@@ -1,5 +1,4 @@
-# 🟨 JavaScript Projects 🧑‍💻
-
+🟨 JavaScript Projects 🧑‍💻
 A collection of projects I built while learning JavaScript.
 
 The goal of this repository is to document my progress as I learn JavaScript through hands on projects. Every project focuses on practicing new concepts, improving my problem-solving skills, and gradually building more complex interactive applications.
@@ -19,6 +18,7 @@ The goal of this repository is to document my progress as I learn JavaScript thr
 | 07    | To-Do List            | Arrays, Functions, DOM manipulation, Event listeners, Dynamic elements, `classList`, `trim()`, `splice()`, `replaceChildren()`                                                                |
 | 08    | Quiz App              | Arrays of Objects, Nested data, DOM manipulation, Dynamic element creation, Event listeners, Functions, Parameters, State management, Conditional logic, Dynamic UI updates                   |
 | 09    | Finance Tracker       | Objects, Arrays, Functions, DOM manipulation, Event listeners, Form validation, Dynamic element creation, State management, Conditional logic, `classList`, `trim()`, `Number()`, `toFixed()` |
+| 10    | Pet Sim               | Objects, Object Methods, State Management, DOM Manipulation, Event Listeners, Conditional Logic, `Math.min()`, `Math.max()`, CSS Animations, Game State, Restart Logic                        |
 
 More projects coming soon...
 
@@ -34,6 +34,7 @@ More projects coming soon...
 * Loops
 * Arrays
 * Objects
+* Object Methods
 * DOM Manipulation
 * Event Listeners
 * User Input
@@ -42,12 +43,16 @@ More projects coming soon...
 * Dynamic Element Creation
 * Array Methods
 * DOM Classes and Styling
+* CSS Animations
 * Nested Data
 * Object Properties
 * Function Parameters
 * State Management
+* Game State
 * Number Conversion
 * String Methods
+* `Math.min()`
+* `Math.max()`
 
 More topics will be added as I continue learning JavaScript.
 
@@ -74,3 +79,4 @@ My goal is to build each project using concepts I have learned and understand, f
 **Davi Queiroz**
 
 Learning Software Engineering one project at a time. 🚀
+
