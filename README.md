@@ -1,7 +1,8 @@
-🟨 JavaScript Projects 🧑‍💻
-A collection of projects I built while learning JavaScript.
+# 🟨 JavaScript Projects 🧑‍💻
 
-The goal of this repository is to document my progress as I learn JavaScript through hands on projects. Every project focuses on practicing new concepts, improving my problem-solving skills, and gradually building more complex interactive applications.
+## A collection of projects I built while learning JavaScript.
+
+### The goal of this repository is to document my progress as I learn JavaScript through hands on projects. Every project focuses on practicing new concepts, improving my problem-solving skills, and gradually building more complex interactive applications.
 
 ---
 
