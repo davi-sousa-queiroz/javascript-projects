@@ -14,6 +14,12 @@ const pet = {
     hunger: 8,
     happy: 5,
     energy: 9,
+    day: 1,
+
+    updateDay() {
+        this.day++
+        dayCount.textContent = `${this.day}`
+    },
 
     updateStats(hunger, happy, energy) {
         hungerStat.textContent = hunger
@@ -26,6 +32,7 @@ const pet = {
         this.happy = Math.max(0, this.happy - 3);
         this.energy = Math.max(0, this.energy - 1);
         this.updateStats(this.hunger, this.happy, this.energy)
+        this.updateDay()
     },
 
     feed() {
