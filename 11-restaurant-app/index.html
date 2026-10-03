@@ -3,10 +3,287 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Restaurant App</title>
+    <meta name="theme-color" content="#fffaf7" />
+    <title>Sunday's Table | Order online</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="Sunday's Table home">
+        <span class="wordmark-icon" aria-hidden="true">S</span>
+        <span>Sunday's <strong>Table</strong></span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#menu">Our menu</a>
+        <a href="#about">Our story</a>
+      </nav>
+      <a class="header-cart" href="#cart">
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M3 3h2l2.4 11.4a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 2-1.6L22 8H6"
+          />
+          <circle cx="10" cy="20" r="1" />
+          <circle cx="18" cy="20" r="1" />
+        </svg>
+        <span>Your order</span>
+        <span class="cart-count" aria-label="0 items">0</span>
+      </a>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> GOOD FOOD, GOOD MOOD</p>
+          <h1 id="hero-title">
+            A little comfort,<br />made <em>from scratch.</em>
+          </h1>
+          <p class="hero-description">
+            Thoughtful ingredients, generous plates, and the kind of meal that
+            makes your day.
+          </p>
+          <a class="primary-button" href="#menu"
+            >Find your favorite <span aria-hidden="true">↓</span></a
+          >
+          <div class="hero-note">
+            <span class="stars" aria-label="5 out of 5 stars">★★★★★</span
+            ><span>Loved by your neighborhood</span>
+          </div>
+        </div>
+        <div class="hero-image-wrap">
+          <img
+            class="hero-image"
+            src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1300&q=85"
+            alt="A colorful table spread of fresh, seasonal dishes"
+          />
+          <div class="image-stamp">
+            <span>MADE WITH</span><strong>♥</strong><span>IN OUR KITCHEN</span>
+          </div>
+          <div class="hero-caption">
+            <span class="caption-dot"></span> Fresh from our kitchen, every day
+          </div>
+        </div>
+        <span class="hero-decoration" aria-hidden="true">S</span>
+      </section>
+
+      <section class="order-area" id="menu" aria-labelledby="menu-title">
+        <div class="menu-column">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">A GOOD PLACE TO START</p>
+              <h2 id="menu-title">Made for the <em>moment.</em></h2>
+            </div>
+            <p class="menu-subtitle">
+              A few of our most-loved things.<br />Always made fresh, always
+              worth sharing.
+            </p>
+          </div>
+
+          <nav class="category-nav" aria-label="Menu categories">
+            <a class="category-link active" href="#favorites">All favorites</a>
+            <a class="category-link" href="#mains">Mains</a>
+            <a class="category-link" href="#sides">On the side</a>
+            <a class="category-link" href="#drinks">Drinks</a>
+          </nav>
+
+          <div class="food-grid" id="favorites">
+            <article class="food-card" id="mains">
+              <div class="food-image-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=85"
+                  alt="Stone-baked margherita pizza with basil"
+                  loading="lazy"
+                />
+                <span class="food-tag">HOUSE FAVORITE</span>
+              </div>
+              <div class="food-details">
+                <div class="food-title-row">
+                  <h3>Sunday Margherita</h3>
+                  <span class="food-price">$16</span>
+                </div>
+                <p>
+                  Wood-fired crust, sweet tomato, creamy mozzarella, garden
+                  basil.
+                </p>
+                <button
+                  class="add-button"
+                  type="button"
+                  aria-label="Add Sunday Margherita to your order"
+                >
+                  <span>+</span> Add to order
+                </button>
+              </div>
+            </article>
+
+            <article class="food-card">
+              <div class="food-image-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85"
+                  alt="Fresh seasonal salad with greens and vegetables"
+                  loading="lazy"
+                />
+                <span class="food-tag">FRESH & BRIGHT</span>
+              </div>
+              <div class="food-details">
+                <div class="food-title-row">
+                  <h3>Market Garden Bowl</h3>
+                  <span class="food-price">$14</span>
+                </div>
+                <p>
+                  Local greens, crispy chickpeas, avocado, lemon-herb dressing.
+                </p>
+                <button
+                  class="add-button"
+                  type="button"
+                  aria-label="Add Market Garden Bowl to your order"
+                >
+                  <span>+</span> Add to order
+                </button>
+              </div>
+            </article>
+
+            <article class="food-card" id="sides">
+              <div class="food-image-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=900&q=85"
+                  alt="Golden hand-cut fries with herbs"
+                  loading="lazy"
+                />
+                <span class="food-tag">A LITTLE EXTRA</span>
+              </div>
+              <div class="food-details">
+                <div class="food-title-row">
+                  <h3>Rosemary Fries</h3>
+                  <span class="food-price">$7</span>
+                </div>
+                <p>
+                  Hand-cut potatoes, rosemary salt, and our house dipping sauce.
+                </p>
+                <button
+                  class="add-button"
+                  type="button"
+                  aria-label="Add Rosemary Fries to your order"
+                >
+                  <span>+</span> Add to order
+                </button>
+              </div>
+            </article>
+
+            <article class="food-card" id="drinks">
+              <div class="food-image-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=900&q=85"
+                  alt="Refreshing iced drink with citrus and mint"
+                  loading="lazy"
+                />
+                <span class="food-tag">HOUSE-MADE</span>
+              </div>
+              <div class="food-details">
+                <div class="food-title-row">
+                  <h3>Garden Lemonade</h3>
+                  <span class="food-price">$5</span>
+                </div>
+                <p>
+                  Fresh-squeezed lemons, a little wildflower honey, lots of ice.
+                </p>
+                <button
+                  class="add-button"
+                  type="button"
+                  aria-label="Add Garden Lemonade to your order"
+                >
+                  <span>+</span> Add to order
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <aside class="cart-panel" id="cart" aria-labelledby="cart-title">
+          <div class="cart-heading">
+            <div>
+              <p class="eyebrow">YOUR TABLE</p>
+              <h2 id="cart-title">
+                Your order <span class="cart-count cart-count-light">0</span>
+              </h2>
+            </div>
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M3 3h2l2.4 11.4a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 2-1.6L22 8H6"
+              />
+              <circle cx="10" cy="20" r="1" />
+              <circle cx="18" cy="20" r="1" />
+            </svg>
+          </div>
+          <div class="cart-empty">
+            <span class="empty-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 48 48"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M8 13h32l-3 26H11L8 13Z" />
+                <path d="M17 17V11a7 7 0 0 1 14 0v6" />
+                <path d="M18 26h12" />
+              </svg>
+            </span>
+            <h3>Something's missing.</h3>
+            <p>
+              Your next favorite meal, probably.<br />Add a dish to get started.
+            </p>
+            <a href="#favorites" class="browse-link"
+              >Browse the menu <span aria-hidden="true">→</span></a
+            >
+          </div>
+          <div class="cart-summary" aria-label="Order total">
+            <div><span>Subtotal</span><strong>$0.00</strong></div>
+            <div><span>Tax</span><strong>Calculated at checkout</strong></div>
+            <div class="total-row">
+              <span>Total</span><strong>$0.00</strong>
+            </div>
+            <button class="checkout-button" type="button" disabled>
+              Continue to checkout <span aria-hidden="true">→</span>
+            </button>
+            <p class="cart-footnote">Pickup is ready in about 20–30 minutes.</p>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <footer id="about" class="site-footer">
+      <a class="wordmark footer-wordmark" href="#top"
+        ><span class="wordmark-icon" aria-hidden="true">S</span
+        ><span>Sunday's <strong>Table</strong></span></a
+      >
+      <p>
+        Good food brings us together.
+        <span>Made with care, served with love.</span>
+      </p>
+      <span class="footer-location">NEIGHBORHOOD KITCHEN · EST. 2018</span>
+    </footer>
     <script src="script.js"></script>
   </body>
 </html>
