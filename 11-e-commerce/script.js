@@ -5,6 +5,7 @@ const inputFields = document.querySelectorAll("input, select, textarea");
 
 const navigationLinks = document.querySelectorAll(".nav-link");
 const categoryButtons = document.querySelectorAll(".category-btn");
+const productGrid = document.querySelector("#productGrid");
 let productCards = document.querySelectorAll(".product-card");
 let favoriteButtons = document.querySelectorAll(".favorite-button");
 let addToCartButtons = document.querySelectorAll(".add-button");
@@ -240,7 +241,6 @@ function renderProducts(productArray) {
 }
 
 function displayProducts(productArray) {
-  const productGrid = document.querySelector("#productGrid");
   productGrid.innerHTML = renderProducts(productArray);
 
   productCards = document.querySelectorAll(".product-card");
@@ -249,4 +249,34 @@ function displayProducts(productArray) {
   allButtons = document.querySelectorAll("button");
 }
 
+function searchProducts(searchTerm) {
+  const searchText = searchTerm.toLowerCase();
+
+  return products.filter(function (product) {
+    const productName = product.name.toLowerCase();
+    const productCategory = product.category.toLowerCase();
+
+    return productName.includes(searchText) || productCategory.includes(searchText);
+  });
+}
+
+function toggleEmptyState(productArray) {
+  const noProductsFound = productArray.length === 0;
+
+  productGrid.hidden = noProductsFound;
+  noProductsState.hidden = !noProductsFound;
+}
+
+function handleSearch(searchTerm) {
+  const matchingProducts = searchProducts(searchTerm);
+
+  displayProducts(matchingProducts);
+  toggleEmptyState(matchingProducts);
+}
+
+searchInput.addEventListener("input", function (event) {
+  handleSearch(event.target.value);
+});
+
 displayProducts(products);
+toggleEmptyState(products);
