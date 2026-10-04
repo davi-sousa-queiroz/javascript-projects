@@ -5,12 +5,11 @@ const inputFields = document.querySelectorAll("input, select, textarea");
 
 const navigationLinks = document.querySelectorAll(".nav-link");
 const categoryButtons = document.querySelectorAll(".category-btn");
-const productGrid = document.querySelector("#productGrid");
-const productCards = document.querySelectorAll(".product-card");
-const favoriteButtons = document.querySelectorAll(".favorite-button");
-const addToCartButtons = document.querySelectorAll(".add-button");
+let productCards = document.querySelectorAll(".product-card");
+let favoriteButtons = document.querySelectorAll(".favorite-button");
+let addToCartButtons = document.querySelectorAll(".add-button");
 
-const allButtons = document.querySelectorAll("button");
+let allButtons = document.querySelectorAll("button");
 const settingsButtons = document.querySelectorAll(".profile-settings, .topbar-settings");
 const cartLinks = document.querySelectorAll(".header-cart, .cart-link");
 const dialogCloseButtons = document.querySelectorAll(".dialog-close");
@@ -186,3 +185,68 @@ const products = [
     description: "Ergonomic wireless computer mouse for a comfortable workspace.",
   },
 ];
+
+function createProductCard(product) {
+  return `
+    <article class="product-card" data-product-id="${product.id}">
+      <div class="product-visual">
+        <img src="${product.image}" alt="${product.name}" loading="lazy" />
+        <button
+          class="favorite-button"
+          type="button"
+          aria-label="Add ${product.name} to favorites"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.8 8.7c0 5.4-8.8 11-8.8 11s-8.8-5.6-8.8-11A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z" />
+          </svg>
+        </button>
+      </div>
+      <div class="product-info">
+        <p class="product-category">${product.category}</p>
+        <h2 class="product-name">${product.name}</h2>
+        <div
+          class="product-rating"
+          aria-label="Rated ${product.rating} out of 5, ${product.reviews} reviews"
+        >
+          <span class="rating-star" aria-hidden="true">★</span>
+          <span>${product.rating}</span>
+          <span class="review-count">(${product.reviews})</span>
+        </div>
+        <div class="product-footer">
+          <p class="product-price">$${product.price.toFixed(2)}</p>
+          <button
+            class="add-button"
+            type="button"
+            aria-label="Add ${product.name} to cart"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 1.9-1.4L21 8H6" />
+              <path d="M12 9v5m-2.5-2.5h5" />
+            </svg>
+            <span>Add</span>
+          </button>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+function renderProducts(productArray) {
+  const productCardsHTML = productArray.map(function (product) {
+    return createProductCard(product);
+  });
+
+  return productCardsHTML.join("");
+}
+
+function displayProducts(productArray) {
+  const productGrid = document.querySelector("#productGrid");
+  productGrid.innerHTML = renderProducts(productArray);
+
+  productCards = document.querySelectorAll(".product-card");
+  favoriteButtons = document.querySelectorAll(".favorite-button");
+  addToCartButtons = document.querySelectorAll(".add-button");
+  allButtons = document.querySelectorAll("button");
+}
+
+displayProducts(products);
