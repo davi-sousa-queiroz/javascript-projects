@@ -6,6 +6,7 @@ const inputFields = document.querySelectorAll("input, select, textarea");
 const navigationLinks = document.querySelectorAll(".nav-link");
 const categoryButtons = document.querySelectorAll(".category-btn");
 const productGrid = document.querySelector("#productGrid");
+const resultsCount = document.querySelector(".results-count span");
 let productCards = document.querySelectorAll(".product-card");
 let favoriteButtons = document.querySelectorAll(".favorite-button");
 let addToCartButtons = document.querySelectorAll(".add-button");
@@ -23,6 +24,8 @@ const cartPanel = document.querySelector("#cart-panel");
 const noProductsState = document.querySelector("#noProductsState");
 const emptyCartState = document.querySelector("#emptyCartState");
 const cartItems = document.querySelector(".cart-items");
+
+let selectedCategory = "All";
 
 const products = [
   {
@@ -255,8 +258,12 @@ function searchProducts(searchTerm) {
   return products.filter(function (product) {
     const productName = product.name.toLowerCase();
     const productCategory = product.category.toLowerCase();
+    const matchesSearch =
+      productName.includes(searchText) || productCategory.includes(searchText);
+    const matchesCategory =
+      selectedCategory === "All" || product.category === selectedCategory;
 
-    return productName.includes(searchText) || productCategory.includes(searchText);
+    return matchesSearch && matchesCategory;
   });
 }
 
@@ -272,7 +279,23 @@ function handleSearch(searchTerm) {
 
   displayProducts(matchingProducts);
   toggleEmptyState(matchingProducts);
+  resultsCount.textContent = matchingProducts.length;
 }
+
+categoryButtons.forEach(function (button) {
+  button.addEventListener("click", function () {
+    selectedCategory = button.textContent.trim();
+
+    categoryButtons.forEach(function (categoryButton) {
+      const isSelected = categoryButton === button;
+
+      categoryButton.classList.toggle("is-selected", isSelected);
+      categoryButton.setAttribute("aria-pressed", isSelected);
+    });
+
+    handleSearch(searchInput.value);
+  });
+});
 
 searchInput.addEventListener("input", function (event) {
   handleSearch(event.target.value);
