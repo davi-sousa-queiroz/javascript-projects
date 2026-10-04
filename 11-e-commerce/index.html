@@ -3,10 +3,1099 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nexus - E-commerce</title>
-    <link rel="stylesheet" href="./styles.css" />
+    <meta
+      name="description"
+      content="Discover thoughtful everyday essentials at Nexus."
+    />
+    <meta name="theme-color" content="#171717" />
+    <title>Nexus — Everyday, considered.</title>
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <script src="./script.js" defer></script>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Main navigation">
+        <a class="brand" href="#home" aria-label="Nexus home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path d="M7 23V9l18 14V9" />
+              <path d="M7 9h5l13 10" />
+            </svg>
+          </span>
+          <span class="brand-name">NEXUS</span>
+        </a>
+
+        <nav class="primary-nav" aria-label="Store">
+          <a class="nav-link is-active" href="#home" aria-current="page">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"
+              />
+            </svg>
+            <span>Home</span>
+          </a>
+          <a class="nav-link" href="#products">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3.5" y="4" width="17" height="16" rx="2" />
+              <path d="M3.5 9h17M9 9v11" />
+            </svg>
+            <span>Products</span>
+          </a>
+          <a class="nav-link" href="#favorites">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M20.8 8.7c0 5.4-8.8 11-8.8 11s-8.8-5.6-8.8-11A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"
+              />
+            </svg>
+            <span>Favorites</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-divider" role="presentation"></div>
+
+        <section class="sidebar-cart" aria-labelledby="sidebar-cart-title">
+          <div class="sidebar-section-heading">
+            <h2 id="sidebar-cart-title">Your Cart</h2>
+            <span class="item-count">0</span>
+          </div>
+          <p class="cart-summary">0 items <span>$0.00</span></p>
+          <a class="cart-link" href="#cart-panel">
+            <span>View your cart</span>
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M4 10h12m-5-5 5 5-5 5" />
+            </svg>
+          </a>
+        </section>
+
+        <div class="sidebar-spacer"></div>
+
+        <div class="sidebar-divider profile-divider" role="presentation"></div>
+        <div class="profile">
+          <span class="avatar" aria-hidden="true">D</span>
+          <span class="profile-copy">
+            <span class="profile-name">Davi</span>
+            <span class="profile-status">Premium Member</span>
+          </span>
+          <button
+            class="icon-button profile-settings"
+            type="button"
+            aria-label="Settings"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="3" />
+              <path
+                d="m19.4 15 .1.1 1.4 1.1-1.4 2.4-1.7-.7a8 8 0 0 1-1.8 1l-.3 1.8h-2.8l-.3-1.8a8 8 0 0 1-1.8-1l-1.7.7-1.4-2.4 1.4-1.1a7 7 0 0 1 0-2l-1.4-1.1 1.4-2.4 1.7.7a8 8 0 0 1 1.8-1l.3-1.8h2.8l.3 1.8a8 8 0 0 1 1.8 1l1.7-.7 1.4 2.4-1.4 1.1a7 7 0 0 1 0 2Z"
+              />
+            </svg>
+          </button>
+        </div>
+      </aside>
+
+      <main class="main-content" id="home">
+        <header class="topbar">
+          <form class="search-form" role="search">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="10.8" cy="10.8" r="6.8" />
+              <path d="m16 16 4.5 4.5" />
+            </svg>
+            <label class="visually-hidden" for="searchInput"
+              >Search products</label
+            >
+            <input
+              id="searchInput"
+              name="search"
+              type="search"
+              placeholder="Search for products, brands, or categories..."
+              autocomplete="off"
+            />
+            <kbd class="search-shortcut" aria-hidden="true">⌘ K</kbd>
+          </form>
+          <div class="topbar-actions">
+            <button
+              class="icon-button topbar-settings"
+              type="button"
+              aria-label="Display settings"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="3.2" />
+                <path
+                  d="M12 2.8v2m0 14.4v2m9.2-9.2h-2M4.8 12h-2m15.7-6.5-1.4 1.4M6.9 17.1l-1.4 1.4m13 0-1.4-1.4M6.9 6.9 5.5 5.5"
+                />
+              </svg>
+            </button>
+            <a class="header-cart" href="#cart-panel" aria-label="Cart, empty">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 1.9-1.4L21 8H6"
+                />
+                <circle cx="10" cy="20" r="1" />
+                <circle cx="18" cy="20" r="1" />
+              </svg>
+              <span class="cart-badge" aria-hidden="true" hidden>0</span>
+            </a>
+          </div>
+        </header>
+
+        <div class="content-wrap">
+          <section class="page-intro" aria-labelledby="page-title">
+            <div class="eyebrow"><span></span> THE NEXUS EDIT</div>
+            <h1 id="page-title">Featured Products</h1>
+            <p>Discover our most popular items, handpicked for you.</p>
+          </section>
+
+          <section class="catalog" id="products" aria-label="Featured products">
+            <div class="catalog-toolbar">
+              <nav
+                class="category-filters"
+                id="categories"
+                aria-label="Filter by category"
+              >
+                <button
+                  class="category-btn is-selected"
+                  type="button"
+                  aria-pressed="true"
+                >
+                  All
+                </button>
+                <button class="category-btn" type="button" aria-pressed="false">
+                  Electronics
+                </button>
+                <button class="category-btn" type="button" aria-pressed="false">
+                  Gaming
+                </button>
+                <button class="category-btn" type="button" aria-pressed="false">
+                  Accessories
+                </button>
+                <button class="category-btn" type="button" aria-pressed="false">
+                  Clothing
+                </button>
+              </nav>
+              <p class="results-count"><span>16</span> pieces</p>
+            </div>
+
+            <div class="product-grid" id="productGrid">
+              <article class="product-card" data-product-id="macbook-air-m2">
+                <div class="product-visual visual-laptop">
+                  <img
+                    src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
+                    alt="Silver laptop on a clean desk"
+                    loading="lazy"
+                  />
+                  <span class="product-tag">Bestseller</span>
+                  <button
+                    class="favorite-button"
+                    type="button"
+                    aria-label="Add MacBook Air M2 to favorites"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M20.8 8.7c0 5.4-8.8 11-8.8 11s-8.8-5.6-8.8-11A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div class="product-info">
+                  <p class="product-category">Computers</p>
+                  <h2 class="product-name">MacBook Air M2</h2>
+                  <div
+                    class="product-rating"
+                    aria-label="Rated 4.9 out of 5, 128 reviews"
+                  >
+                    <span class="rating-star" aria-hidden="true">★</span
+                    ><span>4.9</span><span class="review-count">(128)</span>
+                  </div>
+                  <div class="product-footer">
+                    <p class="product-price">$1,099.00</p>
+                    <button
+                      class="add-button"
+                      type="button"
+                      aria-label="Add MacBook Air M2 to cart"
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                          d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 1.9-1.4L21 8H6"
+                        />
+                        <path d="M12 9v5m-2.5-2.5h5" />
+                      </svg>
+                      <span>Add</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="product-card" data-product-id="sony-wh-1000xm5">
+                <div class="product-visual visual-headphones">
+                  <img
+                    src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
+                    alt="Over-ear headphones"
+                    loading="lazy"
+                  />
+                  <button
+                    class="favorite-button"
+                    type="button"
+                    aria-label="Add Sony WH-1000XM5 to favorites"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M20.8 8.7c0 5.4-8.8 11-8.8 11s-8.8-5.6-8.8-11A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div class="product-info">
+                  <p class="product-category">Audio</p>
+                  <h2 class="product-name">Sony WH-1000XM5</h2>
+                  <div
+                    class="product-rating"
+                    aria-label="Rated 4.8 out of 5, 96 reviews"
+                  >
+                    <span class="rating-star" aria-hidden="true">★</span
+                    ><span>4.8</span><span class="review-count">(96)</span>
+                  </div>
+                  <div class="product-footer">
+                    <p class="product-price">$349.00</p>
+                    <button
+                      class="add-button"
+                      type="button"
+                      aria-label="Add Sony WH-1000XM5 to cart"
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                          d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 1.9-1.4L21 8H6"
+                        />
+                        <path d="M12 9v5m-2.5-2.5h5" />
+                      </svg>
+                      <span>Add</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="product-card" data-product-id="keychron-k8">
+                <div class="product-visual visual-keyboard">
+                  <img
+                    src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
+                    alt="Compact mechanical keyboard"
+                    loading="lazy"
+                  />
+                  <button
+                    class="favorite-button"
+                    type="button"
+                    aria-label="Add Keychron K8 to favorites"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M20.8 8.7c0 5.4-8.8 11-8.8 11s-8.8-5.6-8.8-11A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div class="product-info">
+                  <p class="product-category">Accessories</p>
+                  <h2 class="product-name">Keychron K8</h2>
+                  <div
+                    class="product-rating"
+                    aria-label="Rated 4.7 out of 5, 74 reviews"
+                  >
+                    <span class="rating-star" aria-hidden="true">★</span
+                    ><span>4.7</span><span class="review-count">(74)</span>
+                  </div>
+                  <div class="product-footer">
+                    <p class="product-price">$99.00</p>
+                    <button
+                      class="add-button"
+                      type="button"
+                      aria-label="Add Keychron K8 to cart"
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                          d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 1.9-1.4L21 8H6"
+                        />
+                        <path d="M12 9v5m-2.5-2.5h5" />
+                      </svg>
+                      <span>Add</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="product-card" data-product-id="nike-air-force-1">
+                <div class="product-visual visual-sneakers">
+                  <img
+                    src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
+                    alt="Classic red and white sneaker"
+                    loading="lazy"
+                  />
+                  <span class="product-tag">Popular</span>
+                  <button
+                    class="favorite-button"
+                    type="button"
+                    aria-label="Add Nike Air Force 1 to favorites"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M20.8 8.7c0 5.4-8.8 11-8.8 11s-8.8-5.6-8.8-11A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div class="product-info">
+                  <p class="product-category">Clothing</p>
+                  <h2 class="product-name">Nike Air Force 1</h2>
+                  <div
+                    class="product-rating"
+                    aria-label="Rated 4.9 out of 5, 213 reviews"
+                  >
+                    <span class="rating-star" aria-hidden="true">★</span
+                    ><span>4.9</span><span class="review-count">(213)</span>
+                  </div>
+                  <div class="product-footer">
+                    <p class="product-price">$115.00</p>
+                    <button
+                      class="add-button"
+                      type="button"
+                      aria-label="Add Nike Air Force 1 to cart"
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                          d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 1.9-1.4L21 8H6"
+                        />
+                        <path d="M12 9v5m-2.5-2.5h5" />
+                      </svg>
+                      <span>Add</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="product-card" data-product-id="playstation-5">
+                <div class="product-visual visual-console">
+                  <img
+                    src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
+                    alt="Modern game console and controller"
+                    loading="lazy"
+                  />
+                  <button
+                    class="favorite-button"
+                    type="button"
+                    aria-label="Add PlayStation 5 to favorites"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M20.8 8.7c0 5.4-8.8 11-8.8 11s-8.8-5.6-8.8-11A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div class="product-info">
+                  <p class="product-category">Gaming</p>
+                  <h2 class="product-name">PlayStation 5</h2>
+                  <div
+                    class="product-rating"
+                    aria-label="Rated 4.9 out of 5, 182 reviews"
+                  >
+                    <span class="rating-star" aria-hidden="true">★</span
+                    ><span>4.9</span><span class="review-count">(182)</span>
+                  </div>
+                  <div class="product-footer">
+                    <p class="product-price">$499.00</p>
+                    <button
+                      class="add-button"
+                      type="button"
+                      aria-label="Add PlayStation 5 to cart"
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                          d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 1.9-1.4L21 8H6"
+                        />
+                        <path d="M12 9v5m-2.5-2.5h5" />
+                      </svg>
+                      <span>Add</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="product-card" data-product-id="minimal-backpack">
+                <div class="product-visual visual-backpack">
+                  <img
+                    src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
+                    alt="Minimal everyday backpack"
+                    loading="lazy"
+                  />
+                  <button
+                    class="favorite-button"
+                    type="button"
+                    aria-label="Add Minimal Backpack to favorites"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M20.8 8.7c0 5.4-8.8 11-8.8 11s-8.8-5.6-8.8-11A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div class="product-info">
+                  <p class="product-category">Accessories</p>
+                  <h2 class="product-name">Minimal Backpack</h2>
+                  <div
+                    class="product-rating"
+                    aria-label="Rated 4.6 out of 5, 58 reviews"
+                  >
+                    <span class="rating-star" aria-hidden="true">★</span
+                    ><span>4.6</span><span class="review-count">(58)</span>
+                  </div>
+                  <div class="product-footer">
+                    <p class="product-price">$89.00</p>
+                    <button
+                      class="add-button"
+                      type="button"
+                      aria-label="Add Minimal Backpack to cart"
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                          d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 1.9-1.4L21 8H6"
+                        />
+                        <path d="M12 9v5m-2.5-2.5h5" />
+                      </svg>
+                      <span>Add</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="product-card" data-product-id="iphone">
+                <div class="product-visual visual-phone">
+                  <img
+                    src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
+                    alt="Smartphone in a minimal product setting"
+                    loading="lazy"
+                  />
+                  <button
+                    class="favorite-button"
+                    type="button"
+                    aria-label="Add iPhone to favorites"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M20.8 8.7c0 5.4-8.8 11-8.8 11s-8.8-5.6-8.8-11A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div class="product-info">
+                  <p class="product-category">Electronics</p>
+                  <h2 class="product-name">iPhone 15</h2>
+                  <div
+                    class="product-rating"
+                    aria-label="Rated 4.8 out of 5, 167 reviews"
+                  >
+                    <span class="rating-star" aria-hidden="true">★</span
+                    ><span>4.8</span><span class="review-count">(167)</span>
+                  </div>
+                  <div class="product-footer">
+                    <p class="product-price">$799.00</p>
+                    <button
+                      class="add-button"
+                      type="button"
+                      aria-label="Add iPhone 15 to cart"
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                          d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 1.9-1.4L21 8H6"
+                        />
+                        <path d="M12 9v5m-2.5-2.5h5" />
+                      </svg>
+                      <span>Add</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="product-card" data-product-id="apple-watch">
+                <div class="product-visual visual-watch">
+                  <img
+                    src="https://images.unsplash.com/photo-1551816230-ef5deaed4a26?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
+                    alt="Smartwatch with a dark band"
+                    loading="lazy"
+                  />
+                  <button
+                    class="favorite-button"
+                    type="button"
+                    aria-label="Add Apple Watch to favorites"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M20.8 8.7c0 5.4-8.8 11-8.8 11s-8.8-5.6-8.8-11A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div class="product-info">
+                  <p class="product-category">Wearables</p>
+                  <h2 class="product-name">Apple Watch SE</h2>
+                  <div
+                    class="product-rating"
+                    aria-label="Rated 4.7 out of 5, 103 reviews"
+                  >
+                    <span class="rating-star" aria-hidden="true">★</span
+                    ><span>4.7</span><span class="review-count">(103)</span>
+                  </div>
+                  <div class="product-footer">
+                    <p class="product-price">$249.00</p>
+                    <button
+                      class="add-button"
+                      type="button"
+                      aria-label="Add Apple Watch SE to cart"
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                          d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 1.9-1.4L21 8H6"
+                        />
+                        <path d="M12 9v5m-2.5-2.5h5" />
+                      </svg>
+                      <span>Add</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
+              <article
+                class="product-card"
+                data-product-id="bose-soundlink-flex"
+              >
+                <div class="product-visual visual-speaker">
+                  <img
+                    src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
+                    alt="Compact portable wireless speaker"
+                    loading="lazy"
+                  />
+                  <button
+                    class="favorite-button"
+                    type="button"
+                    aria-label="Add Bose SoundLink Flex to favorites"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M20.8 8.7c0 5.4-8.8 11-8.8 11s-8.8-5.6-8.8-11A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div class="product-info">
+                  <p class="product-category">Audio</p>
+                  <h2 class="product-name">Bose SoundLink Flex</h2>
+                  <div
+                    class="product-rating"
+                    aria-label="Rated 4.8 out of 5, 89 reviews"
+                  >
+                    <span class="rating-star" aria-hidden="true">★</span
+                    ><span>4.8</span><span class="review-count">(89)</span>
+                  </div>
+                  <div class="product-footer">
+                    <p class="product-price">$149.00</p>
+                    <button
+                      class="add-button"
+                      type="button"
+                      aria-label="Add Bose SoundLink Flex to cart"
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                          d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 1.9-1.4L21 8H6"
+                        />
+                        <path d="M12 9v5m-2.5-2.5h5" /></svg
+                      ><span>Add</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
+              <article class="product-card" data-product-id="fujifilm-x100vi">
+                <div class="product-visual visual-camera">
+                  <img
+                    src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
+                    alt="Digital camera ready for a photo walk"
+                    loading="lazy"
+                  />
+                  <span class="product-tag">Just in</span>
+                  <button
+                    class="favorite-button"
+                    type="button"
+                    aria-label="Add Fujifilm X100VI to favorites"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M20.8 8.7c0 5.4-8.8 11-8.8 11s-8.8-5.6-8.8-11A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div class="product-info">
+                  <p class="product-category">Photography</p>
+                  <h2 class="product-name">Fujifilm X100VI</h2>
+                  <div
+                    class="product-rating"
+                    aria-label="Rated 4.9 out of 5, 64 reviews"
+                  >
+                    <span class="rating-star" aria-hidden="true">★</span
+                    ><span>4.9</span><span class="review-count">(64)</span>
+                  </div>
+                  <div class="product-footer">
+                    <p class="product-price">$1,599.00</p>
+                    <button
+                      class="add-button"
+                      type="button"
+                      aria-label="Add Fujifilm X100VI to cart"
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                          d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 1.9-1.4L21 8H6"
+                        />
+                        <path d="M12 9v5m-2.5-2.5h5" /></svg
+                      ><span>Add</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
+              <article class="product-card" data-product-id="stanley-quencher">
+                <div class="product-visual visual-bottle">
+                  <img
+                    src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
+                    alt="Reusable insulated stainless steel bottle"
+                    loading="lazy"
+                  />
+                  <button
+                    class="favorite-button"
+                    type="button"
+                    aria-label="Add Stanley Quencher to favorites"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M20.8 8.7c0 5.4-8.8 11-8.8 11s-8.8-5.6-8.8-11A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div class="product-info">
+                  <p class="product-category">Accessories</p>
+                  <h2 class="product-name">Stanley Quencher H2.0</h2>
+                  <div
+                    class="product-rating"
+                    aria-label="Rated 4.7 out of 5, 142 reviews"
+                  >
+                    <span class="rating-star" aria-hidden="true">★</span
+                    ><span>4.7</span><span class="review-count">(142)</span>
+                  </div>
+                  <div class="product-footer">
+                    <p class="product-price">$45.00</p>
+                    <button
+                      class="add-button"
+                      type="button"
+                      aria-label="Add Stanley Quencher to cart"
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                          d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 1.9-1.4L21 8H6"
+                        />
+                        <path d="M12 9v5m-2.5-2.5h5" /></svg
+                      ><span>Add</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
+              <article class="product-card" data-product-id="ray-ban-wayfarer">
+                <div class="product-visual visual-sunglasses">
+                  <img
+                    src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
+                    alt="Classic sunglasses with dark lenses"
+                    loading="lazy"
+                  />
+                  <button
+                    class="favorite-button"
+                    type="button"
+                    aria-label="Add Ray-Ban Wayfarer to favorites"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M20.8 8.7c0 5.4-8.8 11-8.8 11s-8.8-5.6-8.8-11A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div class="product-info">
+                  <p class="product-category">Accessories</p>
+                  <h2 class="product-name">Ray-Ban Wayfarer</h2>
+                  <div
+                    class="product-rating"
+                    aria-label="Rated 4.6 out of 5, 76 reviews"
+                  >
+                    <span class="rating-star" aria-hidden="true">★</span
+                    ><span>4.6</span><span class="review-count">(76)</span>
+                  </div>
+                  <div class="product-footer">
+                    <p class="product-price">$163.00</p>
+                    <button
+                      class="add-button"
+                      type="button"
+                      aria-label="Add Ray-Ban Wayfarer to cart"
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                          d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 1.9-1.4L21 8H6"
+                        />
+                        <path d="M12 9v5m-2.5-2.5h5" /></svg
+                      ><span>Add</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
+              <article
+                class="product-card"
+                data-product-id="aeropress-coffee-maker"
+              >
+                <div class="product-visual visual-coffee">
+                  <img
+                    src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
+                    alt="Freshly brewed coffee and coffee-making equipment"
+                    loading="lazy"
+                  />
+                  <button
+                    class="favorite-button"
+                    type="button"
+                    aria-label="Add AeroPress Coffee Maker to favorites"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M20.8 8.7c0 5.4-8.8 11-8.8 11s-8.8-5.6-8.8-11A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div class="product-info">
+                  <p class="product-category">Home</p>
+                  <h2 class="product-name">AeroPress Coffee Maker</h2>
+                  <div
+                    class="product-rating"
+                    aria-label="Rated 4.8 out of 5, 111 reviews"
+                  >
+                    <span class="rating-star" aria-hidden="true">★</span
+                    ><span>4.8</span><span class="review-count">(111)</span>
+                  </div>
+                  <div class="product-footer">
+                    <p class="product-price">$39.95</p>
+                    <button
+                      class="add-button"
+                      type="button"
+                      aria-label="Add AeroPress Coffee Maker to cart"
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                          d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 1.9-1.4L21 8H6"
+                        />
+                        <path d="M12 9v5m-2.5-2.5h5" /></svg
+                      ><span>Add</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
+              <article
+                class="product-card"
+                data-product-id="patagonia-better-sweater"
+              >
+                <div class="product-visual visual-jacket">
+                  <img
+                    src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
+                    alt="Versatile everyday outerwear"
+                    loading="lazy"
+                  />
+                  <button
+                    class="favorite-button"
+                    type="button"
+                    aria-label="Add Patagonia Better Sweater to favorites"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M20.8 8.7c0 5.4-8.8 11-8.8 11s-8.8-5.6-8.8-11A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div class="product-info">
+                  <p class="product-category">Clothing</p>
+                  <h2 class="product-name">Patagonia Better Sweater</h2>
+                  <div
+                    class="product-rating"
+                    aria-label="Rated 4.8 out of 5, 97 reviews"
+                  >
+                    <span class="rating-star" aria-hidden="true">★</span
+                    ><span>4.8</span><span class="review-count">(97)</span>
+                  </div>
+                  <div class="product-footer">
+                    <p class="product-price">$139.00</p>
+                    <button
+                      class="add-button"
+                      type="button"
+                      aria-label="Add Patagonia Better Sweater to cart"
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                          d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 1.9-1.4L21 8H6"
+                        />
+                        <path d="M12 9v5m-2.5-2.5h5" /></svg
+                      ><span>Add</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
+              <article class="product-card" data-product-id="kindle-paperwhite">
+                <div class="product-visual visual-reader">
+                  <img
+                    src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
+                    alt="E-reader with a book"
+                    loading="lazy"
+                  />
+                  <button
+                    class="favorite-button"
+                    type="button"
+                    aria-label="Add Kindle Paperwhite to favorites"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M20.8 8.7c0 5.4-8.8 11-8.8 11s-8.8-5.6-8.8-11A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div class="product-info">
+                  <p class="product-category">Electronics</p>
+                  <h2 class="product-name">Kindle Paperwhite</h2>
+                  <div
+                    class="product-rating"
+                    aria-label="Rated 4.8 out of 5, 156 reviews"
+                  >
+                    <span class="rating-star" aria-hidden="true">★</span
+                    ><span>4.8</span><span class="review-count">(156)</span>
+                  </div>
+                  <div class="product-footer">
+                    <p class="product-price">$149.99</p>
+                    <button
+                      class="add-button"
+                      type="button"
+                      aria-label="Add Kindle Paperwhite to cart"
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                          d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 1.9-1.4L21 8H6"
+                        />
+                        <path d="M12 9v5m-2.5-2.5h5" /></svg
+                      ><span>Add</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
+              <article
+                class="product-card"
+                data-product-id="logitech-mx-master-3s"
+              >
+                <div class="product-visual visual-mouse">
+                  <img
+                    src="https://images.unsplash.com/photo-1527814050087-3793815479db?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
+                    alt="Ergonomic wireless computer mouse"
+                    loading="lazy"
+                  />
+                  <button
+                    class="favorite-button"
+                    type="button"
+                    aria-label="Add Logitech MX Master 3S to favorites"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M20.8 8.7c0 5.4-8.8 11-8.8 11s-8.8-5.6-8.8-11A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div class="product-info">
+                  <p class="product-category">Accessories</p>
+                  <h2 class="product-name">Logitech MX Master 3S</h2>
+                  <div
+                    class="product-rating"
+                    aria-label="Rated 4.7 out of 5, 134 reviews"
+                  >
+                    <span class="rating-star" aria-hidden="true">★</span
+                    ><span>4.7</span><span class="review-count">(134)</span>
+                  </div>
+                  <div class="product-footer">
+                    <p class="product-price">$99.99</p>
+                    <button
+                      class="add-button"
+                      type="button"
+                      aria-label="Add Logitech MX Master 3S to cart"
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                          d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 1.9-1.4L21 8H6"
+                        />
+                        <path d="M12 9v5m-2.5-2.5h5" /></svg
+                      ><span>Add</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <section
+              class="empty-state"
+              id="noProductsState"
+              hidden
+              aria-labelledby="no-products-title"
+            >
+              <span class="empty-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="10.8" cy="10.8" r="6.8" />
+                  <path d="m16 16 4.5 4.5M8 11h5.5" />
+                </svg>
+              </span>
+              <h2 id="no-products-title">No products found</h2>
+              <p>Try adjusting your search or filters.</p>
+            </section>
+          </section>
+
+          <footer class="page-footer">
+            <span>Thoughtful finds. Everyday favorites.</span>
+            <span>© 2026 Nexus</span>
+          </footer>
+        </div>
+      </main>
+    </div>
+
+    <section
+      class="overlay-layer detail-overlay"
+      id="productDetail"
+      hidden
+      aria-label="Product details"
+    >
+      <div class="overlay-backdrop"></div>
+      <article
+        class="detail-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="detailProductName"
+      >
+        <button
+          class="icon-button dialog-close"
+          type="button"
+          aria-label="Close product details"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m6 6 12 12M18 6 6 18" />
+          </svg>
+        </button>
+        <div class="detail-image">
+          <img
+            src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&amp;fit=crop&amp;w=1200&amp;q=85"
+            alt="Silver laptop on a clean desk"
+          />
+        </div>
+        <div class="detail-copy">
+          <p class="product-category">Computers</p>
+          <h2 id="detailProductName">MacBook Air M2</h2>
+          <div
+            class="product-rating"
+            aria-label="Rated 4.9 out of 5, 128 reviews"
+          >
+            <span class="rating-star" aria-hidden="true">★</span><span>4.9</span
+            ><span class="review-count">(128 reviews)</span>
+          </div>
+          <p class="detail-price">$1,099.00</p>
+          <p class="stock-status"><span></span> In stock and ready to ship</p>
+          <p class="detail-description">
+            Lightweight, powerful, and made for wherever the day takes you. A
+            brilliant display and all-day battery life make this a favorite for
+            work and play.
+          </p>
+          <div class="detail-quantity">
+            <span>Quantity</span>
+            <div class="quantity-control" aria-label="Quantity">
+              <button type="button" aria-label="Decrease quantity">−</button>
+              <span>1</span>
+              <button type="button" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+          <button class="primary-button detail-add-button" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 1.9-1.4L21 8H6"
+              />
+              <path d="M12 9v5m-2.5-2.5h5" />
+            </svg>
+            Add to Cart <span>·</span> $1,099.00
+          </button>
+        </div>
+      </article>
+    </section>
+
+    <div class="overlay-layer cart-overlay" id="cart-panel" hidden>
+      <div class="overlay-backdrop"></div>
+      <aside class="cart-drawer" aria-labelledby="cartTitle">
+        <header class="drawer-header">
+          <div>
+            <p class="eyebrow">YOUR SELECTION</p>
+            <h2 id="cartTitle">
+              Your Cart <span class="drawer-count">0</span>
+            </h2>
+          </div>
+          <button
+            class="icon-button dialog-close"
+            type="button"
+            aria-label="Close cart"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m6 6 12 12M18 6 6 18" />
+            </svg>
+          </button>
+        </header>
+
+        <div class="cart-items"></div>
+
+        <section
+          class="empty-cart-state"
+          id="emptyCartState"
+          aria-labelledby="empty-cart-title"
+        >
+          <span class="empty-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 1.9-1.4L21 8H6"
+              />
+              <circle cx="10" cy="20" r="1" />
+              <circle cx="18" cy="20" r="1" />
+            </svg>
+          </span>
+          <h3 id="empty-cart-title">Your cart is empty</h3>
+          <p>Add something you like and it'll appear here.</p>
+        </section>
+
+        <div class="cart-summary-panel">
+          <div class="summary-row"><span>Subtotal</span><span>$0.00</span></div>
+          <div class="summary-row">
+            <span>Shipping</span><span class="shipping-free">—</span>
+          </div>
+          <div class="summary-row summary-total">
+            <span>Total</span><span>$0.00</span>
+          </div>
+          <button class="primary-button checkout-button" type="button" disabled>
+            Proceed to Checkout
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M4 10h12m-5-5 5 5-5 5" />
+            </svg>
+          </button>
+          <p class="secure-note">
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <rect x="4" y="9" width="12" height="9" rx="2" />
+              <path d="M7 9V6a3 3 0 0 1 6 0v3" />
+            </svg>
+            Secure checkout
+          </p>
+        </div>
+      </aside>
+    </div>
   </body>
 </html>
