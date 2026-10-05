@@ -26,6 +26,9 @@ const emptyCartState = document.querySelector("#emptyCartState");
 const cartItems = document.querySelector(".cart-items");
 
 let selectedCategory = "All";
+let showFavoritesOnly = false;
+
+let favorites = [];
 
 const products = [
   {
@@ -196,7 +199,7 @@ function createProductCard(product) {
       <div class="product-visual">
         <img src="${product.image}" alt="${product.name}" loading="lazy" />
         <button
-          class="favorite-button"
+          class="favorite-button${favorites.includes(product.id) ? " is-favorited" : ""}"
           type="button"
           aria-label="Add ${product.name} to favorites"
         >
@@ -262,8 +265,10 @@ function searchProducts(searchTerm) {
       productName.includes(searchText) || productCategory.includes(searchText);
     const matchesCategory =
       selectedCategory === "All" || product.category === selectedCategory;
+    const matchesFavorite =
+      !showFavoritesOnly || favorites.includes(product.id);
 
-    return matchesSearch && matchesCategory;
+    return matchesSearch && matchesCategory && matchesFavorite;
   });
 }
 
@@ -297,8 +302,38 @@ categoryButtons.forEach(function (button) {
   });
 });
 
+navigationLinks.forEach(function (link) {
+  link.addEventListener("click", function () {
+    showFavoritesOnly = link.getAttribute("href") === "#favorites";
+    handleSearch(searchInput.value);
+  });
+});
+
 searchInput.addEventListener("input", function (event) {
   handleSearch(event.target.value);
+});
+
+productGrid.addEventListener("click", function (event) {
+  const button = event.target.closest(".favorite-button");
+  if (!button) {
+    return;
+  }
+
+  const productId = button.closest(".product-card").dataset.productId;
+
+  if (favorites.includes(productId)) {
+    favorites = favorites.filter(function (favoriteId) {
+      return favoriteId !== productId;
+    });
+    button.classList.remove("is-favorited");
+  } else {
+    favorites.push(productId);
+    button.classList.add("is-favorited");
+  }
+
+  if (showFavoritesOnly) {
+    handleSearch(searchInput.value);
+  }
 });
 
 displayProducts(products);

@@ -717,12 +717,21 @@ img {
     transform var(--ease);
 }
 
+.favorite-button.is-favorited {
+  color: gold;
+}
+
 .favorite-button svg {
   width: 16px;
   height: 16px;
 }
 
-.favorite-button:hover {
+.favorite-button.is-favorited svg {
+  fill: gold;
+  stroke: gold;
+}
+
+.favorite-button:not(.is-favorited):hover {
   transform: scale(1.04);
   color: #f1efea;
   background: #3a3936;
