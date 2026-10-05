@@ -7,6 +7,7 @@ const navigationLinks = document.querySelectorAll(".nav-link");
 const categoryButtons = document.querySelectorAll(".category-btn");
 const productGrid = document.querySelector("#productGrid");
 const resultsCount = document.querySelector(".results-count span");
+const mode = document.querySelector(".topbar-settings");
 let productCards = document.querySelectorAll(".product-card");
 let favoriteButtons = document.querySelectorAll(".favorite-button");
 let addToCartButtons = document.querySelectorAll(".add-button");
@@ -24,11 +25,23 @@ const cartPanel = document.querySelector("#cart-panel");
 const noProductsState = document.querySelector("#noProductsState");
 const emptyCartState = document.querySelector("#emptyCartState");
 const cartItems = document.querySelector(".cart-items");
+const cartBadge = document.querySelector(".cart-badge");
+const headerCart = document.querySelector(".header-cart");
+const sidebarItemCount = document.querySelector(".item-count");
+const sidebarCartSummary = document.querySelector(".sidebar-cart .cart-summary");
+const drawerCount = document.querySelector(".drawer-count");
+const cartSummaryValues = cartPanel.querySelectorAll(
+  ".summary-row > span:last-child",
+);
+const detailQuantity = document.querySelector(
+  ".detail-quantity .quantity-control span",
+);
 
 let selectedCategory = "All";
 let showFavoritesOnly = false;
 
 let favorites = [];
+let cart = [];
 
 const products = [
   {
@@ -287,6 +300,88 @@ function handleSearch(searchTerm) {
   resultsCount.textContent = matchingProducts.length;
 }
 
+function formatPrice(price) {
+  return "$" + price.toFixed(2);
+}
+
+function updateCart() {
+  let itemCount = 0;
+  let subtotal = 0;
+
+  cart.forEach(function (item) {
+    const product = products.find(function (product) {
+      return product.id === item.id;
+    });
+
+    itemCount += item.quantity;
+    subtotal += product.price * item.quantity;
+  });
+
+  cartItems.innerHTML = cart
+    .map(function (item) {
+      const product = products.find(function (product) {
+        return product.id === item.id;
+      });
+
+      return `
+        <article class="cart-item" data-product-id="${product.id}">
+          <img src="${product.image}" alt="${product.name}" />
+          <div class="cart-item-copy">
+            <h3>${product.name}</h3>
+            <p>${formatPrice(product.price)}</p>
+            <div class="quantity-control" aria-label="Quantity">
+              <button type="button" data-cart-action="decrease" aria-label="Decrease ${product.name} quantity">−</button>
+              <span>${item.quantity}</span>
+              <button type="button" data-cart-action="increase" aria-label="Increase ${product.name} quantity">+</button>
+            </div>
+          </div>
+          <button class="remove-button" type="button" data-cart-action="remove" aria-label="Remove ${product.name} from cart">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 7h16m-10 4v6m4-6v6M6 7l1 14h10l1-14M9 7V4h6v3" />
+            </svg>
+          </button>
+        </article>
+      `;
+    })
+    .join("");
+
+  sidebarItemCount.textContent = itemCount;
+  drawerCount.textContent = itemCount;
+  sidebarCartSummary.firstChild.textContent =
+    itemCount + (itemCount === 1 ? " item " : " items ");
+  sidebarCartSummary.querySelector("span").textContent = formatPrice(subtotal);
+  cartBadge.textContent = itemCount;
+  cartBadge.hidden = itemCount === 0;
+  headerCart.setAttribute(
+    "aria-label",
+    itemCount === 0 ? "Cart, empty" : "Cart, " + itemCount + " items",
+  );
+
+  cartSummaryValues[0].textContent = formatPrice(subtotal);
+  cartSummaryValues[1].textContent = itemCount === 0 ? "—" : "Free";
+  cartSummaryValues[2].textContent = formatPrice(subtotal);
+  emptyCartState.hidden = itemCount > 0;
+  cartItems.hidden = itemCount === 0;
+}
+
+function addToCart(productId, quantity) {
+  const existingItem = cart.find(function (item) {
+    return item.id === productId;
+  });
+
+  if (existingItem) {
+    existingItem.quantity += quantity;
+  } else {
+    cart.push({ id: productId, quantity: quantity });
+  }
+
+  updateCart();
+}
+
+function openCart() {
+  cartPanel.hidden = false;
+}
+
 categoryButtons.forEach(function (button) {
   button.addEventListener("click", function () {
     selectedCategory = button.textContent.trim();
@@ -313,6 +408,88 @@ searchInput.addEventListener("input", function (event) {
   handleSearch(event.target.value);
 });
 
+cartLinks.forEach(function (link) {
+  link.addEventListener("click", function (event) {
+    event.preventDefault();
+    openCart();
+  });
+});
+
+cartPanel.querySelector(".dialog-close").addEventListener("click", function () {
+  cartPanel.hidden = true;
+});
+
+cartPanel.querySelector(".overlay-backdrop").addEventListener("click", function () {
+  cartPanel.hidden = true;
+});
+
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    cartPanel.hidden = true;
+  }
+});
+
+productGrid.addEventListener("click", function (event) {
+  const button = event.target.closest(".add-button");
+  if (!button) {
+    return;
+  }
+
+  const productId = button.closest(".product-card").dataset.productId;
+  addToCart(productId, 1);
+});
+
+document
+  .querySelector(".detail-quantity .quantity-control")
+  .addEventListener("click", function (event) {
+    const button = event.target.closest("button");
+    if (!button) {
+      return;
+    }
+
+    const quantity = Number(detailQuantity.textContent);
+    detailQuantity.textContent =
+      button.getAttribute("aria-label") === "Increase quantity"
+        ? quantity + 1
+        : Math.max(1, quantity - 1);
+  });
+
+document
+  .querySelector(".detail-add-button")
+  .addEventListener("click", function () {
+    addToCart("macbook-air-m2", Number(detailQuantity.textContent));
+  });
+
+cartItems.addEventListener("click", function (event) {
+  const button = event.target.closest("[data-cart-action]");
+  if (!button) {
+    return;
+  }
+
+  const productId = button.closest(".cart-item").dataset.productId;
+  const item = cart.find(function (cartItem) {
+    return cartItem.id === productId;
+  });
+  if (!item) {
+    return;
+  }
+
+  if (
+    button.dataset.cartAction === "remove" ||
+    (button.dataset.cartAction === "decrease" && item.quantity === 1)
+  ) {
+    cart = cart.filter(function (cartItem) {
+      return cartItem.id !== productId;
+    });
+  } else if (button.dataset.cartAction === "decrease") {
+    item.quantity -= 1;
+  } else {
+    item.quantity += 1;
+  }
+
+  updateCart();
+});
+
 productGrid.addEventListener("click", function (event) {
   const button = event.target.closest(".favorite-button");
   if (!button) {
@@ -336,5 +513,11 @@ productGrid.addEventListener("click", function (event) {
   }
 });
 
+mode.addEventListener("click", function () {
+  const isLightMode = document.body.classList.toggle("light-mode");
+  mode.setAttribute("aria-pressed", isLightMode);
+});
+
 displayProducts(products);
 toggleEmptyState(products);
+updateCart();

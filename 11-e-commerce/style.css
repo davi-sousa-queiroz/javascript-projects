@@ -55,6 +55,26 @@ body {
   line-height: 1.5;
 }
 
+body.light-mode {
+  color-scheme: light;
+  --page: #f5f4f1;
+  --sidebar: #eeede9;
+  --surface: #ffffff;
+  --surface-raised: #f4f3ef;
+  --surface-hover: #e9e8e3;
+  --surface-soft: #f0efeb;
+  --line: #deddd7;
+  --line-strong: #d1d0c9;
+  --text: #242321;
+  --text-secondary: #595852;
+  --muted: #77766f;
+  --subtle: #96958e;
+  --accent: #4b4943;
+  --positive: #4d7658;
+  background: var(--page);
+  color: var(--text);
+}
+
 button,
 input {
   color: inherit;
@@ -1424,8 +1444,7 @@ img {
     text-overflow: ellipsis;
   }
 
-  .search-shortcut,
-  .topbar-settings {
+  .search-shortcut {
     display: none;
   }
 
@@ -1621,4 +1640,180 @@ img {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
   }
+}
+
+body.light-mode .sidebar,
+body.light-mode .cart-drawer,
+body.light-mode .detail-dialog {
+  background: var(--surface);
+  border-color: var(--line);
+}
+
+body.light-mode .sidebar {
+  border-right-color: var(--line);
+}
+
+body.light-mode .topbar {
+  background: rgb(245 244 241 / 94%);
+  border-bottom-color: var(--line);
+}
+
+body.light-mode .brand-mark,
+body.light-mode .nav-link:hover,
+body.light-mode .nav-link.is-active,
+body.light-mode .cart-link,
+body.light-mode .icon-button:hover,
+body.light-mode .search-form,
+body.light-mode .category-btn:hover,
+body.light-mode .category-btn.is-selected,
+body.light-mode .product-card,
+body.light-mode .add-button,
+body.light-mode .quantity-control,
+body.light-mode .empty-icon {
+  color: var(--text);
+  background: var(--surface-raised);
+  border-color: var(--line);
+}
+
+body.light-mode .nav-link,
+body.light-mode .nav-link:hover,
+body.light-mode .nav-link.is-active,
+body.light-mode .category-btn,
+body.light-mode .category-btn:hover,
+body.light-mode .category-btn.is-selected {
+  color: var(--text-secondary);
+}
+
+body.light-mode .brand-mark,
+body.light-mode .nav-link svg,
+body.light-mode .nav-link:hover svg,
+body.light-mode .nav-link.is-active svg,
+body.light-mode .icon-button,
+body.light-mode .header-cart,
+body.light-mode .category-btn,
+body.light-mode .results-count,
+body.light-mode .product-category,
+body.light-mode .review-count,
+body.light-mode .secure-note,
+body.light-mode .remove-button {
+  color: var(--muted);
+}
+
+body.light-mode .brand-name,
+body.light-mode .profile-name,
+body.light-mode .page-intro h1,
+body.light-mode .product-name,
+body.light-mode .product-price,
+body.light-mode .drawer-header h2,
+body.light-mode .cart-item-copy h3,
+body.light-mode .summary-total,
+body.light-mode .summary-total > span:last-child,
+body.light-mode .empty-state h2,
+body.light-mode .empty-cart-state h3 {
+  color: var(--text);
+}
+
+body.light-mode .sidebar-section-heading h2,
+body.light-mode .cart-summary span,
+body.light-mode .cart-summary,
+body.light-mode .page-intro > p,
+body.light-mode .product-rating,
+body.light-mode .cart-item-copy > p,
+body.light-mode .summary-row,
+body.light-mode .summary-row > span:last-child,
+body.light-mode .empty-state p,
+body.light-mode .empty-cart-state p,
+body.light-mode .page-footer,
+body.light-mode .detail-description,
+body.light-mode .detail-quantity {
+  color: var(--text-secondary);
+}
+
+body.light-mode .brand-mark,
+body.light-mode .item-count,
+body.light-mode .drawer-count,
+body.light-mode .search-shortcut {
+  background: var(--surface-hover);
+  border-color: var(--line-strong);
+}
+
+body.light-mode .profile-status,
+body.light-mode .search-form input::placeholder {
+  color: var(--muted);
+}
+
+body.light-mode .search-form:focus-within,
+body.light-mode .product-card:hover,
+body.light-mode .cart-link:hover,
+body.light-mode .icon-button:hover {
+  background: var(--surface-hover);
+}
+
+body.light-mode .search-form input {
+  color: var(--text);
+}
+
+body.light-mode .catalog-toolbar,
+body.light-mode .product-footer,
+body.light-mode .drawer-header,
+body.light-mode .cart-item,
+body.light-mode .summary-total,
+body.light-mode .page-footer,
+body.light-mode .detail-quantity {
+  border-color: var(--line);
+}
+
+body.light-mode .product-visual,
+body.light-mode .detail-image,
+body.light-mode .cart-item > img {
+  background: var(--surface-raised);
+}
+
+body.light-mode .product-visual::after {
+  background: linear-gradient(145deg, #eeede9, #e3e2dc 76%);
+}
+
+body.light-mode .product-tag,
+body.light-mode .favorite-button {
+  color: #292824;
+  background: rgb(255 255 255 / 88%);
+  border-color: rgb(40 39 35 / 12%);
+}
+
+body.light-mode .favorite-button.is-favorited,
+body.light-mode .favorite-button.is-favorited svg {
+  color: #9a7100;
+  fill: gold;
+  stroke: #9a7100;
+}
+
+body.light-mode .add-button:hover,
+body.light-mode .quantity-control button:hover {
+  color: var(--text);
+  background: var(--surface-hover);
+}
+
+body.light-mode .detail-price,
+body.light-mode .dialog-close {
+  color: var(--text);
+}
+
+body.light-mode .dialog-close {
+  background: rgb(255 255 255 / 90%);
+  border-color: var(--line);
+}
+
+body.light-mode .overlay-backdrop {
+  background: rgb(31 30 27 / 35%);
+}
+
+body.light-mode .remove-button:hover {
+  color: #8a3f35;
+  background: #f6e9e6;
+  border-color: #e9cbc5;
+}
+
+body.light-mode .empty-cart-state,
+body.light-mode .empty-state {
+  color: var(--text);
 }
