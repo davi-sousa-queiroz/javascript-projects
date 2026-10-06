@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Playpen Sans";
+    font-weight: 100;
+}
+
+nav {
+    display: flex;
+    height: 3rem;
+    box-shadow: gray 0px 0px 3px;
+    padding: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(87, 179, 255);
+}
+
+h1 {
+    font-weight: 300;
+    letter-spacing: 3px;
+    word-spacing: 5px;
+}
+
+.hearts {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.heart {
+    font-size: 2rem;
+}
+
+.pfp {
+    border: 1px solid rgb(0, 73, 245);
+    height: 3rem;
+    width: 3rem;
+    border-radius: 2rem;
+    background-image: url(assets/pfp.png);
+    background-position: center;
+    background-size: cover;
+}
