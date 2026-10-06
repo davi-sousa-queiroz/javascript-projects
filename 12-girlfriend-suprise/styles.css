@@ -45,3 +45,55 @@ h1 {
     background-position: center;
     background-size: cover;
 }
+
+.content {
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+.gif {
+    border: 3px solid rgb(87, 179, 255);
+    border-radius: 2rem;
+    height: 20rem;
+    width: 25rem;
+    background-image: url(assets/dog-love.gif);
+    background-position: center;
+    background-size: cover;
+}
+
+.question {
+    font-weight: 300;
+    font-size: 2rem;
+    color: rgb(60, 60, 60);
+}
+
+.buttons {
+    display: flex;
+    gap: 3rem;
+}
+
+.button:hover {
+    background-color: transparent;
+}
+
+.button {
+    background-color: rgba(81, 183, 251, 0.829);
+    color: rgb(60, 60, 60);
+    font-size: larger;
+    border: 1px solid rgb(7, 1, 118);
+    padding: 1rem 3rem;
+    font-family: "Playpen Sans";
+}
+
+footer {
+    padding: 0;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+}
