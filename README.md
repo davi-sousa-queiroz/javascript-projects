@@ -8,6 +8,8 @@
 
 ## 🚀 Projects
 
+**View the projects live:** [JavaScript Projects](https://davi-sousa-queiroz.github.io/javascript-projects/)
+
 | **#** | **Project** | **Concepts Practiced** |
 | ----- | ----------- | ---------------------- |
 | 01 | Quote Generator | Functions, DOM manipulation, Random selection |
