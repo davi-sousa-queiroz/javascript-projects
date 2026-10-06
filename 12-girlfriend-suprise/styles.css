@@ -45,6 +45,30 @@ h1 {
     font-size: 2rem;
 }
 
+.music-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.4rem 0.65rem;
+    border: 1px solid currentColor;
+    border-radius: 1rem;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.music-toggle:hover,
+.music-toggle[aria-pressed="true"] {
+    background: rgba(87, 179, 255, 0.15);
+}
+
+.music-toggle:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+}
+
 .pfp {
     border: 1px solid rgb(0, 73, 245);
     height: 3rem;
@@ -111,6 +135,14 @@ footer {
     font-size: clamp(0.75rem, 2vh, 1rem);
 }
 
+.no {
+    transition: transform 0.2s ease;
+}
+
+.no.troll-mode {
+    transform: translateX(clamp(3rem, 20vw, 40rem));
+}
+
 @media (max-width: 768px) {
     nav {
         gap: 0.75rem;
@@ -153,7 +185,16 @@ footer {
     .hearts {
         grid-column: 3;
         grid-row: 1;
+        gap: 0.4rem;
         padding: 0.25rem;
+    }
+
+    .music-toggle {
+        padding: 0.35rem 0.5rem;
+    }
+
+    .music-label {
+        display: none;
     }
 
     .content {
