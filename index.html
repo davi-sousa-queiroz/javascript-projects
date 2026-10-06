@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A collection of JavaScript projects by Davi Queiroz."
+    />
+    <title>JavaScript Projects | Davi Queiroz</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: system-ui, sans-serif;
+        color: #172033;
+        background: #f4f7fb;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 3rem 1.25rem;
+      }
+
+      header {
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      h1 {
+        margin-bottom: 0.5rem;
+        font-size: clamp(2rem, 6vw, 3.5rem);
+      }
+
+      header p {
+        margin: 0;
+        color: #536179;
+      }
+
+      .projects {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+        gap: 1rem;
+        padding: 0;
+        list-style: none;
+      }
+
+      .projects a {
+        display: block;
+        height: 100%;
+        padding: 1.25rem;
+        border: 1px solid #dce4ef;
+        border-radius: 1rem;
+        background: white;
+        color: inherit;
+        text-decoration: none;
+        transition:
+          transform 160ms ease,
+          border-color 160ms ease,
+          box-shadow 160ms ease;
+      }
+
+      .projects a:hover,
+      .projects a:focus-visible {
+        transform: translateY(-3px);
+        border-color: #5798ed;
+        box-shadow: 0 8px 24px #2538581a;
+      }
+
+      .number {
+        color: #2873d1;
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      h2 {
+        margin: 0.45rem 0;
+        font-size: 1.15rem;
+      }
+
+      .description {
+        margin: 0;
+        color: #536179;
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      footer {
+        margin-top: 2rem;
+        color: #536179;
+        font-size: 0.9rem;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>JavaScript Projects</h1>
+      <p>A collection of projects I built while learning JavaScript.</p>
+    </header>
+    <main>
+      <ul class="projects">
+        <li>
+          <a href="./01-quote-generator/quote-generator.html">
+            <span class="number">PROJECT 01</span>
+            <h2>Quote Generator</h2>
+            <p class="description">Generate a quote with a button click.</p>
+          </a>
+        </li>
+        <li>
+          <a href="./02-click-counter/click-counter.html">
+            <span class="number">PROJECT 02</span>
+            <h2>Click Counter</h2>
+            <p class="description">Practice events and updating the page.</p>
+          </a>
+        </li>
+        <li>
+          <a href="./03-color-game/color-game.html">
+            <span class="number">PROJECT 03</span>
+            <h2>Color Game</h2>
+            <p class="description">Play with colors and dynamic styling.</p>
+          </a>
+        </li>
+        <li>
+          <a href="./04-number-guesser/number-guesser.html">
+            <span class="number">PROJECT 04</span>
+            <h2>Number Guesser</h2>
+            <p class="description">Guess the randomly selected number.</p>
+          </a>
+        </li>
+        <li>
+          <a href="./05-simple-calculator-app/calculator-app.html">
+            <span class="number">PROJECT 05</span>
+            <h2>Simple Calculator</h2>
+            <p class="description">A small calculator for everyday math.</p>
+          </a>
+        </li>
+        <li>
+          <a href="./06-temperature-converter/temperature-converter.html">
+            <span class="number">PROJECT 06</span>
+            <h2>Temperature Converter</h2>
+            <p class="description">Convert between temperature scales.</p>
+          </a>
+        </li>
+        <li>
+          <a href="./07-to-do-list/to-do-list.html">
+            <span class="number">PROJECT 07</span>
+            <h2>To-Do List</h2>
+            <p class="description">Add and manage tasks in a list.</p>
+          </a>
+        </li>
+        <li>
+          <a href="./08-quiz-app/quiz.html">
+            <span class="number">PROJECT 08</span>
+            <h2>Quiz App</h2>
+            <p class="description">Test your knowledge with an interactive quiz.</p>
+          </a>
+        </li>
+        <li>
+          <a href="./09-finance-tracker/">
+            <span class="number">PROJECT 09</span>
+            <h2>Finance Tracker</h2>
+            <p class="description">Track income and expenses.</p>
+          </a>
+        </li>
+        <li>
+          <a href="./10-pet-simulator/">
+            <span class="number">PROJECT 10</span>
+            <h2>Pet Simulator</h2>
+            <p class="description">Take care of a virtual pet.</p>
+          </a>
+        </li>
+        <li>
+          <a href="./11%20Nexus%20%E2%80%94%20AI-Assisted%20Exploration/">
+            <span class="number">PROJECT 11</span>
+            <h2>Nexus</h2>
+            <p class="description">An AI-assisted storefront exploration.</p>
+          </a>
+        </li>
+        <li>
+          <a href="./12-girlfriend-suprise/">
+            <span class="number">PROJECT 12</span>
+            <h2>Will You? 💍</h2>
+            <p class="description">A playful interactive surprise.</p>
+          </a>
+        </li>
+      </ul>
+    </main>
+    <footer>Made by Davi Queiroz</footer>
+  </body>
+</html>
