@@ -31,24 +31,6 @@ More projects coming soon...
 
 ---
 
-## 🌐 Host the Projects on GitHub Pages
-
-The repository includes a project hub at [`index.html`](./index.html) and a
-GitHub Actions workflow that publishes the static projects whenever changes are
-pushed to `main`.
-
-To enable hosting, open **Settings → Pages** in the GitHub repository and set
-**Build and deployment → Source** to **GitHub Actions**. After the workflow
-finishes, the site will be available at:
-
-<https://davi-sousa-queiroz.github.io/javascript-projects/>
-
-The hub links to every project. Projects with an `index.html` can also be
-opened directly at their folder URL; the earlier projects use named HTML files
-and are linked directly from the hub.
-
----
-
 ## 📚 Skills I'm Learning
 
 * Variables
