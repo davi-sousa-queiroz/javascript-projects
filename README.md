@@ -23,7 +23,7 @@
 | 09 | Finance Tracker | Objects, Arrays, Functions, DOM manipulation, Event listeners, Form validation, Dynamic element creation, State management, Conditional logic, `classList`, `trim()`, `Number()`, `toFixed()` |
 | 10 | Pet Sim | Objects, Object Methods, State Management, DOM Manipulation, Event Listeners, Conditional Logic, `Math.min()`, `Math.max()`, CSS Animations, Game State, Restart Logic |
 | 11* | Nexus (AI-Assisted Exploration) | A larger project built incrementally with AI assistance. I used AI to help with individual components and features, then reviewed, modified, and refined the code throughout the process. I explored how a larger JavaScript application can use product objects and arrays, `map()`, `filter()`, `find()`, `includes()`, DOM rendering, search, filtering, favorites, cart state, and dynamic UI updates. Because the project was significantly beyond my current independent skill level, it is treated as an exploration project rather than the next step in my normal progression. |
-| 12 | Will You? 💍 | DOM manipulation, Event listeners, Functions, `classList`, `toggle()`, DOM updates, CSS classes, Responsive CSS, Independent project development |
+| 12 | Will You?💍 | DOM manipulation, Event listeners, Functions, `classList`, `toggle()`, DOM updates, CSS classes, Responsive CSS, Independent project development (Made for gf)|
 
 \* Project 11 is an AI-assisted exploration project and is not considered part of the normal difficulty progression.
 
