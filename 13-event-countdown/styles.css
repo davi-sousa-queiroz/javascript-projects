@@ -132,29 +132,27 @@ body {
 }
 
 .days-remaining {
-    display: grid;
-    flex: 0 0 68px;
-    place-items: center;
-    width: 68px;
-    height: 68px;
-    border-radius: 16px;
+    flex: 0 0 auto;
+    padding: 11px 15px;
+    border-radius: 999px;
     color: #242424;
     background: #efeee9;
 }
 
 .days {
-    font-size: 1.55rem;
+    font-size: 0.8rem;
     font-weight: 700;
-    letter-spacing: -0.06em;
-    line-height: 1;
+    white-space: nowrap;
 }
 
-.days-remaining::after {
-    content: "DAYS";
-    margin-top: -14px;
-    font-size: 0.55rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
+.days-remaining.is-today {
+    color: #faf9f6;
+    background: #242424;
+}
+
+.days-remaining.is-past {
+    color: #66655f;
+    background: #e4e2dc;
 }
 
 @media (max-width: 560px) {

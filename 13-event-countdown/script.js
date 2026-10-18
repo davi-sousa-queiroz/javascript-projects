@@ -2,55 +2,81 @@ const eventInput = document.querySelector('.event-name')
 const dateInput = document.querySelector('.event-date')
 const addBtn = document.querySelector('.add-button')
 const eventContainer = document.querySelector('.event-container')
-const clearButton = document.querySelector('.clear-button')
 
 eventContainer.replaceChildren()
 
 addBtn.addEventListener('click', displayEvent)
 
-function getEventName () {  
-    return eventInput.value
+function getEventName () {
+    return eventInput.value.trim()
 }
 
 function getDate () {
     return dateInput.value
 }
 
-function displayEvent() {
-    const name = getEventName();
-    const date = getDate();
+function createTargetDate () {
+    return new Date(`${getDate()}T00:00:00`)
+}
 
-    if (!name || !date) return;
+function getDaysLeft (targetDate) {
+    const today = new Date()
+    const todayInDays = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate())
+    const targetInDays = Date.UTC(
+        targetDate.getFullYear(),
+        targetDate.getMonth(),
+        targetDate.getDate()
+    )
 
-    const card = document.createElement('div');
-    card.className = 'event-card';
+    return Math.round((targetInDays - todayInDays) / (24 * 60 * 60 * 1000))
+}
 
-    const cardText = document.createElement('div');
-    cardText.className = 'card-text';
+function displayEvent (event) {
+    event.preventDefault()
 
-    const title = document.createElement('h2');
-    title.className = 'added-event-name';
-    title.textContent = name;
+    const name = getEventName()
+    const date = getDate()
 
-    const dateParagraph = document.createElement('p');
-    dateParagraph.className = 'added-event-date';
-    dateParagraph.textContent = date;
+    if (!name || !date) return
 
-    cardText.appendChild(title);
-    cardText.appendChild(dateParagraph);
+    const daysLeft = getDaysLeft(createTargetDate())
+    const card = document.createElement('div')
+    card.className = 'event-card'
 
-    const daysContainer = document.createElement('div');
-    daysContainer.className = 'days-remaining';
+    const cardText = document.createElement('div')
+    cardText.className = 'card-text'
 
-    const daysCount = document.createElement('p');
-    daysCount.className = 'days';
-    daysCount.textContent = '99';
+    const title = document.createElement('h2')
+    title.className = 'added-event-name'
+    title.textContent = name
 
-    daysContainer.appendChild(daysCount);
-    card.appendChild(cardText);
-    card.appendChild(daysContainer);
-    eventContainer.appendChild(card);
+    const dateParagraph = document.createElement('p')
+    dateParagraph.className = 'added-event-date'
+    dateParagraph.textContent = date
 
-    eventInput.value = '';
-    dateInput.value = '';
+    cardText.append(title, dateParagraph)
+
+    const daysContainer = document.createElement('div')
+    daysContainer.className = 'days-remaining'
+
+    const daysCount = document.createElement('p')
+    daysCount.className = 'days'
+
+    if (daysLeft < 0) {
+        const daysAgo = Math.abs(daysLeft)
+        daysCount.textContent = `${daysAgo} ${daysAgo === 1 ? 'day' : 'days'} ago`
+        daysContainer.classList.add('is-past')
+    } else if (daysLeft === 0) {
+        daysCount.textContent = 'Today'
+        daysContainer.classList.add('is-today')
+    } else {
+        daysCount.textContent = `${daysLeft} ${daysLeft === 1 ? 'day' : 'days'} left`
+    }
+
+    daysContainer.appendChild(daysCount)
+    card.append(cardText, daysContainer)
+    eventContainer.appendChild(card)
+
+    eventInput.value = ''
+    dateInput.value = ''
 }
