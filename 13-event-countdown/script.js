@@ -2,12 +2,13 @@ const eventInput = document.querySelector('.event-name')
 const dateInput = document.querySelector('.event-date')
 const addBtn = document.querySelector('.add-button')
 const eventContainer = document.querySelector('.event-container')
+const clearButton = document.querySelector('.clear-button')
 
 eventContainer.replaceChildren()
 
 addBtn.addEventListener('click', displayEvent)
 
-function getEventName () {
+function getEventName () {  
     return eventInput.value
 }
 
@@ -44,7 +45,7 @@ function displayEvent() {
     const daysCount = document.createElement('p');
     daysCount.className = 'days';
     daysCount.textContent = '99';
-    
+
     daysContainer.appendChild(daysCount);
     card.appendChild(cardText);
     card.appendChild(daysContainer);
