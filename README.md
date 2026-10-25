@@ -8,7 +8,7 @@
 
 ## 🚀 Projects
 
-**View the projects live:** [JavaScript Projects](https://davi-sousa-queiroz.github.io/javascript-projects/)
+**View the projects live:** [JavaScript Projects](https://davi-sousa-queiroz.github.io/javascript-projects/index.html)
 
 | **#** | **Project** | **Concepts Practiced** |
 | ----- | ----------- | ---------------------- |
