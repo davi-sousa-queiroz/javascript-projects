@@ -25,6 +25,7 @@
 | 11* | Nexus (AI-Assisted Exploration) | A larger project built incrementally with AI assistance. I used AI to help with individual components and features, then reviewed, modified, and refined the code throughout the process. I explored how a larger JavaScript application can use product objects and arrays, `map()`, `filter()`, `find()`, `includes()`, DOM rendering, search, filtering, favorites, cart state, and dynamic UI updates. Because the project was significantly beyond my current independent skill level, it is treated as an exploration project rather than the next step in my normal progression. |
 | 12 | Will You?💍 | DOM manipulation, Event listeners, Functions, `classList`, `toggle()`, DOM updates, CSS classes, Responsive CSS, Independent project development (Made for gf)|
 | 13 | Event Countdown | DOM manipulation, Event listeners, Form input, Dynamic element creation, `textContent`, `replaceChildren()`, Date objects, Calendar-day calculations, Conditional logic |
+| 14 | Data Explorer | JSON modules, Imported datasets, DOM manipulation, Dynamic element creation, Array methods, Data visualization |
 
 \* Project 11 is an AI-assisted exploration project and is not considered part of the normal difficulty progression.
 
