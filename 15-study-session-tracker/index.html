@@ -15,7 +15,11 @@
         <li>
           <a class="link statistics-link" href="#statistics">Statistics</a>
         </li>
-        <li class="link session-history">Session History</li>
+        <li>
+          <a class="link session-history" href="#session-history"
+            >Session History</a
+          >
+        </li>
       </ul>
     </nav>
     <section class="new-session" id="new-session">
@@ -49,6 +53,17 @@
           <p class="stat-value" data-stat="longest">00:00:00</p>
         </article>
       </div>
+    </section>
+    <section
+      class="session-history-section hidden"
+      id="session-history"
+      aria-labelledby="session-history-title"
+    >
+      <h1 class="statistics-title" id="session-history-title">
+        Session History
+      </h1>
+      <p class="history-empty">No study sessions yet.</p>
+      <ul class="history-list"></ul>
     </section>
     <script src="script.js"></script>
   </body>

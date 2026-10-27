@@ -4,6 +4,9 @@ const sessionHistoryLink = document.querySelector('.session-history')
 
 const newSessionSection = document.querySelector('#new-session')
 const statisticsSection = document.querySelector('#statistics')
+const sessionHistorySection = document.querySelector('#session-history')
+const historyList = document.querySelector('.history-list')
+const historyEmpty = document.querySelector('.history-empty')
 
 const timer = document.querySelector('.timer')
 const subjectText = document.querySelector('.label')
@@ -15,18 +18,29 @@ const sessionContainer = document.querySelector('.session-container')
 confirmButton.addEventListener('click', initialize)
 newSessionLink.addEventListener('click', showNewSession)
 statisticsLink.addEventListener('click', showStatistics)
+sessionHistoryLink.addEventListener('click', showSessionHistory)
+
+function showSection (sectionToShow) {
+    [newSessionSection, statisticsSection, sessionHistorySection].forEach(section => {
+        section.classList.toggle('hidden', section !== sectionToShow)
+    })
+}
 
 function showNewSession (event) {
     event.preventDefault()
-    newSessionSection.classList.remove('hidden')
-    statisticsSection.classList.add('hidden')
+    showSection(newSessionSection)
 }
 
 function showStatistics (event) {
     event.preventDefault()
     updateStatistics()
-    newSessionSection.classList.add('hidden')
-    statisticsSection.classList.remove('hidden')
+    showSection(statisticsSection)
+}
+
+function showSessionHistory (event) {
+    event.preventDefault()
+    renderSessionHistory()
+    showSection(sessionHistorySection)
 }
 
 const hoursStudied = document.querySelector('[data-stat="hours"]')
@@ -48,6 +62,26 @@ function updateStatistics () {
     hoursStudied.textContent = (totalTime / 3600).toFixed(2)
     sessionCount.textContent = sessions.length
     longestSession.textContent = formatTime(longestTime)
+}
+
+function renderSessionHistory () {
+    historyList.replaceChildren()
+    historyEmpty.classList.toggle('hidden', sessions.length > 0)
+
+    sessions.forEach(session => {
+        const item = document.createElement('li')
+        const subject = document.createElement('span')
+        const duration = document.createElement('span')
+
+        item.className = 'history-item'
+        subject.className = 'history-subject'
+        duration.className = 'history-duration'
+        subject.textContent = session.subject || 'Untitled session'
+        duration.textContent = formatTime(session.time)
+
+        item.append(subject, duration)
+        historyList.appendChild(item)
+    })
 }
 
 function formatTime (timeInSeconds) {
@@ -137,6 +171,7 @@ function concludeSession () {
     }
     sessions.push(sessionData)
     updateStatistics()
+    renderSessionHistory()
 
     sessionContainer.querySelector('.timer-controls').remove()
     clock = 0
