@@ -31,6 +31,8 @@ function showStatistics (event) {
 let clock = 0
 let timerInterval = null
 
+const sessions = []
+
 function initialize () {
     replaceLabel()
     startTimer()
@@ -103,6 +105,13 @@ function resumeTimer () {
 
 function concludeSession () {
     pauseTimer()
+
+    const sessionData = {
+        time: clock,
+        subject: subjectInput.value.trim()
+    }
+    sessions.push(sessionData)
+
     sessionContainer.querySelector('.timer-controls').remove()
     clock = 0
     timer.textContent = '00:00:00'
