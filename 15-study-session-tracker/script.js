@@ -12,6 +12,7 @@ const sessionContainer = document.querySelector('.session-container')
 confirmButton.addEventListener('click', initialize)
 
 let clock = 0
+let timerInterval = null
 
 function initialize () {
     replaceLabel()
@@ -26,7 +27,11 @@ function replaceLabel () {
 }
 
 function startTimer () {
-    const timerInterval = setInterval (() => {
+    if (timerInterval !== null) {
+        return
+    }
+
+    timerInterval = setInterval(() => {
         clock++
         const hours = Math.floor(clock / 3600)
         const minutes = Math.floor((clock % 3600) / 60)
@@ -35,8 +40,8 @@ function startTimer () {
         const displayHours = String(hours).padStart(2, '0')
         const displayMinutes = String(minutes).padStart(2, '0')
         const displaySeconds = String(seconds).padStart(2, '0')
-    
-    timer.textContent = `${displayHours}:${displayMinutes}:${displaySeconds}`
+
+        timer.textContent = `${displayHours}:${displayMinutes}:${displaySeconds}`
     }, 1000)
 }
 
@@ -64,4 +69,28 @@ function renderTimerControls () {
     controls.appendChild(resumeBtn)
     controls.appendChild(concludeBtn)
     sessionContainer.appendChild(controls)
+
+    pauseBtn.addEventListener('click', pauseTimer)
+    resumeBtn.addEventListener('click', resumeTimer)
+    concludeBtn.addEventListener('click', concludeSession)
+}
+
+function pauseTimer () {
+    clearInterval(timerInterval)
+    timerInterval = null
+}
+
+function resumeTimer () {
+    startTimer()
+}
+
+function concludeSession () {
+    pauseTimer()
+    sessionContainer.querySelector('.timer-controls').remove()
+    clock = 0
+    timer.textContent = '00:00:00'
+    subjectText.textContent = 'What are you studying today?'
+    sessionContainer.appendChild(subjectInput)
+    sessionContainer.appendChild(confirmButton)
+    subjectInput.value = ''
 }
