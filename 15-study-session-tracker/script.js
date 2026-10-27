@@ -9,11 +9,29 @@ const confirmButton = document.querySelector('.confirm')
 
 confirmButton.addEventListener('click', initialize)
 
+let clock = 0
+
 function initialize () {
     replaceLabel()
+    startTimer()
 }
 
 function replaceLabel () {
     let subject = subjectInput.value
     subjectText.textContent = `Studying ${subject}...`
+}
+
+function startTimer () {
+    const timerInterval = setInterval (() => {
+        clock++
+        const hours = Math.floor(clock / 3600)
+        const minutes = Math.floor((clock % 3600) / 60)
+        const seconds = clock % 60
+    
+        const displayHours = String(hours).padStart(2, '0')
+        const displayMinutes = String(minutes).padStart(2, '0')
+        const displaySeconds = String(seconds).padStart(2, '0')
+    
+    timer.textContent = `${displayHours}:${displayMinutes}:${displaySeconds}`
+    }, 1000)
 }
