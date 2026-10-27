@@ -24,14 +24,39 @@ function showNewSession (event) {
 
 function showStatistics (event) {
     event.preventDefault()
+    updateStatistics()
     newSessionSection.classList.add('hidden')
     statisticsSection.classList.remove('hidden')
 }
+
+const hoursStudied = document.querySelector('[data-stat="hours"]')
+const sessionCount = document.querySelector('[data-stat="sessions"]')
+const longestSession = document.querySelector('[data-stat="longest"]')
 
 let clock = 0
 let timerInterval = null
 
 const sessions = []
+
+function updateStatistics () {
+    const totalTime = sessions.reduce((total, session) => total + session.time, 0)
+    const longestTime = sessions.reduce(
+        (longest, session) => Math.max(longest, session.time),
+        0
+    )
+
+    hoursStudied.textContent = (totalTime / 3600).toFixed(2)
+    sessionCount.textContent = sessions.length
+    longestSession.textContent = formatTime(longestTime)
+}
+
+function formatTime (timeInSeconds) {
+    const hours = Math.floor(timeInSeconds / 3600)
+    const minutes = Math.floor((timeInSeconds % 3600) / 60)
+    const seconds = timeInSeconds % 60
+
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+}
 
 function initialize () {
     replaceLabel()
@@ -111,6 +136,7 @@ function concludeSession () {
         subject: subjectInput.value.trim()
     }
     sessions.push(sessionData)
+    updateStatistics()
 
     sessionContainer.querySelector('.timer-controls').remove()
     clock = 0
