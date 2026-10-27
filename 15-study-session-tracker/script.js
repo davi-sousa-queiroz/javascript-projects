@@ -7,6 +7,8 @@ const subjectText = document.querySelector('.label')
 const subjectInput = document.querySelector('.subject-input')
 const confirmButton = document.querySelector('.confirm')
 
+const sessionContainer = document.querySelector('.session-container')
+
 confirmButton.addEventListener('click', initialize)
 
 let clock = 0
@@ -14,6 +16,8 @@ let clock = 0
 function initialize () {
     replaceLabel()
     startTimer()
+    removal()
+    renderTimerControls()
 }
 
 function replaceLabel () {
@@ -34,4 +38,30 @@ function startTimer () {
     
     timer.textContent = `${displayHours}:${displayMinutes}:${displaySeconds}`
     }, 1000)
+}
+
+function removal () {
+    subjectInput.remove()
+    confirmButton.remove()
+}
+
+function renderTimerControls () {
+    const controls = document.createElement('div')
+    const pauseBtn = document.createElement('button')
+    const resumeBtn = document.createElement('button')
+    const concludeBtn = document.createElement('button')
+
+    controls.className = 'timer-controls'
+    pauseBtn.className = 'timer-control pause-control'
+    resumeBtn.className = 'timer-control resume-control'
+    concludeBtn.className = 'timer-control conclude-control'
+
+    pauseBtn.textContent = 'Pause'
+    resumeBtn.textContent = 'Resume'
+    concludeBtn.textContent = 'Conclude'
+
+    controls.appendChild(pauseBtn)
+    controls.appendChild(resumeBtn)
+    controls.appendChild(concludeBtn)
+    sessionContainer.appendChild(controls)
 }
