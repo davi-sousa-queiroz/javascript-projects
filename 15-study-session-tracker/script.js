@@ -1,6 +1,9 @@
-const newSessionLink = document.querySelector('.new-session')
+const newSessionLink = document.querySelector('.new-session-link')
 const statisticsLink = document.querySelector('.statistics-link')
 const sessionHistoryLink = document.querySelector('.session-history')
+
+const newSessionSection = document.querySelector('#new-session')
+const statisticsSection = document.querySelector('#statistics')
 
 const timer = document.querySelector('.timer')
 const subjectText = document.querySelector('.label')
@@ -10,6 +13,20 @@ const confirmButton = document.querySelector('.confirm')
 const sessionContainer = document.querySelector('.session-container')
 
 confirmButton.addEventListener('click', initialize)
+newSessionLink.addEventListener('click', showNewSession)
+statisticsLink.addEventListener('click', showStatistics)
+
+function showNewSession (event) {
+    event.preventDefault()
+    newSessionSection.classList.remove('hidden')
+    statisticsSection.classList.add('hidden')
+}
+
+function showStatistics (event) {
+    event.preventDefault()
+    newSessionSection.classList.add('hidden')
+    statisticsSection.classList.remove('hidden')
+}
 
 let clock = 0
 let timerInterval = null

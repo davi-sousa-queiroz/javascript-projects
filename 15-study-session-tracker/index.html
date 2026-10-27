@@ -9,12 +9,16 @@
   <body>
     <nav class="navbar">
       <ul>
-        <li class="link new-session">New Session</li>
-        <li class="link statistics-link">Statistics</li>
+        <li>
+          <a class="link new-session-link" href="#new-session">New Session</a>
+        </li>
+        <li>
+          <a class="link statistics-link" href="#statistics">Statistics</a>
+        </li>
         <li class="link session-history">Session History</li>
       </ul>
     </nav>
-    <section class="new-session hidden">
+    <section class="new-session" id="new-session">
       <div class="session-container">
         <p class="timer">00:00:00</p>
         <p class="label">What are you studying today?</p>
@@ -22,7 +26,11 @@
         <button class="confirm">Confirm</button>
       </div>
     </section>
-    <section class="statistics" aria-labelledby="statistics-title">
+    <section
+      class="statistics hidden"
+      id="statistics"
+      aria-labelledby="statistics-title"
+    >
       <h1 class="statistics-title" id="statistics-title">Study Statistics</h1>
       <div class="statistics-grid">
         <article class="stat-card">

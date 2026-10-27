@@ -31,12 +31,14 @@ body {
 }
 
 .navbar .link {
+  display: block;
   padding: 0.75rem 1rem;
   border-radius: 0.375rem;
   color: #f9fafb;
   font-size: 1rem;
   font-weight: 600;
   text-align: center;
+  text-decoration: none;
 }
 
 .session-container {
