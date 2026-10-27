@@ -5,6 +5,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+  background-color: rgb(233, 230, 226);
 }
 
 .navbar {
@@ -32,6 +33,81 @@ body {
   font-size: 1rem;
   font-weight: 600;
   text-align: center;
+}
+
+.session-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  width: min(100% - 2rem, 34rem);
+  margin: clamp(2rem, 8vh, 5rem) auto;
+  padding: clamp(1.5rem, 5vw, 3rem);
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  background-color: #fff;
+  box-shadow: 0 1rem 2.5rem rgb(31 41 55 / 10%);
+  text-align: center;
+}
+
+.timer {
+  margin: 0;
+  color: #1f2937;
+  font-size: clamp(3rem, 12vw, 5rem);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.label {
+  margin: 0;
+  color: #374151;
+  font-size: clamp(1.125rem, 4vw, 1.375rem);
+  font-weight: 600;
+}
+
+.subject-input {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  color: #1f2937;
+  font: inherit;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.subject-input:focus-visible {
+  border-color: #94a3b8;
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(148 163 184 / 20%);
+}
+
+.confirm {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.75rem 1rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background-color: #374151;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  transition: background-color 150ms ease, transform 150ms ease;
+}
+
+.confirm:hover {
+  background-color: #1f2937;
+}
+
+.confirm:active {
+  transform: translateY(1px);
+}
+
+.confirm:focus-visible {
+  outline: 3px solid rgb(2 132 199 / 35%);
+  outline-offset: 3px;
 }
 
 @media (max-width: 600px) {
