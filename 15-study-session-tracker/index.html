@@ -14,12 +14,31 @@
         <li class="link session-history">Session History</li>
       </ul>
     </nav>
-    <div class="session-container">
-      <p class="timer">00:00:00</p>
-      <p class="label">What are you studying today?</p>
-      <input type="text" class="subject-input" />
-      <button class="confirm">Confirm</button>
-    </div>
+    <section class="new-session hidden">
+      <div class="session-container">
+        <p class="timer">00:00:00</p>
+        <p class="label">What are you studying today?</p>
+        <input type="text" class="subject-input" />
+        <button class="confirm">Confirm</button>
+      </div>
+    </section>
+    <section class="statistics" aria-labelledby="statistics-title">
+      <h1 class="statistics-title" id="statistics-title">Study Statistics</h1>
+      <div class="statistics-grid">
+        <article class="stat-card">
+          <h2 class="stat-label">Hours studied</h2>
+          <p class="stat-value">0 <span class="stat-unit">hours</span></p>
+        </article>
+        <article class="stat-card">
+          <h2 class="stat-label">Study sessions</h2>
+          <p class="stat-value">0</p>
+        </article>
+        <article class="stat-card">
+          <h2 class="stat-label">Longest session</h2>
+          <p class="stat-value">00:00:00</p>
+        </article>
+      </div>
+    </section>
     <script src="script.js"></script>
   </body>
 </html>
