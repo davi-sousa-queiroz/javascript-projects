@@ -50,7 +50,7 @@ const longestSession = document.querySelector('[data-stat="longest"]')
 let clock = 0
 let timerInterval = null
 
-const sessions = []
+const sessions = JSON.parse(localStorage.getItem('studySessions') || '[]')
 
 function updateStatistics () {
     const totalTime = sessions.reduce((total, session) => total + session.time, 0)
@@ -170,6 +170,7 @@ function concludeSession () {
         subject: subjectInput.value.trim()
     }
     sessions.push(sessionData)
+    localStorage.setItem('studySessions', JSON.stringify(sessions))
     updateStatistics()
     renderSessionHistory()
 
@@ -181,3 +182,6 @@ function concludeSession () {
     sessionContainer.appendChild(confirmButton)
     subjectInput.value = ''
 }
+
+updateStatistics()
+renderSessionHistory()
