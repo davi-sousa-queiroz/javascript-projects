@@ -14,11 +14,36 @@ const subjectInput = document.querySelector('.subject-input')
 const confirmButton = document.querySelector('.confirm')
 
 const sessionContainer = document.querySelector('.session-container')
+const themeToggle = document.querySelector('.theme-toggle')
 
 confirmButton.addEventListener('click', initialize)
 newSessionLink.addEventListener('click', showNewSession)
 statisticsLink.addEventListener('click', showStatistics)
 sessionHistoryLink.addEventListener('click', showSessionHistory)
+themeToggle.addEventListener('click', toggleTheme)
+
+const savedTheme = localStorage.getItem('studySessionTheme')
+const prefersDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+setTheme(savedTheme || (prefersDarkTheme ? 'dark' : 'light'))
+
+function setTheme (theme) {
+    document.documentElement.dataset.theme = theme
+    const isDark = theme === 'dark'
+    themeToggle.setAttribute('aria-pressed', String(isDark))
+    themeToggle.setAttribute(
+        'aria-label',
+        `Switch to ${isDark ? 'light' : 'dark'} mode`
+    )
+}
+
+function toggleTheme () {
+    const nextTheme = document.documentElement.dataset.theme === 'dark'
+        ? 'light'
+        : 'dark'
+
+    setTheme(nextTheme)
+    localStorage.setItem('studySessionTheme', nextTheme)
+}
 
 function showSection (sectionToShow) {
     [newSessionSection, statisticsSection, sessionHistorySection].forEach(section => {
