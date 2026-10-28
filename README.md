@@ -26,6 +26,7 @@
 | 12 | Will You?💍 | DOM manipulation, Event listeners, Functions, `classList`, `toggle()`, DOM updates, CSS classes, Responsive CSS, Independent project development (Made for gf)|
 | 13 | Event Countdown | DOM manipulation, Event listeners, Form input, Dynamic element creation, `textContent`, `replaceChildren()`, Date objects, Calendar-day calculations, Conditional logic |
 | 14 | Data Explorer | JSON modules, Imported datasets, DOM manipulation, Dynamic element creation, Array methods, Data visualization |
+| 15 | Study Session Tracker | Track timed study sessions, view history and stats, and save data with `localStorage`. Practices timers, arrays, and DOM manipulation. |
 
 \* Project 11 is an AI-assisted exploration project and is not considered part of the normal difficulty progression.
 
