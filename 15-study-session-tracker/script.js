@@ -7,6 +7,7 @@ const statisticsSection = document.querySelector('#statistics')
 const sessionHistorySection = document.querySelector('#session-history')
 const historyList = document.querySelector('.history-list')
 const historyEmpty = document.querySelector('.history-empty')
+const clearHistoryButton = document.querySelector('.clear-history')
 
 const timer = document.querySelector('.timer')
 const subjectText = document.querySelector('.label')
@@ -21,6 +22,7 @@ newSessionLink.addEventListener('click', showNewSession)
 statisticsLink.addEventListener('click', showStatistics)
 sessionHistoryLink.addEventListener('click', showSessionHistory)
 themeToggle.addEventListener('click', toggleTheme)
+clearHistoryButton.addEventListener('click', clearSessionHistory)
 
 const savedTheme = localStorage.getItem('studySessionTheme')
 const prefersDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -92,21 +94,72 @@ function updateStatistics () {
 function renderSessionHistory () {
     historyList.replaceChildren()
     historyEmpty.classList.toggle('hidden', sessions.length > 0)
+    clearHistoryButton.classList.toggle('hidden', sessions.length === 0)
 
-    sessions.forEach(session => {
+    sessions.forEach((session, index) => {
         const item = document.createElement('li')
         const subject = document.createElement('span')
         const duration = document.createElement('span')
+        const deleteButton = document.createElement('button')
+        const deleteIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+        const canBody = document.createElementNS('http://www.w3.org/2000/svg', 'path')
+        const canLid = document.createElementNS('http://www.w3.org/2000/svg', 'path')
+        const canFace = document.createElementNS('http://www.w3.org/2000/svg', 'path')
 
         item.className = 'history-item'
         subject.className = 'history-subject'
         duration.className = 'history-duration'
+        deleteButton.className = 'delete-session'
+        deleteButton.type = 'button'
+        deleteButton.setAttribute(
+            'aria-label',
+            `Delete ${session.subject || 'untitled session'}`
+        )
+        deleteIcon.classList.add('delete-icon')
+        deleteIcon.setAttribute('viewBox', '0 0 24 24')
+        deleteIcon.setAttribute('fill', 'none')
+        deleteIcon.setAttribute('stroke', 'currentColor')
+        deleteIcon.setAttribute('stroke-linecap', 'round')
+        deleteIcon.setAttribute('stroke-linejoin', 'round')
+        deleteIcon.setAttribute('stroke-width', '1.8')
+        deleteIcon.setAttribute('aria-hidden', 'true')
+        canBody.setAttribute('d', 'M5 7h14l-1 13H6L5 7Z')
+        canLid.setAttribute('d', 'M3.5 7h17M9 7V4h6v3')
+        canFace.setAttribute('d', 'M9.5 11v5m5-5v5')
+        deleteIcon.append(canBody, canLid, canFace)
+        deleteButton.appendChild(deleteIcon)
         subject.textContent = session.subject || 'Untitled session'
         duration.textContent = formatTime(session.time)
 
-        item.append(subject, duration)
+        deleteButton.addEventListener('click', () => deleteSession(index))
+        item.append(subject, duration, deleteButton)
         historyList.appendChild(item)
     })
+}
+
+function deleteSession (index) {
+    sessions.splice(index, 1)
+    localStorage.setItem('studySessions', JSON.stringify(sessions))
+    updateStatistics()
+    renderSessionHistory()
+}
+
+function clearSessionHistory () {
+    if (sessions.length === 0) {
+        return
+    }
+
+    const confirmed = window.confirm(
+        'Are you sure you want to clear all study session history? This cannot be undone.'
+    )
+    if (!confirmed) {
+        return
+    }
+
+    sessions.length = 0
+    localStorage.setItem('studySessions', JSON.stringify(sessions))
+    updateStatistics()
+    renderSessionHistory()
 }
 
 function formatTime (timeInSeconds) {
