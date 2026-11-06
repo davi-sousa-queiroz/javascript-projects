@@ -76,8 +76,10 @@ const longestSession = document.querySelector('[data-stat="longest"]')
 
 let clock = 0
 let timerInterval = null
+let startedAt = null
 
 const sessions = JSON.parse(localStorage.getItem('studySessions') || '[]')
+const activeSession = JSON.parse(localStorage.getItem('studySessionActive') || 'null')
 
 function updateStatistics () {
     const totalTime = sessions.reduce((total, session) => total + session.time, 0)
@@ -172,33 +174,73 @@ function formatTime (timeInSeconds) {
 
 function initialize () {
     replaceLabel()
-    startTimer()
     removal()
     renderTimerControls()
+    startTimer()
 }
 
 function replaceLabel () {
-    let subject = subjectInput.value
+    const subject = subjectInput.value
     subjectText.textContent = `Studying ${subject}...`
 }
 
 function startTimer () {
-    if (timerInterval !== null) {
+    if (startedAt !== null) {
         return
     }
 
-    timerInterval = setInterval(() => {
-        clock++
-        const hours = Math.floor(clock / 3600)
-        const minutes = Math.floor((clock % 3600) / 60)
-        const seconds = clock % 60
-    
-        const displayHours = String(hours).padStart(2, '0')
-        const displayMinutes = String(minutes).padStart(2, '0')
-        const displaySeconds = String(seconds).padStart(2, '0')
+    startedAt = Date.now()
+    saveActiveSession()
+    renderTimer()
+    timerInterval = setInterval(renderTimer, 1000)
+}
 
-        timer.textContent = `${displayHours}:${displayMinutes}:${displaySeconds}`
-    }, 1000)
+function getElapsedTime () {
+    if (startedAt === null) {
+        return clock
+    }
+
+    return clock + Math.floor((Date.now() - startedAt) / 1000)
+}
+
+function renderTimer () {
+    timer.textContent = formatTime(getElapsedTime())
+}
+
+function saveActiveSession () {
+    localStorage.setItem('studySessionActive', JSON.stringify({
+        time: clock,
+        subject: subjectInput.value.trim(),
+        startedAt
+    }))
+}
+
+function restoreActiveSession () {
+    if (
+        activeSession === null ||
+        !Number.isFinite(activeSession.time) ||
+        activeSession.time < 0 ||
+        typeof activeSession.subject !== 'string' ||
+        (activeSession.startedAt !== null && !Number.isFinite(activeSession.startedAt))
+    ) {
+        if (activeSession !== null) {
+            console.error('The saved active study session is invalid and could not be restored.')
+            localStorage.removeItem('studySessionActive')
+        }
+        return
+    }
+
+    clock = activeSession.time
+    startedAt = activeSession.startedAt
+    subjectInput.value = activeSession.subject
+    replaceLabel()
+    removal()
+    renderTimerControls()
+
+    if (startedAt !== null) {
+        timerInterval = setInterval(renderTimer, 1000)
+    }
+    renderTimer()
 }
 
 function removal () {
@@ -232,8 +274,16 @@ function renderTimerControls () {
 }
 
 function pauseTimer () {
+    if (startedAt === null) {
+        return
+    }
+
+    clock = getElapsedTime()
+    startedAt = null
     clearInterval(timerInterval)
     timerInterval = null
+    saveActiveSession()
+    renderTimer()
 }
 
 function resumeTimer () {
@@ -244,16 +294,18 @@ function concludeSession () {
     pauseTimer()
 
     const sessionData = {
-        time: clock,
+        time: getElapsedTime(),
         subject: subjectInput.value.trim()
     }
     sessions.push(sessionData)
     localStorage.setItem('studySessions', JSON.stringify(sessions))
+    localStorage.removeItem('studySessionActive')
     updateStatistics()
     renderSessionHistory()
 
     sessionContainer.querySelector('.timer-controls').remove()
     clock = 0
+    startedAt = null
     timer.textContent = '00:00:00'
     subjectText.textContent = 'What are you studying today?'
     sessionContainer.appendChild(subjectInput)
@@ -263,3 +315,4 @@ function concludeSession () {
 
 updateStatistics()
 renderSessionHistory()
+restoreActiveSession()
