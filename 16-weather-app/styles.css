@@ -1,0 +1,293 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fc;
+    color: #17223b;
+    min-height: 100vh;
+    padding: 40px;
+}
+
+/* Header */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto 55px;
+}
+
+.heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.heading-icon {
+    width: 32px;
+    height: 32px;
+}
+
+.settings-button {
+    display: grid;
+    place-items: center;
+    border: none;
+    background: #e9edf7;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    color: #53617c;
+    cursor: pointer;
+}
+
+.settings-button svg {
+    width: 23px;
+    height: 23px;
+}
+
+/* Main container */
+
+.main-container {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+/* Search bar */
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 8px;
+    border-radius: 50px;
+    box-shadow: 0 8px 25px rgba(30, 50, 90, 0.08);
+    margin-bottom: 60px;
+}
+
+.search-icon {
+    display: flex;
+    color: #78849d;
+    margin-left: 18px;
+}
+
+.search-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.search-container input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    padding: 15px;
+    font-size: 17px;
+    color: #17223b;
+    background: transparent;
+}
+
+.search-container input::placeholder {
+    color: #7b8499;
+}
+
+.search-button {
+    display: grid;
+    place-items: center;
+    width: 55px;
+    height: 55px;
+    border: none;
+    border-radius: 50%;
+    background: #3478f6;
+    color: white;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.search-button svg {
+    width: 23px;
+    height: 23px;
+}
+
+.search-button:hover {
+    background: #2464df;
+}
+
+/* Weather card */
+
+.weather-container {
+    background: white;
+    border-radius: 30px;
+    padding: 55px 40px;
+    text-align: center;
+    box-shadow: 0 10px 35px rgba(30, 50, 90, 0.06);
+}
+
+.emoji {
+    font-size: 100px;
+    margin-bottom: 15px;
+}
+
+.temp {
+    font-size: 90px;
+    font-weight: 700;
+    letter-spacing: -4px;
+    margin-bottom: 5px;
+}
+
+.condition {
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 18px;
+}
+
+.location {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    font-size: 18px;
+    color: #78849d;
+    margin-bottom: 40px;
+}
+
+.location svg {
+    width: 19px;
+    height: 19px;
+    color: #3478f6;
+}
+
+/* Weather information */
+
+.infos {
+    display: flex;
+    border-top: 1px solid #e5e9f2;
+    padding-top: 30px;
+}
+
+.humidity-box,
+.wind-box {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.humidity-box {
+    border-right: 1px solid #e5e9f2;
+}
+
+.humidity-box span,
+.wind-box span {
+    display: flex;
+    color: #3478f6;
+}
+
+.humidity-box svg,
+.wind-box svg {
+    width: 35px;
+    height: 35px;
+}
+
+.humidity-text,
+.wind-text {
+    color: #78849d;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.amount,
+.wind {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* Mobile responsiveness */
+
+@media (max-width: 600px) {
+    body {
+        padding: 25px 18px;
+    }
+
+    .header {
+        margin-bottom: 40px;
+    }
+
+    .heading {
+        font-size: 27px;
+    }
+
+    .search-container {
+        margin-bottom: 35px;
+    }
+
+    .search-container input {
+        font-size: 15px;
+        padding: 12px 8px;
+    }
+
+    .search-button {
+        width: 48px;
+        height: 48px;
+    }
+
+    .weather-container {
+        padding: 35px 18px;
+        border-radius: 28px;
+    }
+
+    .emoji {
+        font-size: 85px;
+    }
+
+    .temp {
+        font-size: 76px;
+    }
+
+    .condition {
+        font-size: 21px;
+    }
+
+    .location {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+
+    .infos {
+        padding-top: 25px;
+    }
+
+    .humidity-box,
+    .wind-box {
+        gap: 8px;
+    }
+
+    .humidity-box span,
+    .wind-box span {
+        color: #3478f6;
+    }
+
+    .humidity-box svg,
+    .wind-box svg {
+        width: 25px;
+        height: 25px;
+    }
+
+    .humidity-text,
+    .wind-text {
+        font-size: 13px;
+    }
+
+    .amount,
+    .wind {
+        font-size: 19px;
+    }
+}
