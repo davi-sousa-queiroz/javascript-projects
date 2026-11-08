@@ -113,65 +113,80 @@
       </div>
 
       <div class="weather-container">
-        <p class="emoji"></p>
-        <p class="temp"></p>
-        <p class="condition"></p>
-        <p class="location">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path
-              d="M19 10.2c0 5-7 11-7 11s-7-6-7-11a7 7 0 1 1 14 0Z"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linejoin="round"
-            />
-            <circle
-              cx="12"
-              cy="10"
-              r="2.3"
-              stroke="currentColor"
-              stroke-width="1.8"
-            />
-          </svg>
-        </p>
+        <div class="welcome-screen">
+          <p class="welcome-emoji" aria-hidden="true">🌤️</p>
+          <h2>Weather, wherever you are</h2>
+          <p class="welcome-copy">
+            Get the current conditions for any city in just a few seconds.
+          </p>
+          <p class="welcome-instruction">
+            Enter a city in the search bar above and press the search button to
+            see its forecast.
+          </p>
+        </div>
 
-        <div class="infos">
-          <div class="humidity-box">
-            <span aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M12 3.5S5.5 11 5.5 15.2a6.5 6.5 0 0 0 13 0C18.5 11 12 3.5 12 3.5Z"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M9 15.5a3 3 0 0 0 3 3"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </span>
-            <div>
-              <p class="humidity-text"></p>
-              <p class="amount"></p>
+        <div class="weather-results" hidden>
+          <p class="emoji"></p>
+          <p class="temp"></p>
+          <p class="condition"></p>
+          <p class="location">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M19 10.2c0 5-7 11-7 11s-7-6-7-11a7 7 0 1 1 14 0Z"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linejoin="round"
+              />
+              <circle
+                cx="12"
+                cy="10"
+                r="2.3"
+                stroke="currentColor"
+                stroke-width="1.8"
+              />
+            </svg>
+            <span class="location-name"></span>
+          </p>
+
+          <div class="infos">
+            <div class="humidity-box">
+              <span aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 3.5S5.5 11 5.5 15.2a6.5 6.5 0 0 0 13 0C18.5 11 12 3.5 12 3.5Z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9 15.5a3 3 0 0 0 3 3"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+              <div>
+                <p class="humidity-text"></p>
+                <p class="amount"></p>
+              </div>
             </div>
-          </div>
 
-          <div class="wind-box">
-            <span aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M3 8h13a2.5 2.5 0 1 0-2.4-3.2M3 12h17a2.5 2.5 0 1 1-2.4 3.2M3 16h8"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </span>
-            <div>
-              <p class="wind-text"></p>
-              <p class="wind"></p>
+            <div class="wind-box">
+              <span aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M3 8h13a2.5 2.5 0 1 0-2.4-3.2M3 12h17a2.5 2.5 0 1 1-2.4 3.2M3 16h8"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+              <div>
+                <p class="wind-text"></p>
+                <p class="wind"></p>
+              </div>
             </div>
           </div>
         </div>

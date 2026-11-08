@@ -165,6 +165,42 @@ body {
     box-shadow: 0 10px 35px rgba(30, 50, 90, 0.06);
 }
 
+.welcome-screen {
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.welcome-emoji {
+    font-size: 76px;
+    margin-bottom: 20px;
+}
+
+.welcome-screen h2 {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.welcome-copy {
+    color: #53617c;
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 18px;
+}
+
+.welcome-instruction {
+    color: #78849d;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.dark-mode .welcome-copy {
+    color: #c3ccda;
+}
+
+.dark-mode .welcome-instruction {
+    color: #aab4c5;
+}
+
 .emoji {
     font-size: 100px;
     margin-bottom: 15px;
@@ -273,6 +309,18 @@ body {
     .weather-container {
         padding: 35px 18px;
         border-radius: 28px;
+    }
+
+    .welcome-emoji {
+        font-size: 68px;
+    }
+
+    .welcome-screen h2 {
+        font-size: 25px;
+    }
+
+    .welcome-copy {
+        font-size: 16px;
     }
 
     .emoji {

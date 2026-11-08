@@ -4,8 +4,10 @@ const input = document.querySelector('.search-container input')
 const searchButton = document.querySelector('.search-button')
 const temperature = document.querySelector('.temp')
 const weatherEmoji = document.querySelector('.emoji')
-const locationInfo = document.querySelector('.location')
+const locationName = document.querySelector('.location-name')
 const condition = document.querySelector('.condition')
+const welcomeScreen = document.querySelector('.welcome-screen')
+const weatherResults = document.querySelector('.weather-results')
 
 function getWeatherDetails(code) {
     const wmoCodes = {
@@ -65,7 +67,7 @@ async function display(getUserInput) {
     const tempData = currentWeatherData.temperature_2m
     const humidityData = currentWeatherData.relative_humidity_2m
     const windData = currentWeatherData.wind_speed_10m
-    
+
     const weatherDetails = getWeatherDetails(currentWeatherData.weather_code)
     const conditionData = weatherDetails.text
     const emojiData = weatherDetails.emoji
@@ -74,7 +76,12 @@ async function display(getUserInput) {
     humidity.textContent = `${humidityData}%`
     condition.textContent = conditionData
     weatherEmoji.textContent = emojiData
-    locationInfo.textContent = `${dataObj.name}, ${dataObj.country}`
+    locationName.textContent = `${dataObj.name}, ${dataObj.country}`
+    document.querySelector('.humidity-text').textContent = 'Humidity'
+    document.querySelector('.wind-text').textContent = 'Wind Speed'
+    document.querySelector('.wind').textContent = `${windData} km/h`
+    welcomeScreen.hidden = true
+    weatherResults.hidden = false
 }
 
 function getUserInput() {
