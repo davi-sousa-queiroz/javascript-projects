@@ -50,10 +50,17 @@ modeButton.addEventListener('click', () => {
 })
 
 searchButton.addEventListener('click', () => display(getUserInput))
-input.addEventListener('keydown', () => {
+input.addEventListener('keydown', (event) => {
     if (event.key === "Enter") {
         display(getUserInput)
-    }})
+    }
+})
+
+const savedCity = localStorage.getItem('lastSearchedCity')
+if (savedCity) {
+    input.value = savedCity
+    display(getUserInput)
+}
 
 async function display(getUserInput) {
     searchMessage.hidden = true
@@ -91,6 +98,7 @@ async function display(getUserInput) {
         document.querySelector('.humidity-text').textContent = 'Humidity'
         document.querySelector('.wind-text').textContent = 'Wind Speed'
         document.querySelector('.wind').textContent = `${windData} km/h`
+        localStorage.setItem('lastSearchedCity', dataObj.name)
         weatherResults.hidden = false
         weatherLoaded = true
     } finally {
