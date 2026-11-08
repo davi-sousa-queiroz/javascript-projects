@@ -11,14 +11,23 @@ modeButton.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode')
 })
 
-searchButton.addEventListener('click', () => display(getUserInput, getCoords))
+searchButton.addEventListener('click', () => display(getUserInput))
 
-function display(getUserInput) {
-    const inputCity = getUserInput().trim()
+async function display(getUserInput) {
+    const inputCity = getUserInput().trim().toUpperCase()
     if (inputCity === '') {
         return
     }
-    console.log(getCoords(inputCity))
+
+    const dataObj = await getCoords(inputCity)
+
+    const latitude = dataObj.latitude
+    const longitude = dataObj.longitude
+
+    const currentWeatherData = await getWeather(latitude, longitude)
+    
+    console.log(currentWeatherData) 
+    
 }
 
 function getUserInput() {
@@ -44,5 +53,20 @@ async function getCoords(inputCity) {
         return dataObj
     } catch (error) {
         console.log(error.message)
+    }
+}
+
+async function getWeather(latitude, longitude) {
+    try {
+        const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m`)
+        if (!response.ok) {
+            throw new Error('Post not Found!')
+        }
+        const data = await response.json()
+        
+        return data.current
+        
+    } catch (error) {
+        console.error(error)
     }
 }
