@@ -7,6 +7,40 @@ const weatherEmoji = document.querySelector('.emoji')
 const locationInfo = document.querySelector('.location')
 const condition = document.querySelector('.condition')
 
+function getWeatherDetails(code) {
+    const wmoCodes = {
+        0: { text: "Clear sky", emoji: "☀️" },
+        1: { text: "Mainly clear", emoji: "🌤️" },
+        2: { text: "Partly cloudy", emoji: "⛅" },
+        3: { text: "Overcast", emoji: "☁️" },
+        45: { text: "Fog", emoji: "🌫️" },
+        48: { text: "Depositing rime fog", emoji: "🌫️" },
+        51: { text: "Light drizzle", emoji: "🌦️" },
+        53: { text: "Moderate drizzle", emoji: "🌦️" },
+        55: { text: "Dense drizzle", emoji: "🌦️" },
+        56: { text: "Light freezing drizzle", emoji: "🌨️" },
+        57: { text: "Dense freezing drizzle", emoji: "🌨️" },
+        61: { text: "Slight rain", emoji: "🌧️" },
+        63: { text: "Moderate rain", emoji: "🌧️" },
+        65: { text: "Heavy rain", emoji: "🌧️" },
+        66: { text: "Light freezing rain", emoji: "🌨️" },
+        67: { text: "Heavy freezing rain", emoji: "🌨️" },
+        71: { text: "Slight snowfall", emoji: "❄️" },
+        73: { text: "Moderate snowfall", emoji: "❄️" },
+        75: { text: "Heavy snowfall", emoji: "❄️" },
+        77: { text: "Snow grains", emoji: "❄️" },
+        80: { text: "Slight rain showers", emoji: "🌦️" },
+        81: { text: "Moderate rain showers", emoji: "🌦️" },
+        82: { text: "Violent rain showers", emoji: "🌧️" },
+        85: { text: "Slight snow showers", emoji: "🌨️" },
+        86: { text: "Heavy snow showers", emoji: "🌨️" },
+        95: { text: "Thunderstorm", emoji: "⛈️" },
+        96: { text: "Thunderstorm with slight hail", emoji: "🌩️" },
+        99: { text: "Thunderstorm with heavy hail", emoji: "🌩️" }
+    };
+    return wmoCodes[code] || { text: "Unknown", emoji: "❓" };
+}
+
 modeButton.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode')
 })
@@ -20,14 +54,27 @@ async function display(getUserInput) {
     }
 
     const dataObj = await getCoords(inputCity)
+    if (!dataObj) return
 
     const latitude = dataObj.latitude
     const longitude = dataObj.longitude
 
     const currentWeatherData = await getWeather(latitude, longitude)
+    if (!currentWeatherData) return 
+
+    const tempData = currentWeatherData.temperature_2m
+    const humidityData = currentWeatherData.relative_humidity_2m
+    const windData = currentWeatherData.wind_speed_10m
     
-    console.log(currentWeatherData) 
-    
+    const weatherDetails = getWeatherDetails(currentWeatherData.weather_code)
+    const conditionData = weatherDetails.text
+    const emojiData = weatherDetails.emoji
+
+    temperature.textContent = `${tempData}°C`
+    humidity.textContent = `${humidityData}%`
+    condition.textContent = conditionData
+    weatherEmoji.textContent = emojiData
+    locationInfo.textContent = `${dataObj.name}, ${dataObj.country}`
 }
 
 function getUserInput() {
@@ -43,6 +90,11 @@ async function getCoords(inputCity) {
             throw new Error('Post not found!')
         }
         const data = await response.json()
+        
+        if (!data.results || data.results.length === 0) {
+            throw new Error('City not found')
+        }
+
         const dataObj = {
             name: data.results[0].name,
             latitude: data.results[0].latitude,
