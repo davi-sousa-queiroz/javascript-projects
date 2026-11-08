@@ -50,6 +50,10 @@ modeButton.addEventListener('click', () => {
 })
 
 searchButton.addEventListener('click', () => display(getUserInput))
+input.addEventListener('keydown', () => {
+    if (event.key === "Enter") {
+        display(getUserInput)
+    }})
 
 async function display(getUserInput) {
     searchMessage.hidden = true
