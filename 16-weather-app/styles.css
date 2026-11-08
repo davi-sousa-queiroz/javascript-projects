@@ -13,8 +13,6 @@ body {
     padding: 40px;
 }
 
-/* Header */
-
 .header {
     display: flex;
     justify-content: space-between;
@@ -53,14 +51,53 @@ body {
     height: 23px;
 }
 
-/* Main container */
+.sun-icon {
+    display: none;
+}
+
+.dark-mode {
+    background: #111827;
+    color: #f3f4f6;
+}
+
+.dark-mode .settings-button {
+    background: #273449;
+    color: #f4b740;
+}
+
+.dark-mode .moon-icon {
+    display: none;
+}
+
+.dark-mode .sun-icon {
+    display: block;
+}
+
+.dark-mode .search-container,
+.dark-mode .weather-container {
+    background: #1f2937;
+}
+
+.dark-mode .search-container input {
+    color: #f3f4f6;
+}
+
+.dark-mode .search-icon,
+.dark-mode .location,
+.dark-mode .humidity-text,
+.dark-mode .wind-text {
+    color: #aab4c5;
+}
+
+.dark-mode .infos,
+.dark-mode .humidity-box {
+    border-color: #374151;
+}
 
 .main-container {
     max-width: 850px;
     margin: 0 auto;
 }
-
-/* Search bar */
 
 .search-container {
     display: flex;
@@ -120,8 +157,6 @@ body {
     background: #2464df;
 }
 
-/* Weather card */
-
 .weather-container {
     background: white;
     border-radius: 30px;
@@ -163,8 +198,6 @@ body {
     height: 19px;
     color: #3478f6;
 }
-
-/* Weather information */
 
 .infos {
     display: flex;
@@ -209,8 +242,6 @@ body {
     font-size: 24px;
     font-weight: 600;
 }
-
-/* Mobile responsiveness */
 
 @media (max-width: 600px) {
     body {
