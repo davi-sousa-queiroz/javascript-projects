@@ -9,6 +9,7 @@ const locationName = document.querySelector('.location-name')
 const condition = document.querySelector('.condition')
 const welcomeScreen = document.querySelector('.welcome-screen')
 const weatherResults = document.querySelector('.weather-results')
+const loadingState = document.querySelector('.loading-state')
 
 function getWeatherDetails(code) {
     const wmoCodes = {
@@ -29,7 +30,7 @@ function getWeatherDetails(code) {
         66: { text: "Light freezing rain", emoji: "🌨️" },
         67: { text: "Heavy freezing rain", emoji: "🌨️" },
         71: { text: "Slight snowfall", emoji: "❄️" },
-        73: { text: "Moderate snowfall", emoji: "❄️" },
+        73: { text: "Moderate snowfall", emoji: "❄️" },  
         75: { text: "Heavy snowfall", emoji: "❄️" },
         77: { text: "Snow grains", emoji: "❄️" },
         80: { text: "Slight rain showers", emoji: "🌦️" },
@@ -59,33 +60,41 @@ async function display(getUserInput) {
         return
     }
 
-    const dataObj = await getCoords(inputCity)
-    if (!dataObj) return
-
-    const latitude = dataObj.latitude
-    const longitude = dataObj.longitude
-
-    const currentWeatherData = await getWeather(latitude, longitude)
-    if (!currentWeatherData) return 
-
-    const tempData = currentWeatherData.temperature_2m
-    const humidityData = currentWeatherData.relative_humidity_2m
-    const windData = currentWeatherData.wind_speed_10m
-
-    const weatherDetails = getWeatherDetails(currentWeatherData.weather_code)
-    const conditionData = weatherDetails.text
-    const emojiData = weatherDetails.emoji
-
-    temperature.textContent = `${tempData}°C`
-    humidity.textContent = `${humidityData}%`
-    condition.textContent = conditionData
-    weatherEmoji.textContent = emojiData
-    locationName.textContent = `${dataObj.name}, ${dataObj.country}`
-    document.querySelector('.humidity-text').textContent = 'Humidity'
-    document.querySelector('.wind-text').textContent = 'Wind Speed'
-    document.querySelector('.wind').textContent = `${windData} km/h`
+    const showWelcomeAfterFailure = !welcomeScreen.hidden
     welcomeScreen.hidden = true
-    weatherResults.hidden = false
+    loadingState.hidden = false
+
+    let weatherLoaded = false
+
+    try {
+        const dataObj = await getCoords(inputCity)
+        if (!dataObj) return
+
+        const currentWeatherData = await getWeather(dataObj.latitude, dataObj.longitude)
+        if (!currentWeatherData) return
+
+        const tempData = currentWeatherData.temperature_2m
+        const humidityData = currentWeatherData.relative_humidity_2m
+        const windData = currentWeatherData.wind_speed_10m
+
+        const weatherDetails = getWeatherDetails(currentWeatherData.weather_code)
+
+        temperature.textContent = `${tempData}°C`
+        humidity.textContent = `${humidityData}%`
+        condition.textContent = weatherDetails.text
+        weatherEmoji.textContent = weatherDetails.emoji
+        locationName.textContent = `${dataObj.name}, ${dataObj.country}`
+        document.querySelector('.humidity-text').textContent = 'Humidity'
+        document.querySelector('.wind-text').textContent = 'Wind Speed'
+        document.querySelector('.wind').textContent = `${windData} km/h`
+        weatherResults.hidden = false
+        weatherLoaded = true
+    } finally {
+        loadingState.hidden = true
+        if (!weatherLoaded && showWelcomeAfterFailure) {
+            welcomeScreen.hidden = false
+        }
+    }
 }
 
 function getUserInput() {
