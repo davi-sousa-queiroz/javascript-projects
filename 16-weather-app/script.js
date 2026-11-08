@@ -2,6 +2,7 @@ const modeButton = document.querySelector('.settings-button')
 const humidity = document.querySelector('.amount')
 const input = document.querySelector('.search-container input')
 const searchButton = document.querySelector('.search-button')
+const searchMessage = document.querySelector('.search-message')
 const temperature = document.querySelector('.temp')
 const weatherEmoji = document.querySelector('.emoji')
 const locationName = document.querySelector('.location-name')
@@ -50,6 +51,9 @@ modeButton.addEventListener('click', () => {
 searchButton.addEventListener('click', () => display(getUserInput))
 
 async function display(getUserInput) {
+    searchMessage.hidden = true
+    searchMessage.textContent = ''
+
     const inputCity = getUserInput().trim().toUpperCase()
     if (inputCity === '') {
         return
@@ -111,6 +115,10 @@ async function getCoords(inputCity) {
 
         return dataObj
     } catch (error) {
+        if (error.message === 'City not found') {
+            searchMessage.textContent = 'City not found. Check the spelling and try again.'
+            searchMessage.hidden = false
+        }
         console.log(error.message)
     }
 }
