@@ -14,7 +14,7 @@ const loadingState = document.querySelector('.loading-state')
 function getWeatherDetails(code) {
     const wmoCodes = {
         0: { text: "Clear sky", emoji: "☀️" },
-        1: { text: "Mainly clear", emoji: "🌤️" },
+        1: { text: "Mainly clear", emoji: "🌤️" }, 
         2: { text: "Partly cloudy", emoji: "⛅" },
         3: { text: "Overcast", emoji: "☁️" },
         45: { text: "Fog", emoji: "🌫️" },
