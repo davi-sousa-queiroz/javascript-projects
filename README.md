@@ -27,6 +27,7 @@
 | 13 | Event Countdown | DOM manipulation, Event listeners, Form input, Dynamic element creation, `textContent`, `replaceChildren()`, Date objects, Calendar-day calculations, Conditional logic |
 | 14 | Data Explorer | JSON modules, Imported datasets, DOM manipulation, Dynamic element creation, Array methods, Data visualization |
 | 15 | Study Session Tracker | Track timed study sessions, view history and stats, and save data with `localStorage`. Practices timers, arrays, and DOM manipulation. |
+| 16 | Weather App | Search for a city to see its current temperature, weather conditions, humidity, and wind speed. Uses the Open-Meteo geocoding and forecast APIs, with a saved last-searched city and a light/dark mode toggle. Practices async functions, `fetch()`, JSON data, DOM updates, and `localStorage`. |
 
 \* Project 11 is an AI-assisted exploration project and is not considered part of the normal difficulty progression.
 
@@ -65,6 +66,9 @@ More projects coming soon...
 * `Math.max()`
 * Date Objects
 * Calendar-Day Calculations
+* Async JavaScript and the Fetch API
+* Working with APIs and JSON
+* Local Storage
 
 More topics will be added as I continue learning JavaScript.
 
