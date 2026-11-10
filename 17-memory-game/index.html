@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RECALL — Memory Game</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="game-container">
+      <header class="game-header">
+        <div class="header-decoration">
+          <span></span>
+          <span class="brain-icon">🧠</span>
+          <span></span>
+        </div>
+
+        <h1>RECALL</h1>
+
+        <div class="level-display">
+          <span>Level:</span>
+          <span id="level">1</span>
+        </div>
+
+        <p id="game-message">Memorize the sequence...</p>
+      </header>
+
+      <section class="game-board" aria-label="Memory game board">
+        <button
+          class="game-button red"
+          data-color="red"
+          aria-label="Red"
+        ></button>
+        <button
+          class="game-button green"
+          data-color="green"
+          aria-label="Green"
+        ></button>
+        <button
+          class="game-button blue"
+          data-color="blue"
+          aria-label="Blue"
+        ></button>
+        <button
+          class="game-button yellow"
+          data-color="yellow"
+          aria-label="Yellow"
+        ></button>
+      </section>
+
+      <button id="start-button">Start Game</button>
+
+      <footer class="game-footer">
+        <p>Pay attention. Remember. Repeat.</p>
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
