@@ -28,6 +28,7 @@
 | 14 | Data Explorer | JSON modules, Imported datasets, DOM manipulation, Dynamic element creation, Array methods, Data visualization |
 | 15 | Study Session Tracker | Track timed study sessions, view history and stats, and save data with `localStorage`. Practices timers, arrays, and DOM manipulation. |
 | 16 | Weather App | Search for a city to see its current temperature, weather conditions, humidity, and wind speed. Uses the Open-Meteo geocoding and forecast APIs, with a saved last-searched city and a light/dark mode toggle. Practices async functions, `fetch()`, JSON data, DOM updates, and `localStorage`. |
+| 17 | Simon Memory Game | Repeat an increasingly long sequence of red, yellow, green, and blue buttons. Practices arrays, random selection, event listeners, sequence validation, and game state. |
 
 \* Project 11 is an AI-assisted exploration project and is not considered part of the normal difficulty progression.
 
@@ -69,6 +70,8 @@ More projects coming soon...
 * Async JavaScript and the Fetch API
 * Working with APIs and JSON
 * Local Storage
+* Event Handlers
+* Event Bubbling
 
 More topics will be added as I continue learning JavaScript.
 
