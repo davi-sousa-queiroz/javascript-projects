@@ -1,0 +1,6 @@
+const levelDisplay = document.querySelector('.level')
+const startButton = document.querySelector('.start-button')
+const redButton = document.querySelector('.red')
+const yellowButton = document.querySelector('.yellow')
+const greenButton = document.querySelector('.green')
+const blueButton = document.querySelector('.blue')
