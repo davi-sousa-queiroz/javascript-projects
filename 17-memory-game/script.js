@@ -7,8 +7,9 @@ const blueButton = document.querySelector('.blue')
 const gameMessage = document.querySelector('.game-message')
 
 let level = 0
-let correctButton
 let canAnswer = false
+let sequence = []
+let playerIndex = 0
 
 startButton.addEventListener('click', start)
 redButton.addEventListener('click', () => checkAnswer(1))
@@ -18,58 +19,60 @@ yellowButton.addEventListener('click', () => checkAnswer(4))
 
 function start() {
     startButton.style.display = 'none'
-    level++
+    sequence = []
+    level = 1
     levelDisplay.textContent = `${level}`
     play()
 }
 
 function play() {
-    level1()
-}
-
-function getRandomTrigger(min, max) {
-  let num = Math.floor(Math.random() * (max - min + 1)) + min;
-  if (num === 1) {
-    triggerRed()
-  } else if (num === 2) {
-    triggerBlue()
-  } else if (num === 3) {
-    triggerGreen()
-  } else if (num === 4) {
-    triggerYellow()
-  }
-  return num
-}
-
-function level1() {
+    sequence.push(Math.floor(Math.random() * 4) + 1)
+    playerIndex = 0
     canAnswer = false
     gameMessage.style.color = '#f5f6fb'
-    gameMessage.textContent = 'Watch the color, then repeat it.'
-    correctButton = getRandomTrigger(1, 4)
+    gameMessage.textContent = 'Watch the sequence.'
+
+    sequence.forEach((button, index) => {
+        setTimeout(() => showButton(button), index * 1000)
+    })
+
     setTimeout(() => {
         canAnswer = true
         gameMessage.textContent = 'Your turn!'
-    }, 1500)
+    }, sequence.length * 1000 + 100)
+}
+
+function showButton(button) {
+    if (button === 1) triggerRed()
+    else if (button === 2) triggerBlue()
+    else if (button === 3) triggerGreen()
+    else triggerYellow()
 }
 
 function checkAnswer(button) {
     if (!canAnswer) return
 
-    canAnswer = false
-    if (button === correctButton) {
-        gameMessage.style.color = 'green'
-        gameMessage.textContent = 'Correct! You got it.'
-        setTimeout(() => {
-            gameMessage.style.color = '#f5f6fb'
-            gameMessage.textContent = 'Watch the color, then repeat it.'
-        }, 1000);
-    } else {
+    if (button !== sequence[playerIndex]) {
+        canAnswer = false
         gameMessage.style.color = '#c50303'
         gameMessage.textContent = 'Not quite. Press start to try again.'
         startButton.style.display = 'inline-block'
         startButton.textContent = 'Play Again'
         level = 0
         levelDisplay.textContent = `${level}`
+        sequence = []
+        return
+    }
+
+    playerIndex++
+
+    if (playerIndex === sequence.length) {
+        canAnswer = false
+        level++
+        levelDisplay.textContent = `${level}`
+        gameMessage.style.color = 'green'
+        gameMessage.textContent = 'Correct! Watch the next sequence.'
+        setTimeout(play, 1000)
     }
 }
 
