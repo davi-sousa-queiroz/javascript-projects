@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Play a four-color Simon memory game. Watch the pattern, then repeat it."
+    />
+    <title>Simon — Memory Game</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="game-container">
+      <header class="game-header">
+        <p class="eyebrow">A game of lights and memory</p>
+        <h1 class="game-title">Simon</h1>
+        <p class="game-instructions">Watch the sequence, then repeat it.</p>
+      </header>
+
+      <section class="game-panel" aria-label="Simon memory game">
+        <div class="game-status">
+          <div class="level-display">
+            <span class="level-label">Level</span>
+            <span class="level">0</span>
+          </div>
+          <p class="game-message" aria-live="polite">
+            Press start when you're ready.
+          </p>
+        </div>
+
+        <div class="game-board" aria-label="Game buttons">
+          <button
+            class="game-button red"
+            type="button"
+            data-color="red"
+            aria-label="Red"
+          ></button>
+          <button
+            class="game-button yellow"
+            type="button"
+            data-color="yellow"
+            aria-label="Yellow"
+          ></button>
+          <button
+            class="game-button green"
+            type="button"
+            data-color="green"
+            aria-label="Green"
+          ></button>
+          <button
+            class="game-button blue"
+            type="button"
+            data-color="blue"
+            aria-label="Blue"
+          ></button>
+        </div>
+
+        <button class="start-button" type="button">Start Game</button>
+      </section>
+
+      <footer class="game-footer">
+        <span class="footer-dot" aria-hidden="true"></span>
+        <p>Focus. Remember. Repeat.</p>
+        <span class="footer-dot" aria-hidden="true"></span>
+      </footer>
+    </main>
+  </body>
+</html>
