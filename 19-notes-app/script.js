@@ -11,9 +11,28 @@ const deleteButton = document.querySelector('.delete-note-button');
 const searchInput = document.querySelector('.search-input');
 
 let notes = [];
+let editingNoteId = null;
 
-const openEditor = () => editorOverlay.classList.add('active');
+const openEditor = () => {
+  editingNoteId = null;
+  titleInput.value = '';
+  contentTextarea.value = '';
+  editorOverlay.classList.add('active');
+};
+
 const closeEditor = () => editorOverlay.classList.remove('active');
+
+const openNote = (id) => {
+  const note = notes.find((item) => item.id === id);
+  if (!note) {
+    return;
+  }
+
+  editingNoteId = note.id;
+  titleInput.value = note.title;
+  contentTextarea.value = note.content;
+  editorOverlay.classList.add('active');
+};
 
 function renderNotes() {
   notesContainer.replaceChildren();
@@ -40,6 +59,7 @@ function renderNotes() {
     updatedAt.textContent = new Date(note.updatedAt).toLocaleDateString();
 
     card.append(title, content, updatedAt);
+    card.addEventListener('click', () => openNote(note.id));
     notesContainer.append(card);
   });
 }
@@ -53,8 +73,26 @@ const saveNote = () => {
     return;
   }
 
-  const updatedAt = Date.now();
-  notes.push({ id: updatedAt, title, content, updatedAt });
+  if (editingNoteId === null) {
+    const updatedAt = Date.now();
+    notes.push({ id: updatedAt, title, content, updatedAt });
+  } else {
+    const noteIndex = notes.findIndex((note) => note.id === editingNoteId);
+    if (noteIndex === -1) {
+      window.alert('This note could not be found.');
+      return;
+    }
+
+    const note = notes[noteIndex];
+    notes[noteIndex] = {
+      ...note,
+      title,
+      content,
+      updatedAt: Math.max(Date.now(), note.updatedAt + 1),
+    };
+  }
+
+  editingNoteId = null;
   renderNotes();
   titleInput.value = '';
   contentTextarea.value = '';
