@@ -1,11 +1,13 @@
 const passage = document.querySelector('.passage')
 const inputField = document.querySelector('.input-field')
 const timer = document.querySelector('.timer')
+const wpmDisplay = document.querySelector('.wpm')
 const timeOptions = document.querySelector('.time-options')
 const timerButtons = document.querySelectorAll('.time-button')
 
 let fullPassageCorrect = false
 let timeLeft = 5
+let startingTime = timeLeft
 let timerInterval = null
 let timerStarted = false
 
@@ -22,6 +24,7 @@ timerButtons.forEach((button) => {
         timerButtons.forEach((timerButton) => timerButton.classList.remove('active'))
         button.classList.add('active')
         timeLeft = Number(button.dataset.time)
+        startingTime = timeLeft
         timer.textContent = timeLeft
     })
 })
@@ -79,19 +82,48 @@ function detectInput() {
             characterSpan.classList.add('current')
         }
     })
+
+    updateWpm()
+}
+
+function updateWpm() {
+    const currentInput = inputField.value
+    const originalPassage = passage.textContent
+    let correctCharacters = 0
+
+    for (let i = 0; i < currentInput.length; i++) {
+        if (currentInput[i] === originalPassage[i]) {
+            correctCharacters++
+        }
+    }
+
+    const elapsedSeconds = startingTime - timeLeft
+
+    if (elapsedSeconds === 0) {
+        wpmDisplay.textContent = 0
+        return
+    }
+
+    const elapsedMinutes = elapsedSeconds / 60
+    const wordsPerMinute = (correctCharacters / 5) / elapsedMinutes
+    wpmDisplay.textContent = Math.round(wordsPerMinute)
 }
 
 function startTimer () {
     timerInterval = setInterval(() => {
-        if (timeLeft < 1) {
+        if (timeLeft <= 1) {
+            timeLeft = 0
+            timer.textContent = timeLeft
+            updateWpm()
             clearInterval(timerInterval)
-            timer.textContent = 0
             inputField.disabled = true
             timeOptions.classList.remove('hidden')
             return
         }
+
         timeLeft--
         timer.textContent = timeLeft
+        updateWpm()
     }, 1000);
 }
 
