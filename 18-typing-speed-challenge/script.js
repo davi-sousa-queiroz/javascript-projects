@@ -14,12 +14,22 @@ const passages = [
 function selectRandomPassage(array) {
     const arrayLength = array.length
     const randomIndex = Math.floor(Math.random() * arrayLength)
-    passage.textContent = array[randomIndex]
+    const selectedPassage = array[randomIndex]
+    const fragment = document.createDocumentFragment()
+
+    for (const character of selectedPassage) {
+        const characterSpan = document.createElement('span')
+        characterSpan.textContent = character
+        fragment.append(characterSpan)
+    }
+
+    passage.replaceChildren(fragment)
 }
 
 function detectInput() {
     const currentInput = inputField.value
     const originalPassage = passage.textContent
+    const characterSpans = passage.querySelectorAll('span')
 
     if (currentInput === originalPassage) {
         console.log('correct full passage!')
@@ -28,13 +38,18 @@ function detectInput() {
         fullPassageCorrect = false
     }
 
-    for (let i = 0; i < currentInput.length; i++) {
-        if (currentInput[i] === originalPassage[i]) {
-            console.log('current correct!')
-        } else {
-            console.log('current wrong..')
+    characterSpans.forEach((characterSpan, index) => {
+        characterSpan.classList.remove('correct', 'incorrect', 'current')
+
+        if (index < currentInput.length) {
+            const className = currentInput[index] === characterSpan.textContent
+                ? 'correct'
+                : 'incorrect'
+            characterSpan.classList.add(className)
+        } else if (index === currentInput.length) {
+            characterSpan.classList.add('current')
         }
-    }
+    })
 }
 
 selectRandomPassage(passages)
