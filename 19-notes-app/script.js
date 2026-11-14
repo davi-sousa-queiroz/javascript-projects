@@ -10,7 +10,32 @@ const saveButton = document.querySelector('.save-note-button');
 const deleteButton = document.querySelector('.delete-note-button');
 const searchInput = document.querySelector('.search-input');
 
-let notes = [];
+const NOTES_STORAGE_KEY = 'notesAppNotes';
+
+function loadFromStorage() {
+  const savedNotes = localStorage.getItem(NOTES_STORAGE_KEY);
+  if (!savedNotes) {
+    return [];
+  }
+
+  try {
+    const loadedNotes = JSON.parse(savedNotes);
+    if (Array.isArray(loadedNotes)) {
+      return loadedNotes;
+    }
+
+    console.error('Saved notes are not an array.');
+  } catch (error) {
+    console.error('Could not read saved notes.', error);
+  }
+  return [];
+}
+
+function saveToStorage() {
+  localStorage.setItem(NOTES_STORAGE_KEY, JSON.stringify(notes));
+}
+
+let notes = loadFromStorage();
 let editingNoteId = null;
 
 deleteButton.hidden = true;
@@ -63,7 +88,9 @@ function renderNotes() {
     updatedAt.textContent = new Date(note.updatedAt).toLocaleDateString();
 
     card.append(title, content, updatedAt);
-    card.addEventListener('click', () => openNote(note.id));
+    card.addEventListener('click', () => {
+      openNote(note.id);
+    });
     notesContainer.append(card);
   });
 }
@@ -101,6 +128,7 @@ const saveNote = () => {
     };
   }
 
+  saveToStorage();
   editingNoteId = null;
   renderNotes();
   titleInput.value = '';
@@ -114,6 +142,7 @@ const deleteNote = () => {
   }
 
   notes = notes.filter((note) => note.id !== editingNoteId);
+  saveToStorage();
   editingNoteId = null;
   titleInput.value = '';
   contentTextarea.value = '';
