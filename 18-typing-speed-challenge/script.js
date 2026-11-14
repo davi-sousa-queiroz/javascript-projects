@@ -34,6 +34,7 @@ function detectInput() {
     if (currentInput === originalPassage) {
         console.log('correct full passage!')
         fullPassageCorrect = true
+        inputField.disabled = true
     } else {
         fullPassageCorrect = false
     }
