@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes App</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div class="brand">
+          <span class="brand-icon">✦</span>
+          <h1>notely</h1>
+        </div>
+
+        <div class="header-actions">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search your notes..."
+          />
+          <button class="add-note-button">+ New note</button>
+        </div>
+      </header>
+
+      <main class="main">
+        <div class="section-heading">
+          <div>
+            <h2>Your notes</h2>
+            <p class="notes-count">Your thoughts, all in one place.</p>
+          </div>
+        </div>
+
+        <div class="notes-container">
+          <div class="empty-state">
+            <div class="empty-icon">✎</div>
+            <h3>No notes yet</h3>
+            <p>Start capturing your thoughts and ideas.</p>
+            <button class="empty-add-button">Create your first note</button>
+          </div>
+        </div>
+      </main>
+
+      <div class="editor-overlay">
+        <div class="editor">
+          <div class="editor-header">
+            <h2 class="editor-heading">New note</h2>
+            <button class="close-editor-button">✕</button>
+          </div>
+
+          <input
+            type="text"
+            class="note-title-input"
+            placeholder="Give your note a title..."
+            maxlength="80"
+          />
+
+          <textarea
+            class="note-content-input"
+            placeholder="Start writing..."
+          ></textarea>
+
+          <div class="editor-footer">
+            <span class="editor-date">Your note</span>
+            <div class="editor-actions">
+              <button class="delete-note-button">Delete</button>
+              <button class="save-note-button">Save note</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
