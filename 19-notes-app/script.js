@@ -63,15 +63,30 @@ const openNote = (id) => {
   editorOverlay.classList.add('active');
 };
 
-function renderNotes() {
+function renderNotes(notesToRender = notes) {
   notesContainer.replaceChildren();
 
-  if (notes.length === 0) {
-    notesContainer.append(emptyState);
+  if (notesToRender.length === 0) {
+    if (notes.length === 0 && searchInput.value.trim() === '') {
+      notesContainer.append(emptyState);
+      return;
+    }
+
+    const emptySearchState = document.createElement('div');
+    emptySearchState.className = 'empty-state';
+
+    const message = document.createElement('h3');
+    message.textContent = 'No notes found';
+
+    const hint = document.createElement('p');
+    hint.textContent = 'Try a different search term.';
+
+    emptySearchState.append(message, hint);
+    notesContainer.append(emptySearchState);
     return;
   }
 
-  notes.forEach((note) => {
+  notesToRender.forEach((note) => {
     const card = document.createElement('div');
     card.className = 'note-card';
 
@@ -130,7 +145,7 @@ const saveNote = () => {
 
   saveToStorage();
   editingNoteId = null;
-  renderNotes();
+  searchNotes();
   titleInput.value = '';
   contentTextarea.value = '';
   closeEditor();
@@ -148,13 +163,24 @@ const deleteNote = () => {
   contentTextarea.value = '';
   deleteButton.hidden = true;
   closeEditor();
-  renderNotes();
+  searchNotes();
 };
+
+function searchNotes() {
+  const searchTerm = searchInput.value.trim().toLowerCase();
+  const matchingNotes = notes.filter((note) => (
+    note.title.toLowerCase().includes(searchTerm)
+    || note.content.toLowerCase().includes(searchTerm)
+  ));
+
+  renderNotes(matchingNotes);
+}
 
 newNoteButton.addEventListener('click', openEditor);
 emptyStateButton.addEventListener('click', openEditor);
 closeButton.addEventListener('click', closeEditor);
 saveButton.addEventListener('click', saveNote);
 deleteButton.addEventListener('click', deleteNote);
+searchInput.addEventListener('input', searchNotes);
 
 renderNotes();
