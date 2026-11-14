@@ -37,7 +37,7 @@ More projects coming soon...
 
 ---
 
-## 📚 Skills I'm Learning
+## 📚 A Few Skills I'm Learning
 
 * Variables
 * Data Types
