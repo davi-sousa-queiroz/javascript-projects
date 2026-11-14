@@ -2,6 +2,7 @@ const passage = document.querySelector('.passage')
 const inputField = document.querySelector('.input-field')
 const timer = document.querySelector('.timer')
 const wpmDisplay = document.querySelector('.wpm')
+const accuracyDisplay = document.querySelector('.accuracy')
 const timeOptions = document.querySelector('.time-options')
 const timerButtons = document.querySelectorAll('.time-button')
 
@@ -84,6 +85,7 @@ function detectInput() {
     })
 
     updateWpm()
+    updateAccuracy()
 }
 
 function updateWpm() {
@@ -107,6 +109,26 @@ function updateWpm() {
     const elapsedMinutes = elapsedSeconds / 60
     const wordsPerMinute = (correctCharacters / 5) / elapsedMinutes
     wpmDisplay.textContent = Math.round(wordsPerMinute)
+}
+
+function updateAccuracy() {
+    const currentInput = inputField.value
+    const originalPassage = passage.textContent
+    let correctCharacters = 0
+
+    for (let i = 0; i < currentInput.length; i++) {
+        if (currentInput[i] === originalPassage[i]) {
+            correctCharacters++
+        }
+    }
+
+    if (currentInput.length === 0) {
+        accuracyDisplay.textContent = '100%'
+        return
+    }
+
+    const accuracy = (correctCharacters / currentInput.length) * 100
+    accuracyDisplay.textContent = `${Math.round(accuracy)}%`
 }
 
 function startTimer () {
