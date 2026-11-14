@@ -13,10 +13,13 @@ const searchInput = document.querySelector('.search-input');
 let notes = [];
 let editingNoteId = null;
 
+deleteButton.hidden = true;
+
 const openEditor = () => {
   editingNoteId = null;
   titleInput.value = '';
   contentTextarea.value = '';
+  deleteButton.hidden = true;
   editorOverlay.classList.add('active');
 };
 
@@ -31,6 +34,7 @@ const openNote = (id) => {
   editingNoteId = note.id;
   titleInput.value = note.title;
   contentTextarea.value = note.content;
+  deleteButton.hidden = false;
   editorOverlay.classList.add('active');
 };
 
@@ -74,8 +78,13 @@ const saveNote = () => {
   }
 
   if (editingNoteId === null) {
+    let id = Date.now();
+    while (notes.some((note) => note.id === id)) {
+      id += 1;
+    }
+
     const updatedAt = Date.now();
-    notes.push({ id: updatedAt, title, content, updatedAt });
+    notes.push({ id, title, content, updatedAt });
   } else {
     const noteIndex = notes.findIndex((note) => note.id === editingNoteId);
     if (noteIndex === -1) {
@@ -99,9 +108,24 @@ const saveNote = () => {
   closeEditor();
 };
 
+const deleteNote = () => {
+  if (editingNoteId === null) {
+    return;
+  }
+
+  notes = notes.filter((note) => note.id !== editingNoteId);
+  editingNoteId = null;
+  titleInput.value = '';
+  contentTextarea.value = '';
+  deleteButton.hidden = true;
+  closeEditor();
+  renderNotes();
+};
+
 newNoteButton.addEventListener('click', openEditor);
 emptyStateButton.addEventListener('click', openEditor);
 closeButton.addEventListener('click', closeEditor);
 saveButton.addEventListener('click', saveNote);
+deleteButton.addEventListener('click', deleteNote);
 
 renderNotes();
