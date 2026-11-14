@@ -85,6 +85,10 @@ body {
     border-radius: 8px;
 }
 
+.time-options.hidden {
+    display: none;
+}
+
 .time-button {
     border: none;
     background: transparent;
