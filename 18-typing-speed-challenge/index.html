@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TypeFlow - Typing Speed Test</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <a href="#" class="logo"
+          >type<span>flow</span><span class="logo-dot">.</span></a
+        >
+        <p class="header-label">TYPING SPEED TEST</p>
+      </header>
+
+      <section class="test-section">
+        <div class="test-controls">
+          <div class="time-options">
+            <button class="time-button active" data-time="15">15s</button>
+            <button class="time-button" data-time="30">30s</button>
+            <button class="time-button" data-time="60">60s</button>
+          </div>
+
+          <button class="restart-button"><span>↻</span> Restart</button>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <span class="stat-label">TIME</span>
+            <span class="stat-value timer">15</span>
+          </div>
+
+          <div class="stat">
+            <span class="stat-label">WPM</span>
+            <span class="stat-value wpm">0</span>
+          </div>
+
+          <div class="stat">
+            <span class="stat-label">ACCURACY</span>
+            <span class="stat-value accuracy">100%</span>
+          </div>
+        </div>
+
+        <div class="typing-area">
+          <div class="text-display">
+            <p class="passage"></p>
+          </div>
+
+          <textarea
+            class="input-field"
+            placeholder="Start typing here..."
+            spellcheck="false"
+            autocomplete="off"
+            autocapitalize="off"
+          ></textarea>
+
+          <div class="typing-footer">
+            <span class="typing-hint">START TYPING TO BEGIN</span>
+            <span class="character-count">0 / 0</span>
+          </div>
+        </div>
+
+        <div class="bottom-section">
+          <p>Focus on accuracy. Speed comes naturally.</p>
+          <span class="keyboard-hint">TAB + ENTER TO RESTART</span>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>TYPEFLOW © 2026</span>
+        <span>MADE FOR PRACTICE</span>
+      </footer>
+    </main>
+  </body>
+</html>
