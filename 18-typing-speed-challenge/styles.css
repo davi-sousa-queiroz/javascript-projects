@@ -1,0 +1,276 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #17191c;
+    --surface: #202328;
+    --surface-light: #292d33;
+    --text: #e5e5e5;
+    --muted: #777e89;
+    --accent: #e5b567;
+    --error: #e06c75;
+    --correct: #e5b567;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--background);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1050px;
+    padding: 45px 35px;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 130px;
+}
+
+.logo {
+    color: var(--text);
+    font-size: 25px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: -1.5px;
+}
+
+.logo span {
+    color: var(--muted);
+}
+
+.logo .logo-dot {
+    color: var(--accent);
+}
+
+.header-label,
+.stat-label,
+.footer,
+.keyboard-hint {
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+}
+
+.test-section {
+    width: 100%;
+}
+
+.test-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.time-options {
+    display: flex;
+    gap: 8px;
+    background: var(--surface);
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.time-button {
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.time-button:hover {
+    color: var(--text);
+}
+
+.time-button.active {
+    background: var(--surface-light);
+    color: var(--accent);
+}
+
+.restart-button {
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    font-family: inherit;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.restart-button:hover {
+    color: var(--accent);
+}
+
+.restart-button span {
+    font-size: 17px;
+    margin-right: 5px;
+}
+
+.stats {
+    display: flex;
+    gap: 65px;
+    margin-bottom: 35px;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.stat-label {
+    font-size: 9px;
+}
+
+.stat-value {
+    font-family: 'DM Mono', monospace;
+    font-size: 27px;
+    color: var(--accent);
+}
+
+.typing-area {
+    background: var(--surface);
+    border: 1px solid #30343a;
+    border-radius: 12px;
+    padding: 35px;
+}
+
+.text-display {
+    min-height: 155px;
+    margin-bottom: 25px;
+}
+
+.passage {
+    font-family: 'DM Mono', monospace;
+    font-size: 19px;
+    line-height: 2;
+    letter-spacing: 0.2px;
+    color: var(--muted);
+    overflow-wrap: anywhere;
+}
+
+.passage span.correct {
+    color: var(--correct);
+}
+
+.passage span.incorrect {
+    color: var(--error);
+    background: #e06c7520;
+    border-radius: 2px;
+}
+
+.passage span.current {
+    border-left: 2px solid var(--accent);
+}
+
+.input-field {
+    width: 100%;
+    min-height: 75px;
+    resize: none;
+    background: var(--background);
+    border: 1px solid #30343a;
+    border-radius: 7px;
+    padding: 15px;
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.2s;
+}
+
+.input-field:focus {
+    border-color: var(--accent);
+}
+
+.input-field::placeholder {
+    color: #555b64;
+}
+
+.typing-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--muted);
+}
+
+.bottom-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.bottom-section p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 130px;
+    font-size: 9px;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 30px 18px;
+    }
+
+    .header {
+        margin-bottom: 85px;
+    }
+
+    .header-label {
+        font-size: 8px;
+    }
+
+    .stats {
+        gap: 35px;
+    }
+
+    .stat-value {
+        font-size: 23px;
+    }
+
+    .typing-area {
+        padding: 20px;
+    }
+
+    .passage {
+        font-size: 16px;
+    }
+
+    .bottom-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .footer {
+        padding-top: 90px;
+    }
+}
