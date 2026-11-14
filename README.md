@@ -30,6 +30,7 @@
 | 16 | [Weather App](https://davi-sousa-queiroz.github.io/javascript-projects/16-weather-app/index.html) | Search for a city to see its current temperature, weather conditions, humidity, and wind speed. Uses the Open-Meteo geocoding and forecast APIs, with a saved last-searched city and a light/dark mode toggle. Practices async functions, `fetch()`, JSON data, DOM updates, and `localStorage`. |
 | 17 | [Simon Memory Game](https://davi-sousa-queiroz.github.io/javascript-projects/17-memory-game/index.html) | Repeat an increasingly long sequence of red, yellow, green, and blue buttons. Practices arrays, random selection, event listeners, sequence validation, and game state. |
 | 18 | [Typing Speed Challenge](https://davi-sousa-queiroz.github.io/javascript-projects/18-typing-speed-challenge/) | Type timed passages and track WPM and accuracy. Practices text input, DOM manipulation, event listeners, timers, and game state. |
+| 19 | [Notes App](https://davi-sousa-queiroz.github.io/javascript-projects/19-notes-app/) | Create, edit, delete, and search notes saved in `localStorage`. Practices DOM manipulation, event listeners, array methods, JSON, and persistent browser storage. |
 
 \* Project 11 is an AI-assisted exploration project and is not considered part of the normal difficulty progression.
 
