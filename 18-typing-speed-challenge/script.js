@@ -5,16 +5,19 @@ const wpmDisplay = document.querySelector('.wpm')
 const accuracyDisplay = document.querySelector('.accuracy')
 const timeOptions = document.querySelector('.time-options')
 const timerButtons = document.querySelectorAll('.time-button')
+const restartButton = document.querySelector('.restart-button')
 
 let fullPassageCorrect = false
-let timeLeft = 5
-let startingTime = timeLeft
+let selectedTime = 5
+let timeLeft = selectedTime
+let elapsedSeconds = 0
 let timerInterval = null
 let timerStarted = false
 
 timer.textContent = timeLeft
 
 inputField.addEventListener('input', detectInput)
+restartButton.addEventListener('click', restartGame)
 
 timerButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -24,8 +27,8 @@ timerButtons.forEach((button) => {
 
         timerButtons.forEach((timerButton) => timerButton.classList.remove('active'))
         button.classList.add('active')
-        timeLeft = Number(button.dataset.time)
-        startingTime = timeLeft
+        selectedTime = Number(button.dataset.time)
+        timeLeft = selectedTime
         timer.textContent = timeLeft
     })
 })
@@ -55,6 +58,7 @@ function detectInput() {
     if (!timerStarted) {
         timerStarted = true
         timeOptions.classList.add('hidden')
+        elapsedSeconds = 0
         startTimer()
     }
     const currentInput = inputField.value
@@ -64,9 +68,7 @@ function detectInput() {
     if (currentInput === originalPassage) {
         console.log('correct full passage!')
         fullPassageCorrect = true
-        inputField.disabled = true
-        clearInterval(timerInterval)
-        timeOptions.classList.remove('hidden')
+        endGame()
     } else {
         fullPassageCorrect = false
     }
@@ -99,8 +101,6 @@ function updateWpm() {
         }
     }
 
-    const elapsedSeconds = startingTime - timeLeft
-
     if (elapsedSeconds === 0) {
         wpmDisplay.textContent = 0
         return
@@ -131,15 +131,37 @@ function updateAccuracy() {
     accuracyDisplay.textContent = `${Math.round(accuracy)}%`
 }
 
+function restartGame() {
+    clearInterval(timerInterval)
+    timerStarted = false
+    fullPassageCorrect = false
+    elapsedSeconds = 0
+    timeLeft = selectedTime
+    inputField.value = ''
+    inputField.disabled = false
+    wpmDisplay.textContent = 0
+    accuracyDisplay.textContent = '100%'
+    timeOptions.classList.remove('hidden')
+    timer.textContent = timeLeft
+    selectRandomPassage(passages)
+}
+
+function endGame() {
+    clearInterval(timerInterval)
+    timerStarted = false
+    inputField.disabled = true
+    timeOptions.classList.remove('hidden')
+}
+
 function startTimer () {
     timerInterval = setInterval(() => {
+        elapsedSeconds++
+
         if (timeLeft <= 1) {
             timeLeft = 0
             timer.textContent = timeLeft
             updateWpm()
-            clearInterval(timerInterval)
-            inputField.disabled = true
-            timeOptions.classList.remove('hidden')
+            endGame()
             return
         }
 
